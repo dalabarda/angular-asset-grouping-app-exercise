@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core'
-import { Subject, Observable } from 'rxjs/RX'
+import { Subject, Observable } from 'rxjs'
 import { IEvent, IAsset, IGroups } from './assets.model'
-
-// adding the injectable decorator is important for any service 
-// that you are going to inject into your components or another service 
 
 
 @Injectable()
@@ -13,21 +10,20 @@ export class GroupService {
     return GROUPS
   }
 
-
   getGroup(id:number):IGroups {
       return GROUPS.find(group => group.id === id)
   }
 
-
-  // function to make new groups
+  // to make new groups
   saveGroup(group: IGroups) {
     group.id = GROUPS.length + 1
     GROUPS.push(group)
   }
 
-  // function to update existing groups
+  // to update existing groups
   updateGroup(group: any) {
-    let index = GROUPS.findIndex(x => x.id = group.id) // finding the existing groups in the array and replace it on the fly.
+    // finding the existing groups in the array and replace it on the fly.
+    let index = GROUPS.findIndex(x => x.id = group.id) 
     GROUPS[index] = group
   }
   
@@ -41,19 +37,17 @@ export class AssetService {
     return ASSETS
   }
 
-
   getAsset(id:number):IAsset {
       return ASSETS.find(asset => asset.id === id)
   }
 
-
-  // function to save new events
+  // to save new events
   saveAsset(asset: IAsset) {
     asset.id = ASSETS.length + 1
     ASSETS.push(asset)
   }
 
-  // function to update existing events
+  // to update existing events
   updateAsset(asset: any) {
     let index = ASSETS.findIndex(x => x.id = asset.id) // finding the existing event in the array and replace it for now
     ASSETS[index] = asset

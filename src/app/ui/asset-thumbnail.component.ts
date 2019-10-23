@@ -34,10 +34,6 @@ import { IAsset, TruncatePipe } from './shared/index'
     </div>
   `,
   styles: [`
-    .thumbnail { min-height: 150px; }
-    .pad-left { margin-left: 10px; }
-    .text { font-size: 80%; }
-    .well div { color: #bbb;}
     .list-item {
       padding: 19px;
       background-color: #f5f5f5;
@@ -50,20 +46,14 @@ import { IAsset, TruncatePipe } from './shared/index'
       background-color: #E6E6E6;
       cursor: pointer;
     }
-    
+
+    .text { font-size: 80%; }
   `] // '!important' otherwise, this style will get overridden by another one.
 })
 export class AssetThumbnailComponent {
-  @Input() asset : IAsset   // this is just creating a property called event and telling TypeScript that it is of type any.
-                            // we don't care for now, what data type is. 
-
-                            // the Imput() decorator tells Angular that this event will be passed in from another component
+  @Input() asset : IAsset   
 
 
-
-
-
-  // CHANGE THIS FUNCTION
   getStartTypeStyle():any {
     if (this.asset && this.asset.group_id === 1)
       return {color: '#007777', 'font-weight': 'bold'}
@@ -72,42 +62,9 @@ export class AssetThumbnailComponent {
     return {}
   }
 
-
-
-
   getFirstString(): any {
     this.asset && this.asset.description.substring(0, 20)
     return {}
   }
 
-
-
-
 }
-
-
-/*
-      <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
-        Time: {{event?.time}}
-        <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
-        <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
-        <span *ngSwitchDefault>(Normal Start)</span>
-      </div>
-
-      <div *ngIf="asset?.GPSposition">
-        <span>Location: {{asset?.GPSposition?}}</span>
-        <span class="pad-left">{{asset?.GPSposition?.x}}, {{asset?.GPSposition?.y}}</span>
-      </div>
-
-
-
-            <div *ngIf="event?.location">
-        <span>Location: {{event?.location?.address}}</span>
-        <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
-      </div>
-      <div *ngIf="event?.onlineUrl">
-        Online URL: {{event?.onlineUrl}}
-      </div>
-
-
-*/

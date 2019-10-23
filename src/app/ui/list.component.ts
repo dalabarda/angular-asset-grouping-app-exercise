@@ -33,9 +33,7 @@ import { IAsset } from './shared/index'
   `,
   styles: [`
     .thumbnail { min-height: 250px; }
-    .pad-left { margin-left: 10px; }
-    .text { font-size: 80%; }
-    .well div { color: #bbb;}
+
   `] // '!important' otherwise, this style will get overridden by another one.
 })
 export class ListComponent {
