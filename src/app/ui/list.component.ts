@@ -11,7 +11,7 @@ import { IAsset } from './shared/index'
     <hr/>
       <div class="row">
         <div *ngFor="let asset of assets">
-          <asset-thumbnail *ngIf="asset.group_id==1" class="col-md-12" (click)="handleThumbnailClick(asset.name)" [asset]="asset"></asset-thumbnail>
+          <asset-thumbnail *ngIf = "asset.group_id == 1" class="col-md-12" (click)="handleThumbnailClick(asset.name)" [asset]="asset"></asset-thumbnail>
         </div>
       </div>
 

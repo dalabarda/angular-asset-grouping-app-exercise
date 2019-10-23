@@ -6,21 +6,19 @@ import { IAsset } from './shared/index'
 @Component({
 
   template: `
-
     <div class="well well-sm">
-        <strong>Display</strong>
-        <div class="btn-group">
-            <a (click)="displayList()" id="list" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-th-list">
-                </span>List</a> 
-            <a (click)="displayGrid()" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
-        </div>
+      <strong>Display: </strong>
+      <div class="btn-group">
+          <a (click)="displayList()" id="list" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-th-list">
+              </span>List</a> 
+          <a (click)="displayGrid()" id="grid" class="btn btn-default btn-sm"><span
+              class="glyphicon glyphicon-th"></span>Grid</a>
+      </div>
     </div>
 
-
-<thumbnail *ngIf="addMode" ></thumbnail>
-<list *ngIf="!addMode" ></list>
+  <thumbnail *ngIf="addMode" ></thumbnail>
+  <list *ngIf="!addMode" ></list>
 
   `
  }) // 

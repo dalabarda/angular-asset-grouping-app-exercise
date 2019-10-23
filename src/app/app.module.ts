@@ -16,7 +16,7 @@ import {
     MoveGroupComponent,
     DurationPipe,
     TruncatePipe
-} from './events/index'
+} from './ui/index'
 
 import { AppComponent }  from './app.component';
 import { NavBarComponent }  from './nav/navbar.component';
