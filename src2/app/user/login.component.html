@@ -1,0 +1,79 @@
+<h1>Login</h1>
+<hr>
+<div class="col-md-4">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
+    <div class="form-group" >
+      <label for="userName">User Name:</label>
+      <!-- shows the red error message in italic-->
+      <em *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel)="username" name="userName" required id="userName" type="text" class="form-control" placeholder="User Name..." />
+    </div>
+    <div class="form-group" >
+      
+      
+      <label for="password">Password:</label>
+      <!-- shows the red error message in italic-->
+      <em *ngIf="loginForm.controls.password?.invalid  && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel)="password" name="password" required id="password" type="password" class="form-control"placeholder="Password..." />
+    </div>
+    
+    <!-- It is important to 'wrap' the login buton into a span tag in order to activate the roover functionality because disabled buttons does not raise events. thererore -->
+    <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+    </span>
+    <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+  </form>
+</div>
+
+<!--
+atention notes:
+
+
+
+
+[(ngModel)] is known as the banana-in-a-box syntax and it represents a two-way binding.
+parentheses are used to bind in the HTML to component direction and it's typically used for responding to events. whereas the [] are used to bind in the component to HTML direction and it is typically used for displaying data from the component on the page.
+
+The reason why banana-in-a-box style binding is used is that often forms are used for editing existing data, and so you'll want to display the existing data, and as you type, you want to update the data.
+
+this is going to be important to assign the asset files to folders.
+
+-->
+
+
+<!--
+
+required id="userName"    is HTML5 validation functionality
+#loginForm="ngForm"       Angular validation
+
+while Angular does not prevent us from submitting the form, it does tell us whether the form and various fields are valid or not and there's a wealth of information here about the different states of the form.
+
+7.5 tut. 
+<div class="col-md-1" >
+    {{loginForm.valid}}<br/>
+    {{loginForm.invalid}}<br/>
+    {{loginForm.dirty}}<br/>
+    {{loginForm.pristine}}<br/>
+    {{loginForm.submitted}}<br/>
+    {{loginForm.touched}}<br/>
+    {{loginForm.untouched}}<br/>
+
+</div>
+
+<div class="col-md-3" style="padding-left:25px">
+    loginForm.controls.userName.valid:<br/>
+    loginForm.controls.userName.invalid:<br/>
+    loginForm.controls.userName.dirty:<br/>
+    loginForm.controls.userName.pristine:<br/>
+    loginForm.controls.userName.touched:<br/>
+    loginForm.controls.userName.untouched:<br/>
+    <br/>
+    <br/>
+    loginForm.controls.password.valid:<br/>
+    loginForm.controls.password.invalid:<br/>
+    loginForm.controls.password.dirty:<br/>
+    loginForm.controls.password.pristine:<br/>
+    loginForm.controls.password.touched:<br/>
+    loginForm.controls.password.untouched:<br/>
+</div>
+-->

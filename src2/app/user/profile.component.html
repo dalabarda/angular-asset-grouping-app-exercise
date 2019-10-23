@@ -1,0 +1,46 @@
+<div>
+  <h1>Edit Your Profile </h1>
+  <hr>
+  <div class="col-md-4">
+    
+    <!-- First we will bind our form element to the profileForm like this: [formGroup]="profileForm" --> 
+    <form [formGroup]="profileForm" (ngSubmit)="saveProfile(profileForm.value)" autocomplete="off" novalidate>
+      <!-- [ngClass]="'error' : profileForm.controls.firstName.invalid && profileForm.controls.firstName.touched }" -->
+      <div class="form-group" [ngClass]="{'error' : !validateFirstName() }" >
+        <label for="firstName">First Name:</label>
+        <!-- if the first name is not required, than display "required" -->
+        <em *ngIf="!validateFirstName() && profileForm.controls.firstName.errors.required">Required</em>
+
+        <em *ngIf="!validateFirstName() && profileForm.controls.firstName.errors.pattern">Must start with a letter</em>
+        <!-- formControlName="firstName"-->
+        <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name..." />
+      </div>
+      <!-- [ngClass]="'error' : profileForm.controls.firstName.invalid && profileForm.controls.firstName.touched }"-->
+      <div class="form-group" [ngClass]="{'error' : !validateLastName() }">
+        <label for="lastName">Last Name:</label>
+        <!-- if the first name is not required, than display "required" -->
+        <em *ngIf="!validateLastName()">Required</em>
+        <!-- formControlName="lastName"-->
+        <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Last Name..." />
+      </div>
+      <!-- desabliling the button in case it is not valid-->
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-default" (click)="cancel()" >Cancel</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- 
+Here, the "formControlName" property need to match the property values of the FormGroup in the profile.component.ts file on ngOnInit() function. 
+
+template-driven forms that we had to import the Angular forms module into our module.
+model-driven use a different module called the ReactiveFormsModul, 
+
+(click)     is the handler
+="cancel()" that always call functions
+
+
+here, whenever we want to access one of the controls, we have to do it through the form like this 'profileFormControls.firstName' example. we have to do this way because when we made the form public, the FormControls were private and that's not really necessary. 
+
+-->

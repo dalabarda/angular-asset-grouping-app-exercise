@@ -1,0 +1,73 @@
+<h1>New Asset</h1>
+<div class="col-md-6">
+<hr>
+  <!-- we already created a template variable for this form and have wired up the ngSubmit asset to this save asset method -->
+  <form #newAssetForm="ngForm" (ngSubmit)="saveAsset(newAssetForm.value)" autocomplete="off" novalidate>
+    
+
+    <!--  [ngClass] for the error styling message -->
+    <div class="form-group" [ngClass]="{'error': newAssetForm.controls.name?.invalid && newAssetForm.controls.name?.touched}">
+      <label for="assetName">Asset Name:</label>
+      <!-- corresponding validation message -->
+      <em *ngIf="newAssetForm.controls.name?.invalid && (newAssetForm.controls.name?.touched)">Required</em>
+      <!-- (ngModel)="name" name="name" 
+      required id="name" -> to most of components in the corresponding validation messages -->
+      <input (ngModel)="name" name="name" required id="name" type="text" class="form-control" placeholder="Name of your asset..." />
+    </div>
+    
+    <!-- Assigning to a group -->
+    <div class="form-group">
+        <label for="group_id">Group you would like to assign:</label>
+        <select (ngModel)="group_id" name="group_id" required id="group_id" type="number" class="form-control">
+          <option value="">select group...</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+    
+    <div class="form-group" [ngClass]="{'error': newAssetForm.controls.destination_url?.invalid && newAssetForm.controls.destination_url?.touched}">
+    <!-- here is the place to upload the file -->
+	  <!-- we have here two validators: required and pattern validators. -->
+      <label for="destination_url">Image:</label>
+      <em *ngIf="newAssetForm.controls.destination_url?.invalid && newAssetForm.controls.destination_url?.touched && newAssetForm.controls.destination_url?.errors.required">Required</em>
+      <em *ngIf="newAssetForm.controls.destination_url?.invalid && newAssetForm.controls.destination_url?.touched  && newAssetForm.controls.destination_url?.errors.pattern">Must be a png or jpg url</em>
+      <input (ngModel)="destination_url" name="destination_url" required pattern=".*\/.*.(png|jpg)" id="destination_url" type="text" class="form-control" placeholder="url of image..." />
+      <!-- binding source property to the value of destination_url field | and not displaying until it is valid -->
+
+    </div>
+    
+    <!-- DATE -->
+    <div class="form-group">
+      <label for="date">Select the present day</label>
+      <!-- picking the day -->
+      <select  (ngModel)="date" name="date" required id="date" type="text" class="form-control" >
+        <option value="{{ today | date }}">{{ today | date }}</option>
+      </select>
+    </div>
+    <!-- -->
+
+    <!-- Matching the data model by wrapping the next div into the group object from our data model -->
+    
+      <div class="form-group" > 
+        <label for="description">Description:</label>
+
+        <!-- formControlName="description" -->
+        <textarea (ngModel)="description" name="description" required id="description" type="text" class="form-control" placeholder="What can you say about this asset?..."></textarea>
+      </div>
+    
+
+
+
+
+    <button [disabled]="newAssetForm.invalid" type="submit" class="btn btn-primary" >Save</button>
+    <button type="button" [disabled]="newAssetForm.controls.invalid" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
+  <br>
+  <hr>
+</div>
+
+<div class="col-md-6">
+  <img  class="asset-image" [src]="newAssetForm.controls.destination_url.value" *ngIf="newAssetForm.controls.destination_url?.valid"
+  />
+</div>
