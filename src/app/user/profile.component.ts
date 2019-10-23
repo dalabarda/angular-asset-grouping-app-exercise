@@ -7,7 +7,7 @@ import { Router } from '@angular/router' // this router is because I created the
 
 
 @Component({
-  templateUrl: "app/user/profile.component.html",
+  templateUrl: "./profile.component.html",
   styles: [`
     em {float:right; color:#E05C65; padding-left: 10px;}
     .error input {background-color:#E3C3C5;}

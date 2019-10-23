@@ -41,15 +41,11 @@
 
 
 /** Evergreen browsers require these. **/
-// import 'core-js/es6/reflect';
-// import 'core-js/es7/reflect';
+import 'core-js/es6/reflect';
+import 'core-js/es7/reflect';
 
 
-/**
- * Web Animations `@angular/platform-browser/animations`
- * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
- * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
- */
+/** ALL Firefox browsers require the following to support `@angular/animation`. **/
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
 
@@ -69,3 +65,6 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
  */
 // import 'intl';  // Run `npm install --save intl`.
+
+// import '@webcomponents/custom-elements/src/native-shin';
+// import '@webcomponents/custom-elements/custom-elements.min';

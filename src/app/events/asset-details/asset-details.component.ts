@@ -7,7 +7,7 @@ import { Router } from '@angular/router'
 import { IAsset, IGroups, ISession } from '../shared/index'
 
 @Component({
-	templateUrl: '/app/events/asset-details/asset-details.component.html',
+	templateUrl: './asset-details.component.html',
 	styles: [`
 		.container { padding-left:20px; padding-right:20px; }
 		.asset-image { width: 100%; }

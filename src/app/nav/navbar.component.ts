@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'
-import { AuthService } from '../user/auth.service' // this component is to show the data from the 'user.model' 
+import { AuthService } from './../user/auth.service' // this component is to show the data from the 'user.model' 
 
 @Component({
   selector: 'nav-bar',
-  templateUrl: 'app/nav/navbar.component.html',
+  templateUrl: './navbar.component.html',
   styles: [`
     .nav.navbar-nav {font-size: 15px;}
     #searchForm {margin-right: 100px;}
