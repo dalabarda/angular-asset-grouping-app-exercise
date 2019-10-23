@@ -7,35 +7,53 @@ import { IAsset, IGroups } from './shared/index'
 @Component({
   selector: 'thumbnail',
   template: `
-  <h2 style="font-weight:bold">Assets from group 1: </h2>
+
+    <h2 style="font-weight:bold">Assets from group 1: </h2>
     <hr/>
-      <div class="row">
-        <div *ngFor="let asset of assets">
-          <asset-thumbnail *ngIf="asset.group_id==1" class="col-md-3" (click)="handleThumbnailClick(asset.name)" [asset]="asset"></asset-thumbnail>
+      <div>
+        <div *ngFor="let asset of assets" class="g">
+          <asset-thumbnail 
+            *ngIf="asset.group_id==1"  
+            (click)="handleThumbnailClick(asset.name)" 
+            [asset]="asset">
+          </asset-thumbnail>
         </div>
       </div>
 
-  <h2 style="font-weight:bold">Assets from group 2: </h2>
+    <h2 style="font-weight:bold">Assets from group 2: </h2>
     <hr/>
-      <div class="row">
-        <div *ngFor="let asset of assets">
-          <asset-thumbnail *ngIf="asset.group_id==2" class="col-md-3" (click)="handleThumbnailClick(asset.name)" [asset]="asset"></asset-thumbnail>
+      <div>
+        <div *ngFor="let asset of assets" class="grid-item g">
+          <asset-thumbnail 
+            *ngIf="asset.group_id==2"  
+            (click)="handleThumbnailClick(asset.name)" 
+            [asset]="asset"></asset-thumbnail>
         </div>
       </div>
 
-  <h2 style="font-weight:bold">Assets from group 3: </h2>
+    <h2 style="font-weight:bold">Assets from group 3: </h2>
     <hr/>
       <div class="row">
-        <div *ngFor="let asset of assets">
-          <asset-thumbnail *ngIf="asset.group_id==3" class="col-md-3" (click)="handleThumbnailClick(asset.name)" [asset]="asset"></asset-thumbnail>
+        <div *ngFor="let asset of assets" class="grid-item g">
+          <asset-thumbnail 
+            *ngIf="asset.group_id==3" 
+            (click)="handleThumbnailClick(asset.name)" 
+            [asset]="asset">
+          </asset-thumbnail>
         </div>
       </div>
   `,
   styles: [`
-    .thumbnail { min-height: 250px; }
-    .pad-left { margin-left: 10px; }
-    .text { font-size: 80%; }
-    .well div { color: #bbb;}
+
+    :host {
+	    display: block;
+    }
+
+    .g {
+      display: inline-block;
+    }
+
+
   `] // '!important' otherwise, this style will get overridden by another one.
 })
 export class ThumbnailComponent {
