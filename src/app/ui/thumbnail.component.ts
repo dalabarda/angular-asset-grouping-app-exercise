@@ -10,7 +10,7 @@ import { IAsset, IGroups } from './shared/index'
 
     <h2 style="font-weight:bold">Assets from group 1: </h2>
     <hr/>
-      <div>
+      <div class="gg">
         <div *ngFor="let asset of assets" class="g">
           <asset-thumbnail 
             *ngIf="asset.group_id==1"  
@@ -22,19 +22,20 @@ import { IAsset, IGroups } from './shared/index'
 
     <h2 style="font-weight:bold">Assets from group 2: </h2>
     <hr/>
-      <div>
-        <div *ngFor="let asset of assets" class="grid-item g">
+      <div class="gg">
+        <div *ngFor="let asset of assets" class="g">
           <asset-thumbnail 
             *ngIf="asset.group_id==2"  
             (click)="handleThumbnailClick(asset.name)" 
-            [asset]="asset"></asset-thumbnail>
+            [asset]="asset">
+          </asset-thumbnail>
         </div>
       </div>
 
     <h2 style="font-weight:bold">Assets from group 3: </h2>
     <hr/>
-      <div class="row">
-        <div *ngFor="let asset of assets" class="grid-item g">
+      <div class="gg">
+        <div *ngFor="let asset of assets" class="g">
           <asset-thumbnail 
             *ngIf="asset.group_id==3" 
             (click)="handleThumbnailClick(asset.name)" 
@@ -45,14 +46,13 @@ import { IAsset, IGroups } from './shared/index'
   `,
   styles: [`
 
-    :host {
-	    display: block;
+    .gg {
+	    display: -webkit-inline-box;
     }
 
     .g {
-      display: inline-block;
+      max-width: 300px;
     }
-
 
   `] // '!important' otherwise, this style will get overridden by another one.
 })

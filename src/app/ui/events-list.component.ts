@@ -17,8 +17,8 @@ import { IAsset } from './shared/index'
       </div>
     </div>
 
-  <thumbnail *ngIf="addMode" ></thumbnail>
-  <list *ngIf="!addMode" ></list>
+  <thumbnail *ngIf="!addMode" ></thumbnail>
+  <list *ngIf="addMode" ></list>
 
   `
  }) // 
