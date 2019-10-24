@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //
 import {
     EventsListComponent,
     AssetService,
+    GlobalService,
     AssetThumbnailComponent,
     AssetDetailsComponent,
     CreateAssetComponent,
@@ -48,6 +49,7 @@ import { AuthService } from './user/auth.service'
   	],
   providers: [
       AssetService,
+      GlobalService,
       AssetRouteActivator,
       EventListResolver,
       AuthService ,

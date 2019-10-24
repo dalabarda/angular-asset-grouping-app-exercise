@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Output } from '@angular/core'
 import { AssetService } from './shared/asset.service'
+import { GlobalService } from './shared/global.service'
 import { ActivatedRoute } from '@angular/router'
 import { IAsset } from './shared/index'
+
+import { Subscription } from 'rxjs';
+
 
 @Component({
 
@@ -9,56 +13,44 @@ import { IAsset } from './shared/index'
     <div class="well well-sm">
       <strong>Display: </strong>
       <div class="btn-group">
-          <a (click)="displayList()" id="list" class="btn btn-default btn-sm">
+          <a (click)="newView('list')" id="list" class="btn btn-default btn-sm">
               <span class="glyphicon glyphicon-th-list">
               </span>List</a> 
-          <a (click)="displayGrid()" id="grid" class="btn btn-default btn-sm"><span
+          <a (click)="newView('grid')" id="list" class="btn btn-default btn-sm"><span
               class="glyphicon glyphicon-th"></span>Grid</a>
       </div>
     </div>
 
-  <thumbnail *ngIf="!addMode" ></thumbnail>
-  <list *ngIf="addMode" ></list>
+  <thumbnail></thumbnail>
 
   `
  }) // 
 
 export class EventsListComponent implements OnInit {
-assets:IAsset[]
-addMode:boolean // important to pass data from a child to parent component.
+  assets:IAsset[]
 
-  constructor(private assetService: AssetService, 
+  toggle:string;
+
+
+  constructor(private assetService: AssetService,
+              private globalService: GlobalService, 
               private route:ActivatedRoute
-              ){
+              ){  }
 
 
-      // it is not a good idea to put 'this' and other things into the constructor that are
-      // potentially long-running and eventually this will be an AJAX call, and so this will
-      // take a little while to fetch those events. 
-
-      // the best thing to do is hooking into a lifecycle hook and one of those is the ngOnInit method,
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    // TODO:
     // this.events = this.route.snapshot.data['events'] // 
-    
     this.assets = this.assetService.getAssets()
+    this.globalService.currentMessage.subscribe(message => this.toggle = message)
   }
 
-
-  displayList() {
-    this.addMode = false
-  }
-
-  displayGrid() {
-    this.addMode = true
-  }
-
-
-
+  // TODO: implement once again TOASTR
   // handleThumbnailClick(assetName) {
   //   toastr.success(assetName)
   // }
 
-  // I don't know why I have problens loading this toastr. 
+  newView(str: string) {
+    this.globalService.changeMessage(str)
+  }
 }

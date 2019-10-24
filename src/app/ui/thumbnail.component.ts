@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { AssetService } from './shared/asset.service'
 import { IAsset, IGroups } from './shared/index'
 
@@ -10,9 +10,10 @@ import { IAsset, IGroups } from './shared/index'
 
     <h2 style="font-weight:bold">Assets from group 1: </h2>
     <hr/>
-      <div class="gg">
-        <div *ngFor="let asset of assets" class="g">
+      <div>
+        <div *ngFor="let asset of assets">
           <asset-thumbnail 
+            
             *ngIf="asset.group_id==1"  
             (click)="handleThumbnailClick(asset.name)" 
             [asset]="asset">
@@ -46,6 +47,21 @@ import { IAsset, IGroups } from './shared/index'
   `,
   styles: [`
 
+    .list-item {
+      padding: 19px;
+      background-color: #f5f5f5;
+      border: 1px solid #e3e3e3;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    }
+
+    .list-item:hover {
+      background-color: #E6E6E6;
+      cursor: pointer;
+    }
+
+
+
     .gg {
 	    display: -webkit-inline-box;
     }
@@ -54,26 +70,30 @@ import { IAsset, IGroups } from './shared/index'
       max-width: 300px;
     }
 
+    .grid {
+      width: 800px;
+    }
+
+    .list {
+      width: 300px;
+    }
+
   `] // '!important' otherwise, this style will get overridden by another one.
 })
 export class ThumbnailComponent {
-assets : IAsset[]   // this is just creating a property called event and telling TypeScript that it is of type any.
-groups : IGroups[]                            // we don't care for now, what data type is. 
+  assets : IAsset[]   // this is just creating a property called event and telling TypeScript that it is of type any.
+  groups : IGroups[]
 
-                            // the Imput() decorator tells Angular that this event will be passed in from another component
+  @Input('view') 
+  viewClass: boolean;
 
+  get changeItemClass(): string {
+      return this.viewClass ? 'list' : 'grid';
+  }
 
   constructor(private assetService: AssetService, 
              
-              ){
-
-
-      // it is not a good idea to put 'this' and other things into the constructor that are
-      // potentially long-running and eventually this will be an AJAX call, and so this will
-      // take a little while to fetch those events. 
-
-      // the best thing to do is hooking into a lifecycle hook and one of those is the ngOnInit method,
-  }
+              ){  }
 
   ngOnInit() {
     // this.events = this.route.snapshot.data['events'] // 

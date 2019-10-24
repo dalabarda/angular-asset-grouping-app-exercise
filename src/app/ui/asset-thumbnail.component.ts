@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core'
 import { IAsset, TruncatePipe } from './shared/index'
+import { GlobalService } from './shared/global.service'
+
 
 @Component({
   selector: 'asset-thumbnail',
   template: `
-    <div [routerLink]="['/events', asset.id]" class="list-item">
+    <div [routerLink]="['/events', asset.id]" [ngClass]="itemClass">
       <h2>{{asset?.name | uppercase }}</h2>
-      <div>Data type: {{ asset?.type }}</div>
+      <div>Data type: {{ asset?.type }} {{itemClass}}</div>
 
       <div [ngStyle]="getStartTypeStyle()" [ngSwitch]="asset?.type">
         Type: {{asset?.type}}
@@ -29,25 +31,25 @@ import { IAsset, TruncatePipe } from './shared/index'
 
 
 
-      <div class="text" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
+      <div style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
 
     </div>
   `,
   styles: [`
-    .list-item {
-      padding: 19px;
-      background-color: #f5f5f5;
-      border: 1px solid #e3e3e3;
-      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-      box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-    }
-
-    .list-item:hover {
-      background-color: #E6E6E6;
-      cursor: pointer;
-    }
 
     .text { font-size: 80%; }
+
+    .grid {
+      width: 800px;
+      background-color: magenta;
+    }
+
+    .list {
+      width: 300px;
+      background-color: cyan;
+    }
+
+  
   `] // '!important' otherwise, this style will get overridden by another one.
 })
 export class AssetThumbnailComponent {
@@ -66,5 +68,21 @@ export class AssetThumbnailComponent {
     this.asset && this.asset.description.substring(0, 20)
     return {}
   }
+
+  itemClass:string;
+
+  getView(): any {
+    this.globalService.view ? 'list' : 'grid';
+  }
+  
+
+  constructor(private globalService: GlobalService) {  }
+
+
+  ngOnInit() {
+    this.globalService.currentMessage.subscribe(message => this.itemClass = message)
+  }
+
+
 
 }
