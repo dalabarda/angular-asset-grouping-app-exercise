@@ -54,6 +54,29 @@ export class AssetService {
       // so, now our create-session component emits a saveNewSession event, and we are binding to that in our event-details
       // when that event is emitted we call saveNewSession on our event-details component, which adds the session to the event and then updates it.
   }
+
+
+  getGroups() {
+    return GROUPS
+  }
+
+  getGroup(id:number):IGroups {
+      return GROUPS.find(group => group.id === id)
+  }
+
+  // to make new groups
+  saveGroup(group: IGroups) {
+    group.id = GROUPS.length + 1
+    GROUPS.push(group)
+  }
+
+  // to update existing groups
+  updateGroup(group: any) {
+    // finding the existing groups in the array and replace it on the fly.
+    let index = GROUPS.findIndex(x => x.id = group.id) 
+    GROUPS[index] = group
+  }
+
   
 }
 

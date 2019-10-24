@@ -6,6 +6,6 @@ export * from './shared/index'
 export * from './asset-details/index'
 
 
-export * from './list.component'
+
 export * from './thumbnail.component'
-export * from './asset-thumbnail.component'
+export * from './asset-item.component'

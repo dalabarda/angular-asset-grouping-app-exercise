@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { AssetService } from './shared/asset.service'
+import { AssetService, GroupService } from './shared/asset.service'
 import { IAsset, IGroups } from './shared/index'
 
 
@@ -7,43 +7,22 @@ import { IAsset, IGroups } from './shared/index'
 @Component({
   selector: 'thumbnail',
   template: `
-
-    <h2 style="font-weight:bold">Assets from group 1: </h2>
+  
+  <div *ngFor="let test of testArr">
+    <h2 style="font-weight:bold">Assets from group {{ test }}: </h2>
     <hr/>
-      <div>
+
+     <div>
         <div *ngFor="let asset of assets">
-          <asset-thumbnail 
-            
+          <asset-item
             *ngIf="asset.group_id==1"  
             (click)="handleThumbnailClick(asset.name)" 
             [asset]="asset">
-          </asset-thumbnail>
+          </asset-item>
         </div>
-      </div>
-
-    <h2 style="font-weight:bold">Assets from group 2: </h2>
-    <hr/>
-      <div class="gg">
-        <div *ngFor="let asset of assets" class="g">
-          <asset-thumbnail 
-            *ngIf="asset.group_id==2"  
-            (click)="handleThumbnailClick(asset.name)" 
-            [asset]="asset">
-          </asset-thumbnail>
-        </div>
-      </div>
-
-    <h2 style="font-weight:bold">Assets from group 3: </h2>
-    <hr/>
-      <div class="gg">
-        <div *ngFor="let asset of assets" class="g">
-          <asset-thumbnail 
-            *ngIf="asset.group_id==3" 
-            (click)="handleThumbnailClick(asset.name)" 
-            [asset]="asset">
-          </asset-thumbnail>
-        </div>
-      </div>
+     </div>
+  </div>
+  
   `,
   styles: [`
 
@@ -83,22 +62,25 @@ import { IAsset, IGroups } from './shared/index'
 export class ThumbnailComponent {
   assets : IAsset[]   // this is just creating a property called event and telling TypeScript that it is of type any.
   groups : IGroups[]
+  testArr: any[];
+
 
   @Input('view') 
   viewClass: boolean;
 
-  get changeItemClass(): string {
-      return this.viewClass ? 'list' : 'grid';
-  }
 
-  constructor(private assetService: AssetService, 
-             
-              ){  }
+
+  constructor(private assetService: AssetService,
+              ){  this.testArr = []}
 
   ngOnInit() {
-    // this.events = this.route.snapshot.data['events'] // 
+    this.assets = this.assetService.getAssets();
+    this.groups = this.assetService.getGroups();
     
-    this.assets = this.assetService.getAssets()
+    // TODO: read more about route snapshot
+    // this.events = this.route.snapshot.data['events'] // 
+
+    this.groups.forEach(i => this.testArr.push(i.id) )
   }
 
 
