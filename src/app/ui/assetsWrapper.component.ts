@@ -26,7 +26,7 @@ import { Subscription } from 'rxjs';
   `
  }) // 
 
-export class EventsListComponent implements OnInit {
+export class AssetsWrapperComponent implements OnInit {
   assets:IAsset[]
 
   toggle:string;

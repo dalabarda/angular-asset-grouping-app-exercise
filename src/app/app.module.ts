@@ -4,13 +4,13 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // 
 
 import {
-    EventsListComponent,
+    AssetsWrapperComponent,
     AssetService,
     GlobalService,
     AssetItemComponent,
     AssetDetailsComponent,
     CreateAssetComponent,
-    AssetListComponent,
+    AssetListsComponent,
     AssetRouteActivator,
     EventListResolver,
     MoveGroupComponent,
@@ -34,11 +34,11 @@ import { AuthService } from './user/auth.service'
     ],
   declarations: [ 
   		AppComponent, 
-  		EventsListComponent,
+  		AssetsWrapperComponent,
       AssetItemComponent,
       AssetDetailsComponent,
       NavBarComponent,
-      AssetListComponent,
+      AssetListsComponent,
       CreateAssetComponent, 
       Error404Component,
       MoveGroupComponent,

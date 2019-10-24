@@ -2,6 +2,9 @@ import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { AssetService, IAsset } from './shared/index'
 
+
+// REVISE THIS CODE: IT HAS 4 YEARS OLD
+
 @Component({
 	templateUrl: './create-asset.component.html',
 	styles: [`

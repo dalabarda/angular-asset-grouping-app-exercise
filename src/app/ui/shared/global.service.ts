@@ -6,8 +6,8 @@ import { BehaviorSubject, Observable } from 'rxjs'
 export class GlobalService {
   public view= new BehaviorSubject<any | null>(null);
   
-  // default class
-  private messageSource = new BehaviorSubject('default message');
+  // default display is list
+  private messageSource = new BehaviorSubject('list');
   currentMessage = this.messageSource.asObservable();
 
 

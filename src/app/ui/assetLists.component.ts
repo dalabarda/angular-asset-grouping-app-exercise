@@ -15,7 +15,7 @@ import { IAsset, IGroups } from './shared/index'
       <div>
           <div *ngFor="let asset of assets">
             <asset-item
-              *ngIf="asset.group_id==1"  
+              *ngIf="asset.group_id== test"  
               (click)="handleThumbnailClick(asset.name)" 
               [asset]="asset">
             </asset-item>
@@ -27,11 +27,8 @@ import { IAsset, IGroups } from './shared/index'
   styles: [`
 
     .list-item {
-      padding: 19px;
       background-color: #f5f5f5;
       border: 1px solid #e3e3e3;
-      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-      box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
     }
 
     .list-item:hover {
@@ -39,27 +36,9 @@ import { IAsset, IGroups } from './shared/index'
       cursor: pointer;
     }
 
-
-
-    .gg {
-	    display: -webkit-inline-box;
-    }
-
-    .g {
-      max-width: 300px;
-    }
-
-    .grid {
-      width: 800px;
-    }
-
-    .list {
-      width: 300px;
-    }
-
   `] // '!important' otherwise, this style will get overridden by another one.
 })
-export class AssetListComponent {
+export class AssetListsComponent {
   assets : IAsset[]   // this is just creating a property called event and telling TypeScript that it is of type any.
   groups : IGroups[]
   testArr: any[];
