@@ -21,7 +21,7 @@ import { Subscription } from 'rxjs';
       </div>
     </div>
 
-  <thumbnail></thumbnail>
+  <asset-list></asset-list>
 
   `
  }) // 

@@ -7,5 +7,5 @@ export * from './asset-details/index'
 
 
 
-export * from './thumbnail.component'
-export * from './asset-item.component'
+export * from './assetList.component'
+export * from './assetItem.component'

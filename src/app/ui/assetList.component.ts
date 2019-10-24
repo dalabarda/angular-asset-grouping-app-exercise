@@ -5,23 +5,23 @@ import { IAsset, IGroups } from './shared/index'
 
 
 @Component({
-  selector: 'thumbnail',
+  selector: 'asset-list',
   template: `
   
-  <div *ngFor="let test of testArr">
-    <h2 style="font-weight:bold">Assets from group {{ test }}: </h2>
-    <hr/>
+    <div *ngFor="let test of testArr">
+      <h2 style="font-weight:bold">Assets from group {{ test }}: </h2>
+      <hr/>
 
-     <div>
-        <div *ngFor="let asset of assets">
-          <asset-item
-            *ngIf="asset.group_id==1"  
-            (click)="handleThumbnailClick(asset.name)" 
-            [asset]="asset">
-          </asset-item>
-        </div>
-     </div>
-  </div>
+      <div>
+          <div *ngFor="let asset of assets">
+            <asset-item
+              *ngIf="asset.group_id==1"  
+              (click)="handleThumbnailClick(asset.name)" 
+              [asset]="asset">
+            </asset-item>
+          </div>
+      </div>
+    </div>
   
   `,
   styles: [`
@@ -59,7 +59,7 @@ import { IAsset, IGroups } from './shared/index'
 
   `] // '!important' otherwise, this style will get overridden by another one.
 })
-export class ThumbnailComponent {
+export class AssetListComponent {
   assets : IAsset[]   // this is just creating a property called event and telling TypeScript that it is of type any.
   groups : IGroups[]
   testArr: any[];
