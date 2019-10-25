@@ -7,7 +7,7 @@ export class GlobalService {
   public view= new BehaviorSubject<any | null>(null);
   
   // default display is list
-  private messageSource = new BehaviorSubject('grid');
+  private messageSource = new BehaviorSubject('list');
   currentMessage = this.messageSource.asObservable();
 
 

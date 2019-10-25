@@ -6,13 +6,16 @@ import { GlobalService } from './shared/global.service'
 @Component({
   selector: 'asset-item',
   template: `
-    <div [routerLink]="['/events', asset.id]" >
+    <div>
       <h2>{{asset?.name | uppercase }}</h2>
-      <div>
+      <div [ngClass]="itemClass">
         <div><span> Data type: {{ asset?.type }} </span></div>
 
-        <div [ngStyle]="getStartTypeStyle()" [ngSwitch]="asset?.type">
-          Type: {{asset?.type}}
+        <div 
+          [ngStyle]="getStartTypeStyle()" 
+          [ngSwitch]="asset?.suffix"
+          >
+            Type: {{asset?.type}}
           <span *ngSwitchCase="'gif'">(animated image)</span>
           <span *ngSwitchCase="'jpg'">(static image)</span>
           <span *ngSwitchCase="'jpeg'">(static image)</span>
@@ -23,7 +26,7 @@ import { GlobalService } from './shared/global.service'
         <div [ngStyle]="getStartTypeStyle()" >Group: {{asset?.group_id}}</div>
 
 
-        <div *ngIf="asset?.GPSposition">
+        <div *ngIf="asset?.GPSposition" class="location">
           <span> Latitude: {{asset?.GPSposition?.y}} </span>
           <span> Longitude: {{asset?.GPSposition?.x}} </span>        
         </div>
@@ -36,14 +39,27 @@ import { GlobalService } from './shared/global.service'
     </div>
   `,
   styles: [`
-
+    .info {
+      font-size: 10px;
+    }
   
+    .list > div {
+      margin-right: 75px;
+      display: inline-flex;
+    }
+
+    .location {
+      text-align: right;
+    }
+
+
   `] // '!important' otherwise, this style will get overridden by another one.
 })
 export class AssetItemComponent {
   @Input() asset : IAsset   
   
-
+  // switsch the class based on grid or list
+  private itemClass:string;
 
   getStartTypeStyle():any {
     if (this.asset && this.asset.group_id === 1)
@@ -61,7 +77,9 @@ export class AssetItemComponent {
   
  
 
-  constructor() {  }
+  constructor(private globalService: GlobalService) { 
+    this.globalService.currentMessage.subscribe(message => this.itemClass = message)
+   }
 
 
 

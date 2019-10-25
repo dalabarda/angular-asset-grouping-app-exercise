@@ -9,17 +9,20 @@ import { IAsset, IGroups } from './shared/index'
   selector: 'asset-list',
   template: `
   
-    <div *ngFor="let test of testArr">
-      <h2 style="font-weight:bold">Assets from group {{ test }}: </h2>
+    <div *ngFor="let group of groupArr">
+      <h2 style="font-weight:bold">Assets from group {{ group }}: </h2>
       <hr/>
         <div class="cont">
-          <div *ngFor="let asset of assetsInGroups[test-1]" 
-            [ngClass]="itemClass" >
-            <asset-item
-              *ngIf="asset.group_id== test"  
-              
-              [asset]="asset">
-            </asset-item>
+
+          <div 
+            *ngFor="let asset of assetsInGroups[group-1]" 
+            [routerLink]="['/events', asset.id]"
+            [ngClass]="itemClass">
+
+              <asset-item 
+                [asset]="asset">
+              </asset-item>
+          
           </div>
         </div>
     </div>
@@ -28,25 +31,53 @@ import { IAsset, IGroups } from './shared/index'
   styles: [`
     .cont {
       background-color: yellow;
-          display: table; /* Make the container element behave like a table */
-    width: 100%; /* Set full-width to expand the whole page */
+      width: 100%;
+      height: 100%;
+    }
+
+    asset-item {
+      height: 200px;
     }
 
     .grid {
-      display: table-cell; /* Make elements inside the container behave like table cells */
+      display: inline-flex; /* Make elements inside the container behave like table cells */
       background-color: magenta;
-      width: 300px;
-      margin: 0px;
+      width: calc(100% / 3);
+      height: 100%;
+      
+      border: 3px dashed;
+      border-left: none;
+      border-bottom: none;
+      
     }
+
+    .grid:hover {
+      background-color: red;
+      cursor: pointer;
+    }
+
+    .grid:nth-child(3n+1) {
+      border-left: dashed; 
+    }
+
+    .grid:nth-last-child(1),
+    .grid:nth-last-child(2),
+    .grid:nth-last-child(3) {
+      border-bottom: 3px dashed;
+      margin-top: -3px;
+    }
+
 
     .list {
       background-color: cyan;
       min-height: 75px;
-      // height: 100%;
-      // width: 100%;
+      
     }
 
-
+    .list:hover {
+      background-color: red;
+      cursor: pointer;
+    }
 
   `] // '!important' otherwise, this style will get overridden by another one.
 })
@@ -55,7 +86,7 @@ export class AssetListsComponent {
   private groups : IGroups[]
   private assetsInGroups: Array<T>;
 
-  testArr: any[];
+  groupArr: any[];
   
   // switsch the class based on grid or list
   private itemClass:string;
@@ -68,7 +99,7 @@ export class AssetListsComponent {
   constructor(private assetService: AssetService,
               private globalService: GlobalService
               ){  
-    this.testArr = [];
+    this.groupArr = [];
     this.assetsInGroups = [];
   }
 
@@ -91,7 +122,7 @@ export class AssetListsComponent {
     // TODO: read more about route snapshot
     // this.events = this.route.snapshot.data['events'] // 
 
-    this.groups.forEach(i => this.testArr.push(i.id) )
+    this.groups.forEach(group => this.groupArr.push(group.id) )
 
       
     this.globalService.currentMessage.subscribe(message => this.itemClass = message)

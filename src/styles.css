@@ -7,19 +7,21 @@ h1 {
 h2 {
   color: #694;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 180%;
+  font-size: 150%;
 }
 
+.container {
+  padding-top: 10px;
+}
 
+/* 
 
 .hoverwell:hover {
   background-color: #485563;
   cursor: pointer;
 }
 
-.container {
-  padding-top: 10px;
-}
+
 
 .pointable {
   cursor: pointer;
@@ -27,11 +29,11 @@ h2 {
 
 button {
   color: #555;
-}
+} */
 
-[hidden] {
+/* [hidden] {
   display: none !important;
-}
+} */
 
 .toast-success {
   background-color: #51a351;
