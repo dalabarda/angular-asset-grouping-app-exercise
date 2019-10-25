@@ -3,7 +3,7 @@ export interface IAsset {
   name: string
   date: Date
   size: string
-  type: string
+  suffix: string
   GPSposition?: {
     x: number
     y: number

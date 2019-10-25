@@ -94,7 +94,7 @@ const ASSETS:IAsset[] = [
       name: 'Angular Connect',
       date: new Date('9/26/2036'),
       size: '82,4 KB',
-      type: 'png',
+      suffix: 'png',
       destination_url: '/app/assets/angularconnect-shield.png',
       modified: '2/15/2016',
       group_id: 1,
@@ -105,7 +105,7 @@ const ASSETS:IAsset[] = [
       name: 'Angular Dilema',
       date: new Date('9/26/2036'),
       size: '300 KB',
-      type: 'jpeg',
+      suffix: 'jpeg',
       destination_url: 'https://cdn-images-1.medium.com/max/400/1*z10-LVnW5p3RIcyduEleCA.jpeg',
       modified: '4/15/2016',
       group_id: 1,
@@ -119,19 +119,19 @@ const ASSETS:IAsset[] = [
       name: 'Cute Cat 1',
       date: new Date('3/11/2017'),
       size: '400 KB',
-      type: 'gif',
+      suffix: 'gif',
       destination_url: 'https://media.giphy.com/media/ob9Cfk1iUrBUQ/giphy.gif',
       modified: '3/11/2017',
       group_id: 2,
       description: ""
     },
-      {
+    {
       id: 4,
       name: 'Angular 2 Cheat sheet',
       date: new Date('1/25/2017'),
       size: '500 KB',
-      type: 'pdf',
-      destination_url: 'http://files.meetup.com/8602262/Angular2_Cheat_Sheet.pdf',
+      suffix: 'png',
+      destination_url: 'https://miro.medium.com/max/1753/1*k6_-XfgogqSqjgMJP6_8Iw.png',
       modified: '3/11/2017',
       group_id: 2,
       description: ""
@@ -141,7 +141,7 @@ const ASSETS:IAsset[] = [
       name: 'Me doing this Angular exercise',
       date: new Date('3/11/2017'),
       size: '250 KB',
-      type: 'gif',
+      suffix: 'gif',
       destination_url: 'https://media.giphy.com/media/o0vwzuFwCGAFO/giphy.gif',
       modified: '3/11/2017',
       group_id: 2,
@@ -152,7 +152,7 @@ const ASSETS:IAsset[] = [
       name: 'Cutest Cat',
       date: new Date('3/11/2017'),
       size: '200 KB',
-      type: 'jpg',
+      suffix: 'jpg',
       destination_url: 'https://s-media-cache-ak0.pinimg.com/736x/b9/e4/db/b9e4dbfe685af8a13adc805184ffb79d.jpg',
       modified: '3/13/2017',
       group_id: 3,
@@ -163,7 +163,7 @@ const ASSETS:IAsset[] = [
       name: 'Rio de Janeiro',
       date: new Date('3/11/2005'),
       size: '500 KB',
-      type: 'jpg',
+      suffix: 'jpg',
       destination_url: 'https://gezievreni.com/wp-content/uploads/2016/06/Rio-De-Janeiro-Gezi-Rehberi-800x500.jpg',
       modified: '3/11/2017',
       GPSposition: {
@@ -178,7 +178,7 @@ const ASSETS:IAsset[] = [
       name: 'Berlin',
       date: new Date('3/11/2005'),
       size: '455 KB',
-      type: 'jpg',
+      suffix: 'jpg',
       destination_url: 'http://www.bahnbilder.de/bilder/schoener-blick-auf-berlin-kreuzbergdie-u1-142244.jpg',
       modified: '3/12/2017',
       GPSposition: {
@@ -192,12 +192,12 @@ const ASSETS:IAsset[] = [
       links both districts across the river Spree as the new borough's landmark (as featured in 
       the coat of arms).`
     },
-        {
+    {
       id: 9,
       name: 'New York City',
       date: new Date('3/11/2005'),
       size: '200 KB',
-      type: 'png',
+      suffix: 'png',
       destination_url: 'http://www.clipartbest.com/cliparts/dc7/o85/dc7o85nMi.png',
       modified: '3/11/2017',
       GPSposition: {
@@ -215,17 +215,16 @@ const ASSETS:IAsset[] = [
       minute. Home to the headquarters of the United Nations, New York is an important center for 
       international diplomacy and has been described as the cultural and financial capital of the 
       world.`
-
     },
     {
       id: 10,
       name: 'Boring Bird',
       date: new Date('3/7/2017'),
       size: '1 MB',
-      type: 'mp4',
+      suffix: 'mp4',
       destination_url: '/assets/little_bird.mp4',
       modified: '3/11/2017',
       group_id: 3,
       description: ` This is the type of videos my mom sent to me on Whatsapp. Boring, right? =/ `
-  }
+    }
 ]
