@@ -10,17 +10,26 @@ import { GlobalService } from './shared/global.service'
     .info {
       font-size: 10px;
     }
-  
+    :host {
+      margin: 4px;
+    }
+
     .list > span {
       margin-right: 75px;
       display: inline-flex;
       width: calc(100% / 6);
     }
-
-    .grid > span {
-      margin-right: 75px;
-      display: inline-flex;
+    
+    .grid {
       
+      display: block;
+      width: calc(100% / 2);
+    }
+
+    .grid > .left {
+      margin-right: 0px;
+      display: block;
+      width: calc(100% / 2);
     }
 
     .location {
