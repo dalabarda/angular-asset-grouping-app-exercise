@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { AssetService, GroupService } from './shared/asset.service'
+import { AssetService } from './shared/asset.service'
 import { GlobalService } from './shared/global.service'
 import { IAsset, IGroups } from './shared/index'
 

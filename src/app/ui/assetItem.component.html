@@ -1,6 +1,7 @@
 <div>
   <h2>{{asset?.name | uppercase }}</h2>
-
+  
+  <!-- ---------- -->
   <!-- List class -->
   <div [ngClass]="itemClass"
       *ngIf="itemClass == 'list'">
@@ -29,11 +30,14 @@
     <div class= "info" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
   </div>
 
+  <!-- ---------- -->
   <!-- Grid class -->
   <div [ngClass]="itemClass"
       *ngIf="itemClass == 'grid'">
+    <!--  -->
     <span><span> Data type: {{ asset?.type }} </span></span>
-
+    
+    <!--  -->
     <span 
       [ngStyle]="getStartTypeStyle()" 
       [ngSwitch]="asset?.suffix"
@@ -46,14 +50,16 @@
       <span *ngSwitchDefault>(Normal file)</span>
     </span>
 
+    <!--  -->
     <span [ngStyle]="getStartTypeStyle()" >Group: {{asset?.group_id}}</span>
 
-
+    <!--  -->
     <span *ngIf="asset?.GPSposition" class="location">
       <span> Latitude: {{asset?.GPSposition?.y}} </span>
       <span> Longitude: {{asset?.GPSposition?.x}} </span>        
     </span>
 
+    <!--  -->
     <div class= "info" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
   </div>
 

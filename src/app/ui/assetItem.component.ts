@@ -19,8 +19,8 @@ import { GlobalService } from './shared/global.service'
 
     .grid > span {
       margin-right: 75px;
-      display: block;
-      width: calc(100% / 6);
+      display: inline-flex;
+      
     }
 
     .location {
