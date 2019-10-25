@@ -12,21 +12,28 @@ import { IAsset, IGroups } from './shared/index'
     <div *ngFor="let test of testArr">
       <h2 style="font-weight:bold">Assets from group {{ test }}: </h2>
       <hr/>
-
-          <div *ngFor="let asset of assetsInGroups[test-1]" [ngClass]="itemClass">
+        <div class="cont">
+          <div *ngFor="let asset of assetsInGroups[test-1]" 
+            [ngClass]="itemClass" >
             <asset-item
               *ngIf="asset.group_id== test"  
-              (click)="handleThumbnailClick(asset.name)" 
+              
               [asset]="asset">
             </asset-item>
           </div>
-      
+        </div>
     </div>
   
   `,
   styles: [`
+    .cont {
+      background-color: yellow;
+          display: table; /* Make the container element behave like a table */
+    width: 100%; /* Set full-width to expand the whole page */
+    }
+
     .grid {
-      display: inline-block;
+      display: table-cell; /* Make elements inside the container behave like table cells */
       background-color: magenta;
       width: 300px;
       margin: 0px;
@@ -56,7 +63,7 @@ export class AssetListsComponent {
   @Input('view') 
   viewClass: boolean;
 
-
+// (click)="handleThumbnailClick(asset.name)"
 
   constructor(private assetService: AssetService,
               private globalService: GlobalService
