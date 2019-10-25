@@ -5,53 +5,27 @@ import { GlobalService } from './shared/global.service'
 
 @Component({
   selector: 'asset-item',
-  template: `
-    <div>
-      <h2>{{asset?.name | uppercase }}</h2>
-      <div [ngClass]="itemClass">
-        <div><span> Data type: {{ asset?.type }} </span></div>
-
-        <div 
-          [ngStyle]="getStartTypeStyle()" 
-          [ngSwitch]="asset?.suffix"
-          >
-            Type: {{asset?.type}}
-          <span *ngSwitchCase="'gif'">(animated image)</span>
-          <span *ngSwitchCase="'jpg'">(static image)</span>
-          <span *ngSwitchCase="'jpeg'">(static image)</span>
-          <span *ngSwitchCase="'mp4'">(video)</span>
-          <span *ngSwitchDefault>(Normal file)</span>
-        </div>
-
-        <div [ngStyle]="getStartTypeStyle()" >Group: {{asset?.group_id}}</div>
-
-
-        <div *ngIf="asset?.GPSposition" class="location">
-          <span> Latitude: {{asset?.GPSposition?.y}} </span>
-          <span> Longitude: {{asset?.GPSposition?.x}} </span>        
-        </div>
-      </div>
-
-
-
-      <div class= "info" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
-
-    </div>
-  `,
+  templateUrl: 'assetItem.component.html',
   styles: [`
     .info {
       font-size: 10px;
     }
   
-    .list > div {
+    .list > span {
       margin-right: 75px;
       display: inline-flex;
+      width: calc(100% / 6);
+    }
+
+    .grid > span {
+      margin-right: 75px;
+      display: block;
+      width: calc(100% / 6);
     }
 
     .location {
       text-align: right;
     }
-
 
   `] // '!important' otherwise, this style will get overridden by another one.
 })
@@ -61,7 +35,7 @@ export class AssetItemComponent {
   // switsch the class based on grid or list
   private itemClass:string;
 
-  getStartTypeStyle():any {
+  getStartTypeStyle():Object {
     if (this.asset && this.asset.group_id === 1)
       return {color: '#007777', 'font-weight': 'bold'}
     if (this.asset && this.asset.group_id === 2)
