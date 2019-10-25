@@ -6,7 +6,7 @@ import { GlobalService } from './shared/global.service'
 @Component({
   selector: 'asset-item',
   template: `
-    <div [routerLink]="['/events', asset.id]" [ngClass]="itemClass">
+    <div [routerLink]="['/events', asset.id]" >
       <h2>{{asset?.name | uppercase }}</h2>
       <div>
         <div><span> Data type: {{ asset?.type }} </span></div>
@@ -31,39 +31,18 @@ import { GlobalService } from './shared/global.service'
 
 
 
-      <div class= "desc" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
+      <div class= "info" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
 
     </div>
   `,
   styles: [`
-    span { margin-right: 40px; }
-    .desc { font-size: 80%; }
 
-    .grid {
-      width: 300px;
-      background-color: magenta;
-    }
-    .grid > h2 { font-size: 12px;}
-    .grid > div:nth-child(2), 
-    .grid > div:nth-child(3),
-    .grid > div:nth-child(4) { font-size: 6px; }
-    
-    
-    .list {
-      height: 75px;
-      width: 800px;
-      background-color: cyan;
-    }
-    .list > div { display: flex; }
-    .list > h2 { font-size: 12px;}
-    .list > div:nth-child(2), 
-    .list > div:nth-child(3),
-    .list > div:nth-child(4) { font-size: 12; }
   
   `] // '!important' otherwise, this style will get overridden by another one.
 })
 export class AssetItemComponent {
   @Input() asset : IAsset   
+  
 
 
   getStartTypeStyle():any {
@@ -79,19 +58,13 @@ export class AssetItemComponent {
     return {}
   }
 
-  itemClass:string;
-
-  getView(): any {
-    this.globalService.view ? 'list' : 'grid';
-  }
   
+ 
 
-  constructor(private globalService: GlobalService) {  }
+  constructor() {  }
 
 
-  ngOnInit() {
-    this.globalService.currentMessage.subscribe(message => this.itemClass = message)
-  }
+
 
 
 

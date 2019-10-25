@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { AssetService, GroupService } from './shared/asset.service'
+import { GlobalService } from './shared/global.service'
 import { IAsset, IGroups } from './shared/index'
 
 
@@ -12,37 +13,45 @@ import { IAsset, IGroups } from './shared/index'
       <h2 style="font-weight:bold">Assets from group {{ test }}: </h2>
       <hr/>
 
-      <div>
-          <div *ngFor="let asset of assets">
+          <div *ngFor="let asset of assetsInGroups[test-1]" [ngClass]="itemClass">
             <asset-item
               *ngIf="asset.group_id== test"  
               (click)="handleThumbnailClick(asset.name)" 
               [asset]="asset">
             </asset-item>
           </div>
-      </div>
+      
     </div>
   
   `,
   styles: [`
-
-    .list-item {
-      background-color: #f5f5f5;
-      border: 1px solid #e3e3e3;
+    .grid {
+      display: inline-block;
+      background-color: magenta;
+      width: 300px;
+      margin: 0px;
     }
 
-    .list-item:hover {
-      background-color: #E6E6E6;
-      cursor: pointer;
+    .list {
+      background-color: cyan;
+      min-height: 75px;
+      // height: 100%;
+      // width: 100%;
     }
+
+
 
   `] // '!important' otherwise, this style will get overridden by another one.
 })
 export class AssetListsComponent {
-  assets : IAsset[]   // this is just creating a property called event and telling TypeScript that it is of type any.
-  groups : IGroups[]
-  testArr: any[];
+  private assets : IAsset[]
+  private groups : IGroups[]
+  private assetsInGroups: Array<T>;
 
+  testArr: any[];
+  
+  // switsch the class based on grid or list
+  private itemClass:string;
 
   @Input('view') 
   viewClass: boolean;
@@ -50,18 +59,37 @@ export class AssetListsComponent {
 
 
   constructor(private assetService: AssetService,
-              ){  this.testArr = []}
+              private globalService: GlobalService
+              ){  
+    this.testArr = [];
+    this.assetsInGroups = [];
+  }
 
   ngOnInit() {
     this.assets = this.assetService.getAssets();
     this.groups = this.assetService.getGroups();
     
+
+    // array of arrays ordered by group.group_id
+    this.groups.forEach(group => 
+      this.assetsInGroups.push(
+        this.assets.filter( asset => {
+          var local = [];
+          if(asset.group_id == group.id)
+            return local.push(asset);
+        })))
+
+    console.log(this.assetsInGroups)
+
     // TODO: read more about route snapshot
     // this.events = this.route.snapshot.data['events'] // 
 
     this.groups.forEach(i => this.testArr.push(i.id) )
-  }
 
+      
+    this.globalService.currentMessage.subscribe(message => this.itemClass = message)
+  
+  }
 
 
 }
