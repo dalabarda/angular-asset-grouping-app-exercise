@@ -133,3 +133,9 @@ export class AssetListsComponent {
 }
 
 
+// https://scotch.io/tutorials/responsive-equal-height-with-angular-directive
+        // <div *ngIf="itemClass == 'grid' 
+        //           && (index) % 3 == 0 
+        //           && (index) != 0"
+        //           >hjghghhj
+        //       </div>

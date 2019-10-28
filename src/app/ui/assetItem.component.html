@@ -27,7 +27,6 @@
       <span> Longitude: {{asset?.GPSposition?.x}} </span>        
     </span>
 
-    <div class= "info" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
   </div>
 
   <!-- ---------- -->
@@ -53,7 +52,7 @@
       </span>
     </div>
 
-    <div class="left">
+    <div class="right">
       <!--  -->
       <span [ngStyle]="getStartTypeStyle()" >Group: {{asset?.group_id}}</span>
 
@@ -64,8 +63,9 @@
       </span>
     </div>
     
-    <!--  -->
-    <div class= "info" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
+    
   </div>
 
+<!--  -->
+<div class= "info" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
 </div>

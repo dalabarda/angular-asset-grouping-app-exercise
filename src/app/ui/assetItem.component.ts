@@ -7,33 +7,26 @@ import { GlobalService } from './shared/global.service'
   selector: 'asset-item',
   templateUrl: 'assetItem.component.html',
   styles: [`
-    .info {
-      font-size: 10px;
-    }
+
     :host {
       margin: 4px;
     }
 
-    .list > span {
-      margin-right: 75px;
-      display: inline-flex;
-      width: calc(100% / 6);
-    }
-    
-    .grid {
-      
-      display: block;
-      width: calc(100% / 2);
+    .info {
+      font-size: 10px;
     }
 
-    .grid > .left {
+    .grid .left {
+      display: inline-block;
+      width: calc(100% / 2);
+      background-color: orange;
+    }
+
+    .grid .right {
+      display: inline-block;
       margin-right: 0px;
-      display: block;
       width: calc(100% / 2);
-    }
-
-    .location {
-      text-align: right;
+      background-color: red;
     }
 
   `] // '!important' otherwise, this style will get overridden by another one.
