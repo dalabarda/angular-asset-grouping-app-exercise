@@ -3,10 +3,9 @@
   
   <!-- ---------- -->
   <!-- List class -->
-  <div [ngClass]="itemClass"
-      *ngIf="itemClass == 'list'">
-    <span><span> Data type: {{ asset?.suffix }} </span></span>
-
+  <ng-container *ngIf="itemClass == 'list'">
+   
+    <span> Data type: {{ asset?.suffix }} </span>
     <span 
       [ngStyle]="getStartTypeStyle()" 
       [ngSwitch]="asset?.suffix"
@@ -18,25 +17,21 @@
       <span *ngSwitchCase="'mp4'">(video)</span>
       <span *ngSwitchDefault>(Normal file)</span>
     </span>
-
     <span [ngStyle]="getStartTypeStyle()" >Group: {{asset?.group_id}}</span>
-
-
     <span *ngIf="asset?.GPSposition" class="location">
       <span> Latitude: {{asset?.GPSposition?.y}} </span>
       <span> Longitude: {{asset?.GPSposition?.x}} </span>        
     </span>
 
-  </div>
+  </ng-container>
 
   <!-- ---------- -->
   <!-- Grid class -->
-  <div [ngClass]="itemClass"
-      *ngIf="itemClass == 'grid'">
+  <ng-container *ngIf="itemClass == 'grid'">
     
     <div class="left">
       <!--  -->
-      <span><span> Data type: {{ asset?.suffix }} </span></span>
+      <span> Data type: {{ asset?.suffix }} </span>
       
       <!--  -->
       <span 
@@ -64,7 +59,7 @@
     </div>
     
     
-  </div>
+  </ng-container>
 
 <!--  -->
 <div class= "info" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
