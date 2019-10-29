@@ -10,20 +10,71 @@ import { Subscription } from 'rxjs';
 @Component({
 
   template: `
-    <div class="well well-sm">
+    <div class="menu-bar">
       <strong>Display: </strong>
-      <div class="btn-group">
-          <a (click)="newView('list')" id="list" class="btn btn-default btn-sm">
+      <div class="button-group">
+          <a (click)="newView('list')" id="list" class="button">
               <span class="glyphicon glyphicon-th-list">
-              </span>List</a> 
-          <a (click)="newView('grid')" id="list" class="btn btn-default btn-sm"><span
-              class="glyphicon glyphicon-th"></span>Grid</a>
+              </span> List</a> 
+          <a (click)="newView('grid')" id="list" class="button"><span
+              class="glyphicon glyphicon-th"></span> Grid</a>
       </div>
     </div>
 
   <asset-list></asset-list>
 
-  `
+  `,
+  styles: [`
+
+    :host {
+      display: block;
+    }
+
+    .menu-bar {
+      padding: 9px;
+      border-radius: 3px;
+      min-height: 20px;
+      padding: 19px;
+      margin-bottom: 20px;
+      background-color: #f5f5f5;
+      border: 1px solid #e3e3e3;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    }
+
+    .button-group {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      color: #333;
+      background-color: #fff;
+    }
+
+    .button {
+      color: #333;
+      padding: 6px 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      background-color: #fff;
+      border-color: #ccc;
+      white-space: nowrap;
+      cursor: pointer;
+      background-image: none;
+      border: 1px solid #ccc;
+    }
+
+    .button:hover {
+      color: cadetblue;
+      background-color: #e6e6e6;
+      border-color: #adadad;
+      padding: 6px 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      border-radius: 3px;
+    }
+
+  `]
  }) // 
 
 export class AssetsWrapperComponent implements OnInit {

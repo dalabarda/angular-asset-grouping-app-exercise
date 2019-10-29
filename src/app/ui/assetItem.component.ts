@@ -16,17 +16,24 @@ import { GlobalService } from './shared/global.service'
       font-size: 10px;
     }
 
-    .grid .left {
-      display: inline-block;
+    .half{
+      background-color: pink;
       width: calc(100% / 2);
-      background-color: orange;
+      
     }
 
-    .grid .right {
-      display: inline-block;
-      margin-right: 0px;
+    .left {
+      display: block;
+      width: calc(100% / 2);
+      background-color: orange;
+          margin: none;
+    }
+
+    .right {
+      display: block;
       width: calc(100% / 2);
       background-color: red;
+      margin: none;
     }
 
   `] // '!important' otherwise, this style will get overridden by another one.
@@ -42,6 +49,8 @@ export class AssetItemComponent {
       return {color: '#007777', 'font-weight': 'bold'}
     if (this.asset && this.asset.group_id === 2)
       return {color: '#770000', 'font-weight': 'bold'}
+    if (this.asset && this.asset.group_id === 3)
+      return {color: '#000099', 'font-weight': 'bold'}
     return {}
   }
 
@@ -50,7 +59,9 @@ export class AssetItemComponent {
     return {}
   }
 
-  
+  get assetSuffix(): string {
+    return this.onAssetDataType(this.asset.suffix);
+  }
  
 
   constructor(private globalService: GlobalService) { 
@@ -58,8 +69,31 @@ export class AssetItemComponent {
    }
 
 
+  onAssetDataType(value: string): string {
+    switch (value) {
+      case eAssetFormat.Gif:
+        return '(animated image)';
+      case eAssetFormat.Jpeg:
+      case eAssetFormat.Jpg:
+      case eAssetFormat.Png:
+      case eAssetFormat.Tif:
+        return '(static image)';
+      case eAssetFormat.Mp4:
+        return '(video)';
+      case eAssetFormat.Txt:
+        return '(plain text)';
+    }
+  }
 
+}
 
-
-
+export enum eAssetFormat {
+    
+    Gif        = 'gif',
+    Jpeg       = 'jpeg',
+    Jpg        = 'jpg',
+    Mp4        = 'mp4',
+    Png        = 'png',
+    Tif        = 'tif',
+    Txt        = 'txt',
 }

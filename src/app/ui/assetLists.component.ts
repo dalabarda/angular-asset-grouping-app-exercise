@@ -35,9 +35,9 @@ import { IAsset, IGroups } from './shared/index'
       height: 100%;
     }
 
-    asset-item {
+    .grid > asset-item {
       height: 200px;
-      width: -webkit-fill-available;
+      display: block;
     }
 
     .grid {
@@ -146,7 +146,7 @@ export class AssetListsComponent {
 
 
 // <div-line type="" >
-//    
+//  
 // 
 // 
 // 
