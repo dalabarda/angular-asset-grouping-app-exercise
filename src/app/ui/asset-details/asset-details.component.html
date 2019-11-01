@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">  
-    <div class="col-md-6">
+  <div class="row2">  
+    <div class="col-md-62">
       <h2>{{asset?.name | uppercase }} </h2>
       
 
@@ -22,7 +22,7 @@
 
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-62">
       <div><strong>Date:</strong> {{asset?.date | date }}</div>
       <div><strong>Last Modification Date:</strong> {{ asset.date | date }}</div>
       <div><strong>Type:</strong> {{asset?.type}}</div>
@@ -41,7 +41,7 @@
     
     <!-- it has no 'href' once the child execute into a component. but when an anchor tag has no href, it won't have the pointer cursor when you hover over it. therefore we have to add a style for that in our component -->
     <div >
-      <a (click)="addGroup()" class="btn btn-primary btn-block" >click here!</a>
+      <a (click)="addGroup()" class="btn2 btn-primary2 btn-block2" >click here!</a>
     </div>
   
               <!-- binding the session property of this session-list component to the sessions array on this event object, and that event object is in our event details component.-->

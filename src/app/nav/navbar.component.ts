@@ -6,9 +6,6 @@ import { AuthService } from './../user/auth.service' // this component is to sho
   templateUrl: './navbar.component.html',
   styles: [`
 
-
-
-
   .navbar-nav2 {
   float: left;
   margin: 0px;
