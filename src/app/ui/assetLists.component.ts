@@ -9,7 +9,7 @@ import { IAsset, IGroups } from './shared/index'
   selector: 'asset-list',
   template: `
   
-    <div *ngFor="let group of groupArr">
+    <div *ngFor="let group of groupArr" class="container">
       <h2 style="font-weight:bold">Assets from group {{ group }}: </h2>
       <hr/>
         <div class="cont">
@@ -37,13 +37,12 @@ import { IAsset, IGroups } from './shared/index'
 
     .grid > asset-item {
       height: 200px;
-      
     }
 
     .grid {
-      display: inline-flex; /* Make elements inside the container behave like table cells */
+      display: inline-flex; /* Make elmnts within container behave like table cells */
       background-color: magenta;
-      width: calc((100% / 3) - 4px);
+      width: calc((100% / 3) - 4px);  /* 4 is for the dotted line */
       height: 100%;
       
       border: 3px dashed;
@@ -78,6 +77,10 @@ import { IAsset, IGroups } from './shared/index'
     .list:hover {
       background-color: red;
       cursor: pointer;
+    }
+
+    .container {
+      margin-top: 20px;
     }
 
   `] // '!important' otherwise, this style will get overridden by another one.

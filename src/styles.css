@@ -1,41 +1,25 @@
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
 }
 
 h2 {
   color: #694;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 150%;
   margin: 0px;
 }
 
-.container {
-  padding-top: 10px;
-}
-
-/* 
-
-.hoverwell:hover {
-  background-color: #485563;
-  cursor: pointer;
-}
-
-
-
-.pointable {
-  cursor: pointer;
+body {
+    display: block;
+    margin: 10%;
+    margin-top: 1%;
 }
 
 button {
   color: #555;
-} */
+}
 
-/* [hidden] {
-  display: none !important;
-} */
-
+/* Toastr not used now */
 .toast-success {
   background-color: #51a351;
 }
