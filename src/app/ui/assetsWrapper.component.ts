@@ -13,11 +13,11 @@ import { Subscription } from 'rxjs';
     <div class="menu-bar">
       <strong>Display: </strong>
       <div class="button-group">
-          <a (click)="newView('list')" id="list" class="button">
-              <span class="glyphicon glyphicon-th-list">
-              </span> List</a> 
-          <a (click)="newView('grid')" id="list" class="button"><span
-              class="glyphicon glyphicon-th"></span> Grid</a>
+          <button (click)="newView('list')" id="list" class="button">
+              <span class="fas fa-bars">
+              </span> List</button> 
+          <button (click)="newView('grid')" id="list" class="button"><span
+              class="fas fa-th"></span> Grid</button>
       </div>
     </div>
 

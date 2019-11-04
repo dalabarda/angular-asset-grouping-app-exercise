@@ -19,6 +19,46 @@ button {
   color: #555;
 }
 
+
+/* https://fontawesome.com/icons?d=gallery */
+.fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1
+}
+
+.fas.fa-pull-left {
+    margin-right: .3em
+}
+
+.fas.fa-pull-right {
+    margin-left: .3em
+}
+
+/* GRID */
+.fa-th:before {
+    content: "\f00a"
+}
+
+/* LIST */
+/* .fa-bars:before {
+    content: "\f0c9"
+} */
+
+.fa-bars:before {
+    content: "\f000"
+}
+
+.fa-th-list:before {
+    content: "\f00b"
+}
+
+
+
 /* Toastr not used now */
 .toast-success {
   background-color: #51a351;
