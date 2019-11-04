@@ -26,10 +26,6 @@ import { Subscription } from 'rxjs';
   `,
   styles: [`
 
-    :host {
-      display: block;
-    }
-
     .menu-bar {
       padding: 9px;
       border-radius: 3px;

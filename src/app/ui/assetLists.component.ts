@@ -37,13 +37,13 @@ import { IAsset, IGroups } from './shared/index'
 
     .grid > asset-item {
       height: 200px;
-      display: block;
+      
     }
 
     .grid {
       display: inline-flex; /* Make elements inside the container behave like table cells */
       background-color: magenta;
-      width: calc(100% / 3);
+      width: calc((100% / 3) - 4px);
       height: 100%;
       
       border: 3px dashed;
