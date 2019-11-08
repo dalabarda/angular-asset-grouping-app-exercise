@@ -26,18 +26,31 @@ import { GlobalService } from './shared/global.service'
 
     .left {
       background-color: orange;
+      width: calc(100% / 2); 
       margin: none;
       float: left;
     }
 
     .right {
       background-color: cyan;
+      width: calc(100% / 2); 
       float: right;
       margin: none;
+      top: 0px;
     }
 
-    .testt {
+    .cont {
       display: grid;
+    }
+    span {
+      font-size: 12px; /* Some tweener fallback that doesn't look awful */ 
+      font-size: 1.6vw;  
+    }
+
+    @media screen and (min-width: 1000px) {
+      span {
+        font-size: 16px;
+      }
     }
 
   `] // '!important' otherwise, this style will get overridden by another one.

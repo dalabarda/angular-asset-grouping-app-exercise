@@ -24,7 +24,7 @@
   <!-- Grid class -->
   <ng-container *ngIf="itemClass == 'grid'">
     
-    <div class="testt">
+    <div class="cont">
       <!-- line one -->
       <div class="">
         <span class="left"
@@ -47,14 +47,18 @@
               Group: {{asset?.group_id}}
         </span>
       </div>
-    </div>
-
-    <div class="right">
-      <!--  -->
-      <span *ngIf="asset?.GPSposition" class="location">
-        <span> Latitude: {{asset?.GPSposition?.y}} </span>
-        <span> Longitude: {{asset?.GPSposition?.x}} </span>        
-      </span>
+      <!-- line three -->
+      <div class="">
+        <span class="left"
+              [ngSwitch]="asset?.suffix">
+              Type: {{ asset?.suffix }} {{ assetSuffix }}
+        </span>
+        <span class="right" *ngIf="asset?.GPSposition"
+              [ngStyle]="getStartTypeStyle()">
+            <span> Latitude: {{asset?.GPSposition?.y}} </span>
+            <span> Longitude: {{asset?.GPSposition?.x}} </span>    
+        </span>
+      </div>   
     </div>
     
     
