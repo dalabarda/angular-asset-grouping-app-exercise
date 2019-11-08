@@ -14,10 +14,12 @@ import { Subscription } from 'rxjs';
       <strong>Display: </strong>
       <div class="button-group">
           <button (click)="newView('list')" id="list" class="button">
-              <span class="fas fa-bars">
-              </span> List</button> 
+              <span class="fas fa-bars"></span>
+              List
+          </button> 
           <button (click)="newView('grid')" id="list" class="button"><span
-              class="fas fa-th"></span> Grid</button>
+              class="fas fa-th"></span> Grid
+          </button>
       </div>
     </div>
 
