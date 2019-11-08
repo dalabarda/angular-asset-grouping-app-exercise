@@ -10,16 +10,18 @@ import { GlobalService } from './shared/global.service'
 
     :host {
       margin: 4px;
+      display: block;
     }
 
     .info {
       font-size: 10px;
+      text-align: justify;
+      display: auto;
     }
 
     .half{
       background-color: pink;
-      width: calc(100% / 2);
-      
+      width: calc(100% / 2); 
     }
 
     .left {

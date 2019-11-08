@@ -25,20 +25,27 @@
   <ng-container *ngIf="itemClass == 'grid'">
     
     <div>
-      <!--  -->
-      <div >
-        <span class="half left"
+      <!-- line one -->
+      <div class="">
+        <span class="left"
               [ngSwitch]="asset?.suffix">
               Type: {{ asset?.suffix }} {{ assetSuffix }}
         </span>
-        <span class="half right" 
+        <span class="right"
               [ngStyle]="getStartTypeStyle()">
               Group: {{asset?.group_id}}
         </span>
       </div>
-      <!--  -->
-      <div class="half">
-        <span [ngStyle]="getStartTypeStyle()" >Group: {{asset?.group_id}}</span>
+      <!-- line two -->
+      <div class="">
+        <span class="left"
+              [ngSwitch]="asset?.suffix">
+              Type: {{ asset?.suffix }} {{ assetSuffix }}
+        </span>
+        <span class="right" 
+              [ngStyle]="getStartTypeStyle()">
+              Group: {{asset?.group_id}}
+        </span>
       </div>
     </div>
 
@@ -54,7 +61,7 @@
   </ng-container>
 
 <!--  -->
-<div class= "info" style="text-align: justify;">{{ asset?.description | limitTo:100 }}</div>
+<div class= "info">{{ asset?.description | limitTo:100 }}</div>
 </div>
 
 
