@@ -36,6 +36,10 @@ import { GlobalService } from './shared/global.service'
       margin: none;
     }
 
+    .testt {
+      display: grid;
+    }
+
   `] // '!important' otherwise, this style will get overridden by another one.
 })
 export class AssetItemComponent {
