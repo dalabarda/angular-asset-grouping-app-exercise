@@ -26,10 +26,14 @@
     
     <div>
       <!--  -->
-      <div class="half">
-        <span 
-          [ngSwitch]="asset?.suffix">
-            Type: {{ asset?.suffix }} {{ assetSuffix }}
+      <div >
+        <span class="half left"
+              [ngSwitch]="asset?.suffix">
+              Type: {{ asset?.suffix }} {{ assetSuffix }}
+        </span>
+        <span class="half right" 
+              [ngStyle]="getStartTypeStyle()">
+              Group: {{asset?.group_id}}
         </span>
       </div>
       <!--  -->

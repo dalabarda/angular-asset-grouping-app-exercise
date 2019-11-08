@@ -23,16 +23,14 @@ import { GlobalService } from './shared/global.service'
     }
 
     .left {
-      display: block;
-      width: calc(100% / 2);
       background-color: orange;
-          margin: none;
+      margin: none;
+      float: left;
     }
 
     .right {
-      display: block;
-      width: calc(100% / 2);
-      background-color: red;
+      background-color: cyan;
+      float: right;
       margin: none;
     }
 
