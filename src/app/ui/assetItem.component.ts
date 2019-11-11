@@ -6,54 +6,7 @@ import { GlobalService } from './shared/global.service'
 @Component({
   selector: 'asset-item',
   templateUrl: 'assetItem.component.html',
-  styles: [`
-
-    :host {
-      margin: 4px;
-      display: block;
-    }
-
-    .info {
-      font-size: 10px;
-      text-align: justify;
-      display: auto;
-    }
-
-    .half{
-      background-color: pink;
-      width: calc(100% / 2); 
-    }
-
-    .left {
-      background-color: orange;
-      width: calc(100% / 2); 
-      margin: none;
-      float: left;
-    }
-
-    .right {
-      background-color: cyan;
-      width: calc(100% / 2); 
-      float: right;
-      margin: none;
-      top: 0px;
-    }
-
-    .cont {
-      display: grid;
-    }
-    span {
-      font-size: 12px; /* Some tweener fallback that doesn't look awful */ 
-      font-size: 1.6vw;  
-    }
-
-    @media screen and (min-width: 1000px) {
-      span {
-        font-size: 16px;
-      }
-    }
-
-  `] // '!important' otherwise, this style will get overridden by another one.
+  styleUrls: ['assetItem.component.css'],
 })
 export class AssetItemComponent {
   @Input() asset : IAsset   

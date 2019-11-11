@@ -26,7 +26,7 @@
     
     <div class="cont">
       <!-- line one -->
-      <div class="">
+      <div>
         <span class="left"
               [ngSwitch]="asset?.suffix">
               Type: {{ asset?.suffix }} {{ assetSuffix }}
@@ -37,7 +37,7 @@
         </span>
       </div>
       <!-- line two -->
-      <div class="">
+      <div>
         <span class="left"
               [ngSwitch]="asset?.suffix">
               Type: {{ asset?.suffix }} {{ assetSuffix }}
@@ -48,15 +48,15 @@
         </span>
       </div>
       <!-- line three -->
-      <div class="">
+      <div>
         <span class="left"
               [ngSwitch]="asset?.suffix">
               Type: {{ asset?.suffix }} {{ assetSuffix }}
         </span>
         <span class="right" *ngIf="asset?.GPSposition"
               [ngStyle]="getStartTypeStyle()">
-            <span> Latitude: {{asset?.GPSposition?.y}} </span>
-            <span> Longitude: {{asset?.GPSposition?.x}} </span>    
+            Latitude: {{asset?.GPSposition?.y}}
+            Longitude: {{asset?.GPSposition?.x}}  
         </span>
       </div>   
     </div>
