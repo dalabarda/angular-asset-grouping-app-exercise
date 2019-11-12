@@ -31,14 +31,3 @@
     .cont {
       display: grid;
     }
-
-    span {
-      font-size: 12px; /* Some tweener fallback that doesn't look awful */ 
-      font-size: 1.6vw;  
-    }
-
-    @media screen and (min-width: 1000px) {
-      span {
-        font-size: 16px;
-      }
-    }

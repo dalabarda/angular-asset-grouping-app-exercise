@@ -12,6 +12,11 @@ h1 {
   color: #369;
   font-size: 4.0vw;
 }
+@media screen and (min-width: 1000px) {
+  h1 {
+    font-size: 36px;
+  }
+}
 
 h2 {
   font-size: 2.2vw;
@@ -19,12 +24,27 @@ h2 {
   margin: 0px;
   text-shadow: 1px 1px hotpink;
 }
+@media screen and (min-width: 1000px) {
+  h2 {
+    font-size: 24px;
+  }
+}
 
 h3 {
   font-size: 1.5vw;
   color: #694;
   margin: 0px;
   text-shadow: 1px 1px red;
+}
+
+span {
+  font-size: 12px; /* Some tweener fallback that doesn't look awful */ 
+  font-size: 1.45vw;  
+}
+@media screen and (min-width: 1000px) {
+  span {
+    font-size: 14px;
+  }
 }
 
 a {
@@ -35,6 +55,8 @@ a {
     font-size: 14px;
   }
 }
+
+
 
 
 button {
