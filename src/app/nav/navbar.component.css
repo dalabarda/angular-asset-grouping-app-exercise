@@ -56,6 +56,7 @@ margin: 0px;
 .nav2 > li.disabled > a {
   color: #777;
 }
+
 .nav2 > li.disabled > a:hover,
 .nav2 > li.disabled > a:focus {
   color: #777;
@@ -64,37 +65,23 @@ margin: 0px;
   background-color: transparent;
 }
 
-
 .navbar-default2 {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
 }
 
-
-
 .navbar2 {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
   border: 1px solid transparent;
 }
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   .navbar2 {
     border-radius: 4px;
   }
 }
 
-/* .navbar-brand2 {
+.navbar-brand2 {
   float: left;
-  height: 50px;
-  padding: 15px 15px;
-  font-size: 18px;
   line-height: 20px;
 }
-.navbar-brand2:hover,
-.navbar-brand2:focus {
-  text-decoration: none;
-}
-.navbar-brand2 > img {
-  display: block;
-} */
