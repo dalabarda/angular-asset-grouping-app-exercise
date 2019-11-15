@@ -36,7 +36,7 @@ import { IAsset, IGroups } from './shared/index'
     }
 
     .grid > asset-item {
-      height: 200px;
+      height: 20vw; // old 200px;
       width: 100%;
     }
 
