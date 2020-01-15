@@ -65,7 +65,7 @@ import { IAsset, IGroups } from './shared/index'
     .grid:nth-last-child(2),
     .grid:nth-last-child(3) {
       border-bottom: 3px dashed;
-      margin-top: -3px;
+      margin-bottom: -3px;
     }
 
 
