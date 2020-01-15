@@ -1,11 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core'
-import { AssetService } from './shared/asset.service'
-import { GlobalService } from './shared/global.service'
-import { ActivatedRoute } from '@angular/router'
-import { IAsset } from './shared/index'
+import { Component, OnInit, Output } from '@angular/core';
+import { AssetService } from './shared/asset.service';
+import { GlobalService } from './shared/global.service';
+import { ActivatedRoute } from '@angular/router';
+import { IAsset } from './shared/assets.model';
 
 import { Subscription } from 'rxjs';
-
 
 @Component({
 
@@ -30,7 +29,7 @@ import { Subscription } from 'rxjs';
 
     .menu-bar {
       padding: 9px;
-      border-radius: 3px;
+      border-radius: 1px;
       min-height: 20px;
       padding: 19px;
       margin-bottom: 20px;

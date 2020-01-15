@@ -43,10 +43,10 @@ import { IAsset, IGroups } from './shared/index'
     .grid {
       display: inline-flex; /* Make elmnts within container behave like table cells */
       background-color: magenta;
-      width: calc((100% / 3) - 4px);  /* 4 is for the dotted line */
+      width: calc((100% / 3) - 0.7vw);  /* 4 is for the dotted line */
       height: 100%;
       
-      border: 3px dashed;
+      border: 0.5vw dashed;
       border-left: none;
       border-bottom: none;
       
@@ -58,14 +58,14 @@ import { IAsset, IGroups } from './shared/index'
     }
 
     .grid:nth-child(3n+1) {
-      border-left: dashed; 
+      border-left: 0.5vw dashed; 
     }
 
     .grid:nth-last-child(1),
     .grid:nth-last-child(2),
     .grid:nth-last-child(3) {
-      border-bottom: 3px dashed;
-      margin-bottom: -3px;
+      border-bottom: 0.5vw dashed;
+      margin-bottom: -0.5vw;
     }
 
 
@@ -81,7 +81,7 @@ import { IAsset, IGroups } from './shared/index'
     }
 
     .container {
-      margin-top: 20px;
+      margin-top: 7vw;
     }
 
   `] // '!important' otherwise, this style will get overridden by another one.
