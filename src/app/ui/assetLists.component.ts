@@ -7,85 +7,10 @@ import { IAsset, IGroups } from './shared/index'
 
 @Component({
   selector: 'asset-list',
-  template: `
-  
-    <div *ngFor="let group of groupArr" class="container">
-      <h2 style="font-weight:bold">Assets from group {{ group }}: </h2>
-      <hr/>
-        <div class="cont">
-
-          <div 
-            *ngFor="let asset of assetsInGroups[group-1]" 
-            [routerLink]="['/events', asset.id]"
-            [ngClass]="itemClass">
-
-              <asset-item 
-                [asset]="asset">
-              </asset-item>
-          
-          </div>
-        </div>
-    </div>
-  
-  `,
-  styles: [`
-    .cont {
-      background-color: yellow;
-      width: 100%;
-      height: 100%;
-    }
-
-    .grid > asset-item {
-      height: 20vw; // old 200px;
-      width: 100%;
-    }
-
-    .grid {
-      display: inline-flex; /* Make elmnts within container behave like table cells */
-      background-color: magenta;
-      width: calc((100% / 3) - 0.7vw);  /* 4 is for the dotted line */
-      height: 100%;
-      
-      border: 0.5vw dashed;
-      border-left: none;
-      border-bottom: none;
-      
-    }
-
-    .grid:hover {
-      background-color: red;
-      cursor: pointer;
-    }
-
-    .grid:nth-child(3n+1) {
-      border-left: 0.5vw dashed; 
-    }
-
-    .grid:nth-last-child(1),
-    .grid:nth-last-child(2),
-    .grid:nth-last-child(3) {
-      border-bottom: 0.5vw dashed;
-      margin-bottom: -0.5vw;
-    }
-
-
-    .list {
-      background-color: cyan;
-      min-height: 75px;
-      
-    }
-
-    .list:hover {
-      background-color: red;
-      cursor: pointer;
-    }
-
-    .container {
-      margin-top: 7vw;
-    }
-
-  `] // '!important' otherwise, this style will get overridden by another one.
+  templateUrl: 'assetLists.component.html',
+  styleUrls:  ['assetLists.component.css']
 })
+
 export class AssetListsComponent {
   private assets : IAsset[]
   private groups : IGroups[]

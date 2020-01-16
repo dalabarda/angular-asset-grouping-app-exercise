@@ -1,0 +1,73 @@
+.cont {
+  background-color: yellow;
+  width: 100%;
+  height: 100%;
+}
+
+.grid > asset-item {
+  height: 20vw;
+  width: 100%;
+}
+
+.grid {
+  display: inline-flex; /* Make elmnts within container behave like table cells */
+  background-color: magenta;
+  width: calc((100% / 3) - (2vw /3));  /* NOTE: make the grids being spread over a line */
+  height: 100%;
+  margin: auto;
+  border: 0.5vw dashed;
+  border-left: none;
+  border-bottom: none;
+}
+
+.grid:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.grid:nth-child(3n+1) {
+  border-left: 0.5vw dashed;
+}
+
+.grid:nth-last-child(1),
+.grid:nth-last-child(2),
+.grid:nth-last-child(3) {
+  border-bottom: 0.5vw dashed;
+  margin-bottom: -0.5vw;
+}
+
+
+
+.list {
+  background-color: cyan;
+  min-height: 75px;
+  
+}
+
+.list:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.container {
+  margin-top: 7vw;
+}
+
+
+/* MAX size */
+@media screen and (min-width: 900px) {
+
+  .container {
+    background-color: orange;
+    width: 750px;
+    margin: auto;
+    margin-top: 40px;
+  }
+  .grid {
+    height: 200px;
+  }
+
+  .info {
+     font-size: 1em;
+  }
+}

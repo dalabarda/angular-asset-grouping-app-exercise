@@ -31,3 +31,12 @@
     .cont {
       display: grid;
     }
+
+/* MAX size */
+@media screen and (min-width: 900px) {
+
+  .info {
+     font-size: 12px;
+  }
+  
+}
