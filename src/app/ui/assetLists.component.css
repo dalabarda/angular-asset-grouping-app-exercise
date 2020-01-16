@@ -1,3 +1,15 @@
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+
 .cont {
   background-color: yellow;
   width: 100%;
@@ -6,13 +18,14 @@
 
 .grid > asset-item {
   height: 20vw;
+  max-height: 200px;
   width: 100%;
 }
 
 .grid {
   display: inline-flex; /* Make elmnts within container behave like table cells */
   background-color: magenta;
-  width: calc((100% / 3) - (2vw /3));  /* NOTE: make the grids being spread over a line */
+  width: calc((100% / 3) - (2vw /3));  /* NOTE: make the grids being spread over a line. 0.66507vw*/
   height: 100%;
   margin: auto;
   border: 0.5vw dashed;
@@ -70,4 +83,5 @@
   .info {
      font-size: 1em;
   }
+  
 }
