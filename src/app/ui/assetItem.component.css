@@ -1,42 +1,42 @@
-    :host {
-      margin: 4px;
-      display: block;
-    }
+:host {
+  margin-top: 0.275em;
+  display: block;
+}
 
-    .info {
-      font-size: 1.3vw;
-      text-align: justify;
-      display: auto;
-    }
+.info {
+  font-size: 1.3vw;
+  text-align: justify;
+  display: auto;
+}
 
-    .half{
-      background-color: pink;
-      width: calc(100% / 2); 
-    }
+.half{
+  background-color: pink;
+  width: calc(100% / 2); 
+}
 
-    .left {
-      background-color: orange;
-      width: calc(100% / 2); 
-      margin: none;
-      float: left;
-    }
+.left {
+  background-color: orange;
+  width: calc(100% / 2); 
+  margin: none;
+  float: left;
+}
 
-    .right {
-      background-color: cyan;
-      width: calc(100% / 2); 
-      margin: none;
-      float: right;
-    }
+.right {
+  background-color: cyan;
+  width: calc(100% / 2); 
+  margin: none;
+  float: right;
+}
 
-    .cont {
-      display: grid;
-    }
+.cont {
+  display: grid;
+}
 
 /* MAX size */
 @media screen and (min-width: 900px) {
 
   .info {
-     font-size: 12px;
+    font-size: 12px;
   }
-  
+
 }
