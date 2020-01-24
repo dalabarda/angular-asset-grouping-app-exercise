@@ -108,6 +108,12 @@ hr {
 .grid2 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-gap: 20px;
-  padding: 10px;
+  grid-gap: 5px;
+  padding: 5px;
 }
+
+/* .grid2 > div {
+  width: 100px;
+  height: 100px;
+} */
+/* 4ch auto ------> line could be this one*/
