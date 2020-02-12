@@ -16,14 +16,15 @@ import {
     MoveGroupComponent,
     DurationPipe,
     TruncatePipe
-} from './ui/index'
+} from './ui/index';
 
 import { AppComponent }  from './app.component';
 import { NavBarComponent }  from './nav/navbar.component';
-import { appRoutes } from './routes'
-import { Error404Component } from './errors/404.component'
-import { AuthService } from './user/auth.service'
+import { appRoutes } from './routes';
+import { Error404Component } from './errors/404.component';
+import { AuthService } from './user/auth.service';
 
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   imports:      [ 
@@ -43,7 +44,8 @@ import { AuthService } from './user/auth.service'
       Error404Component,
       MoveGroupComponent,
       DurationPipe,
-      TruncatePipe
+      TruncatePipe,
+      DropdownDirective
   	],
   providers: [
       AssetService,

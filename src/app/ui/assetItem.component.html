@@ -3,7 +3,7 @@
   
   <!-- ---------- -->
   <!-- List class -->
-  <ng-container *ngIf="itemClass == 'list'">
+  <ng-template [ngIf]="itemClass == 'list'">
     
     <span  
       [ngSwitch]="asset?.suffix">
@@ -17,12 +17,12 @@
       <span> Lng: {{asset?.GPSposition?.x}} </span>        
     </span>
 
-  </ng-container>
+  </ng-template>
 
 
-  <!-- ---------- -->
+  <!-- ---------- [ngIf]="lessons" [ngIfElse]="loading" ????? -->
   <!-- Grid class -->
-  <ng-container *ngIf="itemClass == 'grid'">
+  <ng-template [ngIf]="itemClass == 'grid'">
     
     <div class="cont">
       <!-- line one -->
@@ -62,7 +62,7 @@
     </div>
     
     
-  </ng-container>
+  </ng-template>
 
 <!--  -->
 <div class= "info">{{ asset?.description | limitTo:100 }}</div>
