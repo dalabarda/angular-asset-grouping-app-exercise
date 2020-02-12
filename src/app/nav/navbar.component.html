@@ -1,36 +1,54 @@
 <div class="navbar2 navbar-default2" >
   <div class="container-fluid2">
-    <div class="navbar-header2">
-      <a class="navbar-brand2" >AssetGroupingApp</a>
+    <div class="nav2">
+      <a class="" >AssetGroupingApp</a>
     </div>
 
-    <div class="navbar-collapse2" >
-      <ul class="nav2 navbar-nav2">
+    <div class="" >
+
+      <ul class="nav2">
         <li>
           <a [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >All Assets</a>
         </li>
         <li><a [routerLink]="['/events/new']" routerLinkActive="active" href="">Insert an Asset</a></li>
         <li><a>Insert a Group(this is the next feature!!!)</a></li>
       </ul>
-      <div class="navbar-header2 navbar-right2">
-        <ul class="nav2 navbar-nav2">
+
+      <ul class="nav2 dropdown" appDropdown>
+        <li><a class="dropdown">Dropdown</a></li>
+        <div class="dropdown-menu">
+          <li> <a class="dropdown-item">li and a</a></li>
+          <li class="dropdown-item">li Alone</li>
+          <a  href="http://www.google.com" class="dropdown-item">a Alone - google</a>
+          <li><a class="dropdown-item">Save Data</a></li>
+          <li><a class="dropdown-item">Fetch Data</a></li>
+          <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+          <p>p Alone!</p>
+        </div>
+      </ul>
+
+
+      <div class="nav2 navbar-right2">
+        <ul class="nav2">
           <li>
             <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
             <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{ auth.currentUser.firstName }}</a>
           </li>
-        </ul>
+        </ul> 
       </div>
 
-      <!--  IF POSSIBLE I AM GOING TO TRY TO IMPLEMENT THIS FILTER MECHANISM.
-      <form id="searchForm"  class="navbar-form navbar-right"  >
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search Sessions" >
-        </div>
-        <button class="btn btn-default" >
-          Search
-        </button>
-      </form>
-      -->
+
+
     </div>
+
+
+
+
+
+
   </div>
 </div>
+
+
+
+
