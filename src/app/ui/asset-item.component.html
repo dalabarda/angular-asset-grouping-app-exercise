@@ -20,7 +20,7 @@
   </ng-template>
 
 
-  <!-- ---------- [ngIf]="lessons" [ngIfElse]="loading" ????? -->
+  <!-- ---------- -->
   <!-- Grid class -->
   <ng-template [ngIf]="itemClass == 'grid'">
     
@@ -53,7 +53,7 @@
               [ngSwitch]="asset?.suffix">
               Type: {{ asset?.suffix }} {{ assetSuffix }}
         </span>
-        <span class="right" *ngIf="asset?.GPSposition"
+        <span *ngIf="asset?.GPSposition" class="right"
               [ngStyle]="getStartTypeStyle()">
             Latitude: {{asset?.GPSposition?.y}}
             Longitude: {{asset?.GPSposition?.x}}  
@@ -61,28 +61,8 @@
       </div>   
     </div>
     
-    
   </ng-template>
 
 <!--  -->
 <div class= "info">{{ asset?.description | limitTo:100 }}</div>
 </div>
-
-
-
-
-
-
-
-<!-- OLD WAY I DID IT USING ngSwitchCase -->
-<!-- <span 
-  [ngStyle]="getStartTypeStyle()" 
-  [ngSwitch]="asset?.suffix"
-  >
-    Type: {{asset?.suffix}}
-  <span *ngSwitchCase="'gif'">(animated image)</span>
-  <span *ngSwitchCase="'jpg'">(static image)</span>
-  <span *ngSwitchCase="'jpeg'">(static image)</span>
-  <span *ngSwitchCase="'mp4'">(video)</span>
-  <span *ngSwitchDefault>(Normal file)</span>
-</span> -->

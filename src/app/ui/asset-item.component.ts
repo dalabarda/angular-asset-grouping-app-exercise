@@ -5,8 +5,8 @@ import { GlobalService } from './shared/global.service'
 
 @Component({
   selector: 'asset-item',
-  templateUrl: 'assetItem.component.html',
-  styleUrls: ['assetItem.component.css'],
+  templateUrl: 'asset-item.component.html',
+  styleUrls: ['asset-item.component.css'],
 })
 export class AssetItemComponent {
   @Input() asset : IAsset   
