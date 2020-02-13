@@ -54,3 +54,9 @@ a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none;
 } */
+
+/* TODO add logic into the code to fit images that are bigger than the col width */
+/* img 100% doesn't fully solve the issue but it is a OK workaround */
+img {
+  width: 100%;
+}
