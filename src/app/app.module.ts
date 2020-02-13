@@ -2,6 +2,8 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // 
+import { AppComponent }  from './app.component';
+import { appRoutes } from './routes';
 
 import {
     AssetsWrapperComponent,
@@ -18,13 +20,11 @@ import {
     TruncatePipe
 } from './ui/index';
 
-import { AppComponent }  from './app.component';
 import { NavBarComponent }  from './nav/navbar.component';
-import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
-
 import { DropdownDirective } from './shared/dropdown.directive';
+
 
 @NgModule({
   imports:      [ 
