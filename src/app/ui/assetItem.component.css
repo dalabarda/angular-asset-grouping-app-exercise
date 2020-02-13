@@ -30,6 +30,7 @@
 
 .cont {
   display: grid;
+    /* justify-content: space-between; */
 }
 
 /* MAX size */
