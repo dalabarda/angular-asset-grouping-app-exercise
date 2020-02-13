@@ -171,7 +171,7 @@ const ASSETS:IAsset[] = [
         y: -43.219688,
       },
       group_id: 3,
-      description: ""
+      description: "testing this."
     },
     {
       id: 8,
@@ -225,6 +225,17 @@ const ASSETS:IAsset[] = [
       destination_url: '/assets/little_bird.mp4',
       modified: '3/11/2017',
       group_id: 3,
+      description: ` This is the type of videos my mom sent to me on Whatsapp. Boring, right? =/ `
+    },
+    {
+      id: 11,
+      name: 'Thing on Group 4',
+      date: new Date('3/7/2017'),
+      size: '1 MB',
+      suffix: 'mp4',
+      destination_url: '/assets/little_bird.mp4',
+      modified: '3/11/2017',
+      group_id: 4,
       description: ` This is the type of videos my mom sent to me on Whatsapp. Boring, right? =/ `
     }
 ]

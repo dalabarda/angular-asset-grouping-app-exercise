@@ -1,11 +1,7 @@
 <div class="container">
-  <div class="row2">  
-    <div class="col-md-62">
+  <div class="row">  
+    <div class="col">
       <h2>{{asset?.name | uppercase }} </h2>
-      
-
-
-        
 
         <div >
           <img  *ngIf="asset.type==='png' || 'jpg'" [src]="asset?.destination_url" class="asset-image">
@@ -18,11 +14,10 @@
               Browser not supported
           </video>
         </div>
-
-
-
     </div>
-    <div class="col-md-62">
+    
+
+    <div class="col">
       <div><strong>Date:</strong> {{asset?.date | date }}</div>
       <div><strong>Last Modification Date:</strong> {{ asset.date | date }}</div>
       <div><strong>Type:</strong> {{asset?.type}}</div>
@@ -34,14 +29,14 @@
       <hr>
       <div>
       
-        <div >
+    <div >
     <div >
       <h3 style="margin:10">Would you like to change this Asset?</h3>
     </div>
     
     <!-- it has no 'href' once the child execute into a component. but when an anchor tag has no href, it won't have the pointer cursor when you hover over it. therefore we have to add a style for that in our component -->
     <div >
-      <a (click)="addGroup()" class="btn2 btn-primary2 btn-block2" >click here!</a>
+      <a (click)="addGroup()" class="btn" >click here!</a>
     </div>
   
               <!-- binding the session property of this session-list component to the sessions array on this event object, and that event object is in our event details component.-->
