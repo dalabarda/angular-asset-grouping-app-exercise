@@ -14,7 +14,6 @@ import { IAsset, IGroups, ISession } from './../shared/index'
 
 export class AssetDetailsComponent implements OnInit{
  
-	// we have to declare a form group here
 	assetForm: FormGroup
 	group: FormControl
 	addMode:boolean // important to pass data from a child to parent component.
@@ -23,16 +22,13 @@ export class AssetDetailsComponent implements OnInit{
 
 
 	constructor(private assetService:AssetService, private route:ActivatedRoute, private router:Router) {
-		
+		this.addMode = true;
 	}
 
-	ngOnInit() { // it is still not clear the all the benefits of using ngOnInit()...
-		 this.asset = this.assetService.getAsset(+this.route.snapshot.params['id']) // pulling parameters off of the URL using the activated route service.
-		
-		// setting up each of our FormControls for each of our fields in here.
+	ngOnInit() {
+		this.asset = this.assetService.getAsset(+this.route.snapshot.params['id'])
 		this.group = new FormControl('', Validators.required)
 
-		// now we have to build a form out of these fields...
 		this.assetForm = new FormGroup({
 			group: this.group,
 		})
@@ -40,15 +36,13 @@ export class AssetDetailsComponent implements OnInit{
 	
 	// put us into an Add Mode
 	addGroup() {
-		this.addMode = true // just going to toggle a flag on our component
+		this.addMode = !this.addMode // just going to toggle a flag on our component
 	}
 
 	closeGroup() {
 		this.addMode = false // just going to toggle a flag on our component
 	}
 
-
-	// we are going to be passing the id of the asset in on the URL and we're going to want to pass that id in here.
 
 	cancelAddSession() {
 		this.addMode = false
@@ -90,7 +84,4 @@ on our createSessionForm, the session ID on this is going to be undefined,
 so we need to assign a new session ID to this session when it comes in.
 So we will get the max session ID off of the sessions on the event, and 
 then increment it and assign that to our session ID.
-
-
-
 */
