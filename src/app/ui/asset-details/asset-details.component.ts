@@ -9,7 +9,6 @@ import { IAsset, IGroups, ISession } from './../shared/index'
 @Component({
 	templateUrl: './asset-details.component.html',
   styleUrls: ['./asset-details.component.css'],
-
  })
 
 export class AssetDetailsComponent implements OnInit{
@@ -22,7 +21,7 @@ export class AssetDetailsComponent implements OnInit{
 
 
 	constructor(private assetService:AssetService, private route:ActivatedRoute, private router:Router) {
-		this.addMode = true;
+		// this.addMode = false;
 	}
 
 	ngOnInit() {
