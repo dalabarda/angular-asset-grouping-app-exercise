@@ -1,22 +1,23 @@
 <div class="container">
-  <div class="row">  
+  <div class="row">
+    <!-- first collumn -->
     <div class="col">
       <h2>{{asset?.name | uppercase }} </h2>
 
-        <div >
-          <img  *ngIf="asset.type==='png' || 'jpg'" [src]="asset?.destination_url" class="asset-image">
-          <img  *ngIf="asset.type=='pdf'" src="http://yourlogofile.com/wp-content/uploads/2016/01/pdf_icon.png" [alt]="asset?.name">
-        </div>
-      
-        <div *ngIf="asset.type=='mp4'" class="video">
-          <video controls (click)="toggleVideo()" #videoPlayer>
-              <source src="{{ asset?.destination_url }}" type="video/mp4" />
-              Browser not supported
-          </video>
-        </div>
+      <div >
+        <img  *ngIf="asset.type==='png' || 'jpg'" [src]="asset?.destination_url" class="asset-image">
+        <img  *ngIf="asset.type=='pdf'" src="http://yourlogofile.com/wp-content/uploads/2016/01/pdf_icon.png" [alt]="asset?.name">
+      </div>
+    
+      <div *ngIf="asset.type=='mp4'" class="video">
+        <video controls (click)="toggleVideo()" #videoPlayer>
+            <source src="{{ asset?.destination_url }}" type="video/mp4" />
+            Browser not supported
+        </video>
+      </div>
     </div>
     
-
+    <!-- second collumn -->
     <div class="col">
       <div><strong>Date:</strong> {{asset?.date | date }}</div>
       <div><strong>Last Modification Date:</strong> {{ asset.date | date }}</div>
@@ -34,13 +35,9 @@
       <h3 style="margin:10">Would you like to change this Asset?</h3>
     </div>
     
-    <!-- it has no 'href' once the child execute into a component. but when an anchor tag has no href, it won't have the pointer cursor when you hover over it. therefore we have to add a style for that in our component -->
     <div >
       <a (click)="addGroup()" class="btn" >click here!</a>
     </div>
-  
-              <!-- binding the session property of this session-list component to the sessions array on this event object, and that event object is in our event details component.-->
-            <!-- just show that if we are not in add Mode -->
     
     
     <!-- only displaying it if we are in addMode--> 

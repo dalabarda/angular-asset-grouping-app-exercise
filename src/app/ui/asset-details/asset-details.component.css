@@ -1,17 +1,3 @@
-
-.asset-image { width: 100%; }
-a {cursor:pointer}
-
-.col-md-62 {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-  width: 50%;
-}
-
-/* ---------------------------------- */
-
 .container {
   background-color: yellow;
   margin: 0.5em;
@@ -40,17 +26,6 @@ a {cursor:pointer}
   max-width: 100%;
 }
 
-/* ---------------------------------- */
-
-@media (min-width: 992px) { 
-  :col-md-62 {
-    /* float: left; */
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-
 .btn {
   display: block;
   padding: 6px 12px;
@@ -71,11 +46,11 @@ a {cursor:pointer}
   border-color: #0062cc;
 }
 
-.btn.disabled, .btn:disabled {
+/* .btn.disabled, .btn:disabled {
   opacity: 0.65;
 }
 
 a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none;
-}
+} */

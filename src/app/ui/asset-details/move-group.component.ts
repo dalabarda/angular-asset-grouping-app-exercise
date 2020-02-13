@@ -15,8 +15,6 @@ import { ActivatedRoute } from '@angular/router'
     .error ::-moz-placeholder {color: #999; }
     .error :ms-input-placeholder { color: #999; }
 
-    
-
   `]
 })
 
