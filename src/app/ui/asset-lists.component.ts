@@ -7,8 +7,8 @@ import { IAsset, IGroups } from './shared/index'
 
 @Component({
   selector: 'asset-list',
-  templateUrl: 'assetLists.component.html',
-  styleUrls:  ['assetLists.component.css']
+  templateUrl: 'asset-lists.component.html',
+  styleUrls:  ['asset-lists.component.css']
 })
 
 export class AssetListsComponent {
