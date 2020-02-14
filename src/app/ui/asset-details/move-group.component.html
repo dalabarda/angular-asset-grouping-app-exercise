@@ -9,7 +9,7 @@
       <label for="sessionName">What the Asset Name:</label><br>
       <em *ngIf="name.invalid && name.dirty">Required</em>
       <!-- formControlName="name" -->
-      <input [(ngModel)]="this.asset.name" formControlName="name" id="sessionName" type="text" class="form-control" placeholder="New Asset name..." />
+      <input [(ngModel)]="asset.name" formControlName="name" id="sessionName" type="text" class="form-control" placeholder="New Asset name..." />
     </div>
 
     <!--  -->
@@ -39,7 +39,7 @@
       <em *ngIf="description.invalid && description.dirty && description?.errors.maxLength">cannot exceed 400 characters</em> <!-- -->
       <em *ngIf="description.invalid && description.dirty && description?.errors.restrictedWords"> {{description.errors.restrictedWords}} is a forbiden word ;)</em>
       <!-- formControlName="description" -->
-      <textarea [(ngModel)]="this.asset.description"  formControlName="description" id="description" rows=3 class="form-control" placeholder="Do you have another description?..."></textarea>
+      <textarea [(ngModel)]="asset.description"  formControlName="description" id="description" rows=3 class="form-control" placeholder="Do you have another description?..."></textarea>
     </div><br>
     <button type="submit" [disabled]="newGroupForm.invalid" class="btn btn-primary">Save</button>
     <button type="reset" class="btn btn-primary">Reset</button>
