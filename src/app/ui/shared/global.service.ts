@@ -14,10 +14,6 @@ export class GlobalService {
 
   constructor() {  }
 
-  // changeSelectedView(bool: boolean) {
-  //   this.view.next(bool)
-  // }
-
 
   changeMessage(message: string) {
     this.messageSource.next(message)

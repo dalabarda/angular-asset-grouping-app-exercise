@@ -9,7 +9,9 @@ export class AssetRouteActivator implements CanActivate {
 	}
 
 	canActivate(route:ActivatedRouteSnapshot) {
-		const assetExists = !!this.assetService.getAsset(+route.params['id']) // I don't understand why we have to cast the event id to a number here. read more about that!
+		const assetExists = !!this.assetService.getAsset(+route.params['id']);
+    // I don't understand why we have to cast the event id to a number here. 
+    // read more about that!
 
 		if (!assetExists)
 			this.router.navigate(['/404'])
