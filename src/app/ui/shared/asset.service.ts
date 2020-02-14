@@ -1,28 +1,28 @@
-import { Injectable } from '@angular/core'
-import { Subject, Observable } from 'rxjs'
-import { IEvent, IAsset, IGroups } from './assets.model'
+import { Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
+import { IEvent, IAsset, IGroups } from './assets.model';
 
 
 @Injectable()
 export class AssetService {
 
   getAssets() {
-    return ASSETS
+    return ASSETS;
   }
 
   getAsset(id:number):IAsset {
-      return ASSETS.find(asset => asset.id === id)
+      return ASSETS.find(asset => asset.id === id);
   }
 
   // to save new events
   saveAsset(asset: IAsset) {
-    asset.id = ASSETS.length + 1
-    ASSETS.push(asset)
+    asset.id = ASSETS.length + 1;
+    ASSETS.push(asset);
   }
 
   // to update existing events
   updateAsset(asset: any) {
-    let index = ASSETS.findIndex(x => x.id = asset.id) // finding the existing event in the array and replace it for now
+    let index = ASSETS.findIndex(x => x.id = asset.group_id) // finding the existing event in the array and replace it for now
     ASSETS[index] = asset
       // so, now our create-session component emits a saveNewSession event, and we are binding to that in our event-details
       // when that event is emitted we call saveNewSession on our event-details component, which adds the session to the event and then updates it.
@@ -30,17 +30,17 @@ export class AssetService {
 
 
   getGroups() {
-    return GROUPS
+    return GROUPS;
   }
 
   getGroup(id:number):IGroups {
-      return GROUPS.find(group => group.id === id)
+      return GROUPS.find(group => group.id === id);
   }
 
   // to make new groups
   saveGroup(group: IGroups) {
-    group.id = GROUPS.length + 1
-    GROUPS.push(group)
+    group.id = GROUPS.length + 1;
+    GROUPS.push(group);
   }
 
   // to update existing groups
