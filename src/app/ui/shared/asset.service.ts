@@ -33,9 +33,9 @@ export class AssetService {
     return GROUPS;
   }
 
-  getGroup(id:number):IGroups {
-      return GROUPS.find(group => group.id === id);
-  }
+  // getGroup(id:number):IGroups {
+  //     return GROUPS.find(group => group.id === id);
+  // }
 
   // to make new groups
   saveGroup(group: IGroups) {
