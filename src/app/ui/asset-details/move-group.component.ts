@@ -20,41 +20,41 @@ import { ActivatedRoute } from '@angular/router'
 
 export class MoveGroupComponent implements OnInit {
 	//we just need to create an output parameter for our parent component to bind to.
-	// Output property. 
-	today = Date.now();
 	// emit a message back to our parent component when the user clicks save.
-	@Output() saveNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>() // 'saveNewSession' is going to be an EventEmitter, and we'll have to import that too.
+	@Output() saveNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>()
 	@Output() cancelChangeGroup = new EventEmitter() 
-												// 	we need to wire up the cancel button click on this component to emit that event.  
-												// (click)="cancel()" in the HTML button
 	
-	asset:IAsset
-	constructor(private assetService: AssetService, private route:ActivatedRoute, private router:Router){}
 
 	// we have to declare a form asset here
+	asset:IAsset
+	description: FormControl
+	g_id: FormControl
+  groupArr: number[];
 	newGroupForm: FormGroup
 	name: FormControl
-	g_id: FormControl
+  today = Date.now();
 	updated: FormControl
-	description: FormControl
 
-  groupArr: number[];
 
-	 ngOnInit() {
+	constructor( private assetService: AssetService, 
+               private route:ActivatedRoute, 
+               private router:Router){}
+
+
+	ngOnInit() {
 		// setting up each of our FormControls for each of our fields in here.
 		this.name = new FormControl('', Validators.required)
 		this.g_id = new FormControl('', Validators.required)
-		this.updated = new FormControl('', Validators.required)
+		this.updated = new FormControl(this.today)
 		this.description = new FormControl('', [Validators.required, 
 											Validators.maxLength(400),
 											this.restrictedWords, // custom validator applyed to the abstract field
 											this.restrictedWords2(['foo', 'bar']), // more complex functionning custom validators. 
-											restrictedWords3(['demit', 'fired', 'quit', 'abandon', 'abdicate']) // this is imported from another file in shared folder, therefore it doesn't need the 'this' keyword
+											restrictedWords3(['dismiss', 'fired', 'quit', 'abandon', 'abdicate']) // this is imported from another file in shared folder, therefore it doesn't need the 'this' keyword
 											])
 
     this.groupArr = [1, 2, 3]; 
 		
-
 		// now we have to build a form out of these fields...
 	 	this.newGroupForm = new FormGroup({
 			name: this.name,
@@ -66,7 +66,7 @@ export class MoveGroupComponent implements OnInit {
 	 	this.asset = this.assetService.getAsset(+this.route.snapshot.params['id'])
 	 	
 	 	console.log("--> ", this.asset)
-	 }
+	}
 
 	// creating CUSTOM VALIDATORS: prevent certain words from being used in a field and then we'll 
 	// apply that validator to this abstract field. Validators are functions that returns null if the controll
@@ -105,7 +105,7 @@ export class MoveGroupComponent implements OnInit {
 		let group:IGroups = {
 			id: +formValues.g_id, // casting into a number 1, 2 ou 3
 			name: formValues.name,
-			date: formValues.updated, // this must be timestap. 
+			date: this.today, // this must be timestap. 
 			description: formValues.description,
 		}
 
