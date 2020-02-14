@@ -38,6 +38,8 @@ export class MoveGroupComponent implements OnInit {
 	updated: FormControl
 	description: FormControl
 
+  groupArr: number[];
+
 	 ngOnInit() {
 		// setting up each of our FormControls for each of our fields in here.
 		this.name = new FormControl('', Validators.required)
@@ -48,8 +50,9 @@ export class MoveGroupComponent implements OnInit {
 											this.restrictedWords, // custom validator applyed to the abstract field
 											this.restrictedWords2(['foo', 'bar']), // more complex functionning custom validators. 
 											restrictedWords3(['demit', 'fired', 'quit', 'abandon', 'abdicate']) // this is imported from another file in shared folder, therefore it doesn't need the 'this' keyword
-
 											])
+
+    this.groupArr = [1, 2, 3]; 
 		
 
 		// now we have to build a form out of these fields...

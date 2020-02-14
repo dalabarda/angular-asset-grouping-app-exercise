@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { AssetService } from './asset.service';
+
 @Component({
   selector: 'my-app',
   template: `
@@ -20,6 +22,7 @@ import { Component } from '@angular/core';
       margin: 88px;
   }
 
-  `]
+  `],
+  providers: [AssetService]
 })
 export class AppComponent  { name = 'Developers!'; }

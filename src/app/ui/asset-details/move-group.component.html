@@ -1,58 +1,51 @@
-<div class="col-md-12">
-  <h3>... Then add here some information!</h3>
+<div class="">
+  <h3>... Then add here some information!</h3><br>
 </div>
-<div class="col-md-12">
-  <!-- we have to set our bindings from create-session.component.ts in this HTML template-->
-  <!-- first we bind our form... -->
+<div class="">
   <form [formGroup]="newGroupForm" (ngSubmit)="saveSession(newGroupForm.value)" autocomplete="off">
     
     <!-- we need to wire up each of our form fields to their corresponding controls-->    
     <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty }">
-      <label for="sessionName">What the Asset Name:</label>
+      <label for="sessionName">What the Asset Name:</label><br>
       <em *ngIf="name.invalid && name.dirty">Required</em> <!-- the diference between dirty and touched is that if I just put my cursor into a field and then leave that field, it is touched. not dirty. dirty is only if we start typing into a field. -->
       <!-- formControlName="name" -->
       <input [(ngModel)]="this.asset.name" formControlName="name" id="sessionName" type="text" class="form-control" placeholder="New Asset name..." />
     </div>
 
-    <div class="form-group">
-      <label for="g_id">Group you would like to assign:</label>
+    <div class="form-group"><br>
+      <label for="g_id">Group you would like to assign:</label><br>
       <em *ngIf="g_id.invalid && g_id.dirty">Required</em> <!-- -->
       <!-- formControlName="duration" -->
       <select formControlName="g_id" name="g_id" class="form-control" type="number">
         <option value="">select the new group...</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+        <option 
+          *ngFor= "let arr of groupArr" 
+          [value]="arr"> {{ arr }}
+        </option>
       </select>
     </div>
     
-    <div class="form-group">
-      <label for="updated">Select the day of modification...</label>
+    <div class="form-group"><br>
+      <label for="updated">Select the day of modification...</label><br>
       <!-- formControlName="duration" -->
       <select formControlName="updated" class="form-control">
         <option value="{{today | date}}">{{ today | date }}</option>
       </select>
-    </div>
+    </div><br>
     
 
     <div class="form-group" [ngClass]="{'error': description.invalid && description.dirty }"> <!-- red background style-->
-      <label for="description">Description:</label>
+      <label for="description">Description:</label><br>
       <em *ngIf="description.invalid && description.dirty && description?.errors.required">Required</em> <!-- -->
       <em *ngIf="description.invalid && description.dirty && description?.errors.maxLength">cannot exceed 400 characters</em> <!-- -->
       <em *ngIf="description.invalid && description.dirty && description?.errors.restrictedWords"> {{description.errors.restrictedWords}} is a forbiden word ;)</em>
       <!-- formControlName="description" -->
       <textarea [(ngModel)]="this.asset.description"  formControlName="description" id="description" rows=3 class="form-control" placeholder="Do you have another description?..."></textarea>
-    </div>
+    </div><br>
     <button type="submit" [disabled]="newGroupForm.invalid" class="btn btn-primary">Save</button>
+    <button type="reset" class="btn btn-primary">Reset</button>
     <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
   </form>
 </div>
 
 
-<!--
-ngNotes!
-
-because we made these form controls publicly available in our component, we can now access the properties directly and not doing the, for instance, 'newSessionForm.controls.name' . 
-
-
--->

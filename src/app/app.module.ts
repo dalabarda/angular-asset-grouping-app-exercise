@@ -24,7 +24,7 @@ import { NavBarComponent }  from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { DropdownDirective } from './shared/dropdown.directive';
-
+import { CounterService } from './counter.service';
 
 @NgModule({
   imports:      [ 
@@ -49,6 +49,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
   	],
   providers: [
       AssetService,
+      CounterService,
       GlobalService,
       AssetRouteActivator,
       EventListResolver,
