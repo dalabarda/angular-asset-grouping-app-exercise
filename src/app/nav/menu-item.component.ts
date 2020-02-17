@@ -22,8 +22,6 @@ export interface MenuItem
   template: `
     <ul>
         <li *ngFor="let item of items"
-            disabled="!isEnabled()"
-            (onClick)="onItemClick(item)"
           >
             <a
               [routerLinkActiveOptions]="testingAContidion(item)" 
@@ -102,7 +100,7 @@ export class AppMenuItem  {
         },
         {
           getName: "Insert a Group_TODO",
-          isEnabled: true,
+          isEnabled: false, // this.menuToDo() == '1' ? false : false
           isVisible: true,
           onClick: () => this.menuToDo(),
         },
@@ -112,7 +110,15 @@ export class AppMenuItem  {
   // @Input()
   get items(): MenuItem[]
   {
-      return this.menu;
+    let menu: MenuItem[] = []; // new list excluding disabled <li>
+    this.menu.forEach(item => {
+        if (item.isEnabled == false)
+          return;
+        else {
+          return menu.push(item);
+        }
+      });
+      return menu;
   }
 
 // [ngSwitch]="getMenuEntryType(item)"

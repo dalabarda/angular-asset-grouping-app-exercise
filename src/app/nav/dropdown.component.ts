@@ -13,15 +13,22 @@ import { Component } from '@angular/core';
             <a class="dropdown-item">li and a</a>
           </li>
           <li class="dropdown-item">
-            <a  href="http://www.google.com" class="dropdown-item">a Alone - google</a>
+            <a  
+              href="http://www.google.com" 
+              class="dropdown-item"
+              >a Alone - google</a>
           </li>
           <li>
-            <a class="dropdown-item">Save Data</a>
+            <a class="dropdown-item"
+            >Save Data</a>
           </li>
           <li class="disabled">
             <a class="dropdown-item">Fetch Data - disabled</a>
           </li>
-          <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+            <a  
+              *ngIf="!auth.isAuthenticated()" 
+              [routerLink]="['user/login']"
+              >Login</a>
           <hr/>
           <li class="enabled">
             <a class="dropdown-item">Last Item </a>

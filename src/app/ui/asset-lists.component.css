@@ -52,7 +52,7 @@ hr {
 
 .list {
   background-color: cyan;
-  min-height: 75px;
+  min-height: 50px;
 }
 
 .list:hover {
