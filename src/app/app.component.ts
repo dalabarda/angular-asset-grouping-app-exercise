@@ -11,18 +11,7 @@ import { AssetService } from './asset.service';
   	<router-outlet></router-outlet>
 
   	`,
-  styles: [`
-
-    :host {
-      margin: 50%;
-    }
-
-  body {
-      display: block;
-      margin: 88px;
-  }
-
-  `],
+  styles: [`  `],
   providers: [AssetService]
 })
 export class AppComponent  { name = 'Developers!'; }
