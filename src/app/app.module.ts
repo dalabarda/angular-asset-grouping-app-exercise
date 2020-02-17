@@ -21,6 +21,9 @@ import {
 } from './ui/index';
 
 import { NavBarComponent }  from './nav/navbar.component';
+import { AppMenuDropdown }  from './nav/dropdown.component';
+import { AppMenuItem }  from './nav/menu-item.component';
+
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { DropdownDirective } from './shared/dropdown.directive';
@@ -34,7 +37,9 @@ import { CounterService } from './counter.service';
       RouterModule.forRoot(appRoutes) 
     ],
   declarations: [ 
-  		AppComponent, 
+  		AppComponent,
+      AppMenuDropdown,
+      AppMenuItem,
   		AssetsWrapperComponent,
       AssetItemComponent,
       AssetDetailsComponent,
