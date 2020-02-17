@@ -17,6 +17,9 @@ export interface MenuItem
 //     separator,
 // }
 
+// if (item instanceof Array)
+// add the dropdown condition....
+
 @Component({
   selector: 'my-menu-item',
   template: `
@@ -24,9 +27,9 @@ export interface MenuItem
         <li *ngFor="let item of items"
           >
             <a
-              [routerLinkActiveOptions]="testingAContidion(item)" 
-              [routerLink]="item.onClick()"
               routerLinkActive="active"
+              [routerLinkActiveOptions]="onRouterLinkActiveOptions(item)" 
+              [routerLink]="item.onClick()"
             >
               {{ item.getName }} 
             </a>
@@ -150,8 +153,8 @@ export class AppMenuItem  {
     return ; // TODO
   }
 
-  testingAContidion(item: MenuItem ):string {
-    if (item.getName == 'All Assets')
+  onRouterLinkActiveOptions(item: MenuItem ):string {
+    if (item.getName == 'All Assets') // TODO 
       return '{exact:true}';
     else
       return '{exact:false}';

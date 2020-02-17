@@ -35,12 +35,13 @@ li:focus {
   background-color: #eee;
 }
 
-li.disabled > a {
+.disabled > a {
   color: #999;
+  cursor: not-allowed;
 }
 
-li.disabled:hover,
-li.disabled:focus {
+.disabled:hover,
+.disabled:focus {
   color: #707;
   text-decoration: none;
   cursor: not-allowed;
