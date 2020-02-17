@@ -6,7 +6,8 @@ import { AssetService } from './asset.service';
   selector: 'my-app',
   template: `
   	<nav-bar></nav-bar>
-  	<h1>Hello {{name}}</h1>
+    <br>
+  	<h1>Hello {{ name }}</h1>
       
   	<router-outlet></router-outlet>
 

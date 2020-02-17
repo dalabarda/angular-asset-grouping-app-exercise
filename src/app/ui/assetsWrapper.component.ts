@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 @Component({
 
   template: `
+
     <div class="menu-bar">
       <strong>Display: </strong>
       <div class="button-group">

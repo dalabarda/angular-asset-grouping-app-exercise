@@ -4,7 +4,6 @@
     <a class="" >AssetGroupingApp</a>
   </div>
 
-  <div class="" >
 
     <my-menu-item></my-menu-item>
 
@@ -12,7 +11,7 @@
       <li>
         <a class="dropdown">Dropdown</a>
       </li>
-      <!--  -->
+      <!-- dropdown -->
       <div class="dropdown-menu" >
         <li 
           *ngFor="let item of items"
@@ -33,17 +32,16 @@
     </ul>
 
 
-    <div class=" navbar-right2">
-      <ul class="nav2">
-        <li>
-          <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
-          <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{ auth.currentUser.firstName }}</a>
-        </li>
-      </ul> 
-    </div>
+  <div class="navbar-right2">
+    <ul class="nav2">
+      <li>
+        <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+        <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{ auth.currentUser.firstName }}</a>
+      </li>
+    </ul> 
   </div>
-</div>
 
+</div>
 
 
 
