@@ -24,17 +24,33 @@ export interface MenuItem
   selector: 'my-menu-item',
   template: `
     <ul>
-        <li *ngFor="let item of items"
-          >
+        <li *ngFor="let item of items">
             <a
               routerLinkActive="active"
               [routerLinkActiveOptions]="onRouterLinkActiveOptions(item)" 
-              [routerLink]="item.onClick()"
-            >
-              {{ item.getName }} 
+              [routerLink]="item.onClick()">
+                {{ item.getName }} 
             </a>
         </li>
         <!-- <div *ngSwitchCase="type.separator" class="separator"></div> -->
+        <div *ngIf="false" 
+              class="dropdown-menu" >
+          <li 
+            *ngFor="let item of items"
+            [ngClass]="onDropdownClass(item)">
+            <a 
+              [href]="item.onClick()" 
+                  > {{ item.getName }}
+            </a>
+          </li>
+            <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+            <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{ auth.currentUser.firstName }}</a>
+          <hr/>
+          <li class="enabled">
+            <a >Last Item </a>
+          </li>
+        </div>
+      <!--  -->
     </ul>
   	`,
   styles: [`
