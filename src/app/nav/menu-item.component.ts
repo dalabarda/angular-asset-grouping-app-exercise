@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 
 export interface MenuItem
 {
-    getName: string;
-    isEnabled: boolean;
-    isVisible: boolean;
-    // getName:    () => string;
-    // isEnabled: () => boolean;
-    // isVisible: () => boolean;
+    getName: string; // getName:    () => string;
+    isEnabled: boolean; // isEnabled: () => boolean;
+    isVisible: boolean; // isVisible: () => boolean;
     onClick:   () => void;
+    subList?: MenuItem[]
 }
 
 // export enum eMenuItemType
@@ -29,78 +27,31 @@ export interface MenuItem
               routerLinkActive="active"
               [routerLinkActiveOptions]="onRouterLinkActiveOptions(item)" 
               [routerLink]="item.onClick()">
-                {{ item.getName }} 
+                {{ item.getName }}
             </a>
         </li>
         <!-- <div *ngSwitchCase="type.separator" class="separator"></div> -->
-        <div *ngIf="false" 
-              class="dropdown-menu" >
-          <li 
-            *ngFor="let item of items"
-            [ngClass]="onDropdownClass(item)">
-            <a 
-              [href]="item.onClick()" 
-                  > {{ item.getName }}
-            </a>
-          </li>
-            <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
-            <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{ auth.currentUser.firstName }}</a>
-          <hr/>
-          <li class="enabled">
-            <a >Last Item </a>
-          </li>
-        </div>
+        <ng-container *ngFor="let item of items">
+          <div *ngIf="onDropdownList(item)" 
+                class="dropdown-menu" >
+            <li 
+              *ngFor="let item of items"
+              [ngClass]="onDropdownClass(item)">
+              <a 
+                [href]="ite.onClick()" 
+                    > {{ item.getName }} 
+              </a>
+            </li>
+            <hr/>
+            <li class="enabled">
+              <a >Last Item </a>
+            </li>
+          </div>
+        </ng-container>
       <!--  -->
     </ul>
   	`,
-  styles: [`
-
-.navbar-right2 {
-  float: right !important;
-  margin-right: -15px;
-}
-
-ul {
-  float: left;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-}
-
-li {
-  position: relative;
-  display: inline-block;
-}
-li > a {
-  position: relative;
-  display: block;
-  padding: 10px 15px;
-}
-li:hover,
-li:focus {
-  text-decoration: none;
-  background-color: #eee;
-}
-
-li.disabled > a {
-  color: #999;
-}
-
-li.disabled:hover,
-li.disabled:focus {
-  color: #707;
-  text-decoration: none;
-  cursor: not-allowed;
-  background-color: yellow;
-}
-
-a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-} 
-
-`]
+  styleUrls: ['./menu-item.component.css']
 })
 export class AppMenuItem  { 
   name = 'Developers!'; 
@@ -119,10 +70,38 @@ export class AppMenuItem  {
         },
         {
           getName: "Insert a Group_TODO",
-          isEnabled: false, // this.menuToDo() == '1' ? false : false
+          isEnabled: true, // this.menuToDo() == '1' ? false : false
           isVisible: true,
           onClick: () => this.menuToDo(),
+          subList: 
+          [
+              {
+                getName: 'BBC Web site',
+                isEnabled: true,
+                isVisible: true,
+                onClick: () => 'https://www.bbc.com/',
+              },
+              {
+                getName: 'Google',
+                isEnabled: true,
+                isVisible: false,
+                onClick: () => 'https://www.google.com/',
+              },
+              {
+                getName: 'Wikipedia.',
+                isEnabled: true, // this.menuToDo() == '1' ? false : false
+                isVisible: true,
+                onClick: () => 'https://en.wikipedia.org/wiki/Main_Page',
+              },
+              {
+                getName: 'Insert a Group_TODO',
+                isEnabled: true, // this.menuToDo() == '1' ? false : false
+                isVisible: true,
+                onClick: () => '',
+              },
+          ],
         },
+
         ];
 
 
@@ -140,6 +119,9 @@ export class AppMenuItem  {
       return menu;
   }
 
+  constructor() {
+    // this.menu.forEach(item => console.log(item.subList.length))
+  }
 // [ngSwitch]="getMenuEntryType(item)"
   // getMenuEntryType(item: MenuItem): eMenuItemType
   // {
@@ -175,5 +157,19 @@ export class AppMenuItem  {
     else
       return '{exact:false}';
   }
-}
 
+  onDropdownList(item: MenuItem) {
+    if (item.subList && item.subList.length > 0)
+      return false;
+    else
+      return false;
+    // return item instanceof Array : true ? false;
+  }
+
+  onDropdownClass(item: any):string { // MenuItem -> type
+    if (!item.isEnabled || item.onClick().length == 0)
+      return 'disabled';
+    else
+      return 'dropdown-item';
+  }
+}
