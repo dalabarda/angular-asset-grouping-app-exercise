@@ -25,19 +25,20 @@ export interface MenuItem
         <li *ngFor="let item of items">
             <a
               routerLinkActive="active"
-              [routerLinkActiveOptions]="onRouterLinkActiveOptions(item)" 
+              [routerLinkActiveOptions]="{exact: true}" 
               [routerLink]="item.onClick()">
                 {{ item.getName }}
             </a>
         </li>
         <!-- <div *ngSwitchCase="type.separator" class="separator"></div> -->
+
         <ng-container *ngFor="let item of items">
           <div *ngIf="onDropdownList(item)" 
                 class="dropdown-menu" >
             <li 
               *ngFor="let item of items"
               [ngClass]="onDropdownClass(item)">
-              <a 
+              <a
                 [href]="ite.onClick()" 
                     > {{ item.getName }} 
               </a>
@@ -48,6 +49,7 @@ export interface MenuItem
             </li>
           </div>
         </ng-container>
+
       <!--  -->
     </ul>
   	`,
@@ -151,11 +153,11 @@ export class AppMenuItem  {
     return ; // TODO
   }
 
-  onRouterLinkActiveOptions(item: MenuItem ):string {
+  onRouterLinkActiveOptions(item: MenuItem ):boolean {
     if (item.getName == 'All Assets') // TODO 
-      return '{exact:true}';
+      return true;
     else
-      return '{exact:false}';
+      return false;
   }
 
   onDropdownList(item: MenuItem) {
