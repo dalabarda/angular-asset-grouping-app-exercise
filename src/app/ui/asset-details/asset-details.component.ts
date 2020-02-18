@@ -74,7 +74,7 @@ export class AssetDetailsComponent implements OnInit{
 
 		this.assetService.updateAsset(this.asset)
 
-		this.router.navigate(['/events'])
+		this.router.navigate(['/assets'])
 	}
 }
 

@@ -175,10 +175,10 @@ export class CreateAssetComponent {
 		console.log("-- Form Values: ", formValues)
 		this.assetService.saveAsset(formValues) // here we can pass the formValues straight through since the shape of it exactly matches our event.model
 		this.isDirty = false
-		this.router.navigate(['/events'])
+		this.router.navigate(['/assets'])
 	}
 
 	cancel() {	// method from cancel
-		this.router.navigate(['/events'])
+		this.router.navigate(['/assets'])
 	}
 }

@@ -140,7 +140,7 @@ export class AppMenuItem  {
     // }
 
   showAllAssets():string {
-    return '/events';
+    return '/assets';
   }
 
   addNewAsset():string {
