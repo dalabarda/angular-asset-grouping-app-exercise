@@ -144,7 +144,7 @@ export class AppMenuItem  {
   }
 
   addNewAsset():string {
-    return '/events/new';
+    return '/assets/new';
   }
 
   menuToDo():string {

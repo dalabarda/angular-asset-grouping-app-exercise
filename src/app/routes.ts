@@ -12,7 +12,7 @@ import {
 
 
 export const appRoutes:Routes = [
-	{path: 'events/new', component: CreateAssetComponent, canDeactivate: ['canDeactivateCreateAsset'] }, // in this example I used a function. In order to define this function, we just need to register this as a provider in our module.
+	{path: 'assets/new', component: CreateAssetComponent, canDeactivate: ['canDeactivateCreateAsset'] }, // in this example I used a function. In order to define this function, we just need to register this as a provider in our module.
 	{path: 'assets', component: AssetsWrapperComponent, resolve: {events:EventListResolver} },
 	{path: 'events/:id', component: AssetDetailsComponent, canActivate: [AssetRouteActivator ] }, // in this example I used a service to route to a 404 page. "event-route-activator.service" in event details page. (route guard procedure)
 	{path: 'events/session/new', component: MoveGroupComponent},
