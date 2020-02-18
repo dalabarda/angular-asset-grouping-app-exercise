@@ -13,11 +13,11 @@ export class LoginComponent {
 
     login(formValues: any) {
       this.authService.loginUser(formValues.userName, formValues.password)
-      this.router.navigate(['events'])
+      this.router.navigate(['assets'])
     }
 
     cancel() {
-      this.router.navigate(['events'])
+      this.router.navigate(['assets'])
   }
   
 }
