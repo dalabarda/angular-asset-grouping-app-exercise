@@ -8,7 +8,9 @@ import { AssetService } from './asset.service';
   	<nav-bar></nav-bar>
     <br>
   	<h1>Hello {{ name }}</h1>
-      
+    
+    <!-- it looks like a component but it is only a directive -->
+    <!-- like element style selector -->
   	<router-outlet></router-outlet>
 
   	`,
