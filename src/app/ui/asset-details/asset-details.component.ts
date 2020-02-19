@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { AssetService } from './../shared/asset.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import { IAsset, IGroups, ISession } from './../shared/index';
 
@@ -11,16 +12,17 @@ import { IAsset, IGroups, ISession } from './../shared/index';
   styleUrls: ['./asset-details.component.css'],
  })
 
-export class AssetDetailsComponent implements OnInit {
+export class AssetDetailsComponent implements OnInit, OnDestroy {
  
 	private addMode:   boolean; // important to pass data from a child to parent component.
 	private asset:     IAsset;
 	private assetForm: FormGroup;
 	private group:     FormControl;
 	private selected:  IGroups;
-
+  paramsSubscription: Subscription; 
 // add here getters and setters
 
+  testId = 3;
 
 	constructor(
     private assetService: AssetService, 
@@ -37,14 +39,18 @@ export class AssetDetailsComponent implements OnInit {
 		});
 
     //
-    this.route.params.subscribe(
+    this.paramsSubscription = this.route.params.subscribe(
       (params: IAsset) => {
+        // gets the values from [routerLink]
         this.asset = this.assetService
-          .getAsset(+this.route.snapshot.params['id']);
+          .getAsset(+params['id']); // '+' sign is used to convert 'id' to a number
       });
 
 	}
 
+  ngOnDestroy() {
+    this.paramsSubscription.unsubscribe();
+  }
   /* this.route.params
    *    -> params here is an Observable (in this case, Route Observables), 
    *    which are features taht allows you to work with async tasks.
@@ -92,3 +98,7 @@ export class AssetDetailsComponent implements OnInit {
 		this.router.navigate(['/assets']);
 	}
 }
+
+
+
+// read more about Query Params and Fragments
