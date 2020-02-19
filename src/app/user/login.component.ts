@@ -13,7 +13,10 @@ export class LoginComponent {
 
     login(formValues: any) {
       this.authService.loginUser(formValues.userName, formValues.password)
-      this.router.navigate(['assets'])
+      this.router.navigate(['assets']);
+
+      // relativeTo tells angular what our currently active route
+      // this.router.navigate(['assets'], {relativeTo: this.route});
     }
 
     cancel() {
