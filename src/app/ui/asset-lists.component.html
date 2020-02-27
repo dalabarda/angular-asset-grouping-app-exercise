@@ -1,28 +1,26 @@
 <div *ngFor="let group of groupArr" class="header">
-  <h2 style="font-weight:bold">Assets from group {{ group }}: </h2>
-  <hr/>
-    <div class="container">
+	<h2 style="font-weight:bold">Assets from group {{ group }}: </h2>
+	<hr />
+	<div class="container">
 
-      <div 
-        *ngFor="let asset of assetsInGroups[group-1]" 
-        [routerLink]="['/assets', asset.id]"
-        [ngClass]="itemClass">
+		<div *ngFor="let asset of assetsInGroups[group-1]" 
+         [routerLink]="['/assets', asset.id]" 
+         [ngClass]="itemClass">
 
-          <asset-item 
-            [asset]="asset">
-          </asset-item>
-      
-      </div>
-    </div>
-    <br>
+			<asset-item [asset]="asset">
+			</asset-item>
+
+		</div>
+	</div>
+	<br>
 </div>
 
-<br>
-<!-- Grid Inline flex orr.... flexGrid?  -->
-<h2>another Grid example...</h2>
-<div class="wrapper grid2">
-  <div>A</div>
-  <div>B</div>
-  <div>C</div>
-  <div>D</div>  
-</div>
+	<br>
+	<!-- Grid Inline flex orr.... flexGrid?  -->
+	<h2>another Grid example...</h2>
+	<div class="wrapper grid2">
+		<div>A</div>
+		<div>B</div>
+		<div>C</div>
+		<div>D</div>
+	</div>
