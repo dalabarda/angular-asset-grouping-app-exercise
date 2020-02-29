@@ -15,7 +15,7 @@ export class LoginComponent {
       this.authService.loginUser(formValues.userName, formValues.password)
       this.router.navigate(['assets']);
 
-      // relativeTo tells angular what our currently active route
+      //// relativeTo tells angular our currently active route
       // this.router.navigate(['assets'], {relativeTo: this.route});
     }
 
