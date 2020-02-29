@@ -16,7 +16,10 @@ export const appRoutes:Routes = [
 	{path: 'assets', component: AssetsWrapperComponent, resolve: {events:EventListResolver} },
 	{path: 'assets/:id', component: AssetDetailsComponent, canActivate: [AssetRouteActivator ] }, // in this example I used a service to route to a 404 page. "event-route-activator.service" in event details page. (route guard procedure)
 	{path: 'events/session/new', component: MoveGroupComponent},
-	{path: '404', component: Error404Component },
+	
+  {path: '404', component: Error404Component },
+  {path: '**', redirectTo: '/404' }, // wildcard that catch url all it doesn't know.
+
 	{path: '', redirectTo: '/assets', pathMatch: 'full' }, // defining a default route
 	{path: 'user', loadChildren: 'app/user/user.module#UserModule'} // this is saying when a route starts with /user, load the UserModule from this path
 ]
