@@ -17,7 +17,9 @@ export const appRoutes:Routes = [
   // routing assets
 	{path: 'assets', component: AssetsWrapperComponent, resolve: {events:EventListResolver} },
 	{path: 'assets/new', component: CreateAssetComponent, 
-    canDeactivate: ['canDeactivateCreateAsset'] },
+    canActivate: [AuthGuard_2]
+    // canDeactivate: ['canDeactivateCreateAsset'] 
+    },
 	{path: 'assets/:id', component: AssetDetailsComponent, 
     canActivate: [AssetRouteActivator] },
 	{path: '', redirectTo: '/assets', pathMatch: 'full' }, // defining a default route
