@@ -9,6 +9,9 @@ import { Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { AuthService_2 } from './auth.service';
 
+
+// CanActivateChild is needed in case there are children components
+// it can be used to prevent visualising assets id when not logged in
 @Injectable()
 export class AuthGuard_2 implements CanActivate {
   
