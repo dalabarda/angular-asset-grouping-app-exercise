@@ -11,7 +11,7 @@ import {
 	MoveGroupComponent
 } from './ui/index';
 
-import { AuthGuard_2 } from '.auth-guard.service';
+import { AuthGuard_2 } from './auth-guard.service';
 
 export const appRoutes:Routes = [
 	{path: 'assets/new', component: CreateAssetComponent, canDeactivate: ['canDeactivateCreateAsset'] }, // in this example I used a function. In order to define this function, we just need to register this as a provider in our module.
