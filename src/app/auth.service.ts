@@ -1,6 +1,6 @@
 // this is just to fake a server!!!!
 export class AuthService_2 {
-  loggedIn = f; //TODO
+  loggedIn = true; //TODO it must be false
 
   // just to fake it will take a couple of time to finish
   isAuthenticated() {
