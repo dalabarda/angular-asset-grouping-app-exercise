@@ -19,16 +19,9 @@ import { ActivatedRoute } from '@angular/router'
 })
 
 export class MoveGroupComponent implements OnInit {
-	//we just need to create an output parameter for our parent component to bind to.
-	// emit a message back to our parent component when the user clicks save.
-	@Output() movingToNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>()
-	@Output() cancelChangeGroup = new EventEmitter() 
-	
-
-
-	// we have to declare a form asset here
-	@Input() private asset:IAsset;
-
+  
+  private _asset:IAsset;
+  private _arr: number;
 	private description: FormControl;
 	private g_id: FormControl;
   private groupArr: number[];
@@ -36,6 +29,16 @@ export class MoveGroupComponent implements OnInit {
 	private name: FormControl;
   private today = Date.now();
 	private updated: FormControl;
+	
+
+  // emit a message back to our parent component when the user clicks save.
+	@Output() movingToNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>()
+	@Output() cancelChangeGroup = new EventEmitter() 
+	
+  
+  @Input()
+  set asset(value: IAsset) { this._asset = value || {};}
+  get asset(): IAsset { return this._asset; }
 
 
 	constructor( private assetService: AssetService, 
@@ -55,7 +58,7 @@ export class MoveGroupComponent implements OnInit {
 											restrictedWords3(['dismiss', 'fired', 'quit', 'abandon', 'abdicate']) // this is imported from another file in shared folder, therefore it doesn't need the 'this' keyword
 											])
 
-    // TODO: this should be dynamic and gathered from a service
+    // TOFIX: TODO: this should be dynamic and gathered from a service
     this.groupArr = [1, 2, 3]; 
 		
 		// now we have to build a form out of these fields...
@@ -100,21 +103,23 @@ export class MoveGroupComponent implements OnInit {
 
 
 	saveSession(formValues: any) {
-		//  
+		// TOFIX: data is not consistent. data should be last modification date
 		let group:IGroups = {
 			id: +formValues.g_id, // casting into a number 1, 2 ou 3
 			name: formValues.name,
-			date: this.today, // this must be timestap. 
+			date: this.today, // this must be timestamped. 
 			description: formValues.description,
 		}
 
 		 this.movingToNewGroup.emit(group) // now we have an output parameter to bind to, now we just have to bind it to our event details page.
 	}
 
+  // TOFIX: on cancel button should collapse the component and reset the asset data
 	onCancelClick() {
 		this.cancelChangeGroup.emit(console.log('thissssssss')) // 
 	}
 
+  // TODO: nice to have but not important feature. reset to default values. 
 	onResetlClick() {
 		this.cancelChangeGroup.emit(console.log('thaaaaaaaaaaat')) // 
 	}

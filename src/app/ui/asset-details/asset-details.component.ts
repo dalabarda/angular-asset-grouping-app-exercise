@@ -77,10 +77,15 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
 		this.router.navigate(['/assets']);
 	}
 
+  onAssetChange() {
+
+  }
+
   onPassingAsset() {
     // shallow copy is ok here because there is no nested object
     // in case of deep copy, use JSON.stringify and JSON.parse
-    return {...this.assetService.getAsset(+this.route.snapshot.params['id'])};
+    return this.old_asset;
   }
 
+  private old_asset = {...this.assetService.getAsset(+this.route.snapshot.params['id'])};
 }
