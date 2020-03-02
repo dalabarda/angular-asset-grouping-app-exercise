@@ -6,7 +6,7 @@
     
     <!-- we need to wire up each of our form fields to their corresponding controls-->    
     <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty }">
-      <label for="sessionName">What the Asset Name:</label><br>
+      <label for="sessionName">Asset's Name:</label><br>
       <em *ngIf="name.invalid && name.dirty">Required</em>
       <!-- formControlName="name" -->
       <input [(ngModel)]="asset.name" formControlName="name" id="sessionName" type="text" class="form-control" placeholder="New Asset name..." />
