@@ -69,14 +69,17 @@ export class MoveGroupComponent implements OnInit {
 			description: this.description
 		})
 	 	
-	 	console.log("--->", this.asset)
+	 	// console.log("--->", this.asset)
 	}
 
-	// creating CUSTOM VALIDATORS: prevent certain words from being used in a field and then we'll 
-	// apply that validator to this abstract field. Validators are functions that returns null if the controll
-	// is valid or an error object if it's invalid. 
+	// regarding CUSTOM VALIDATORS: ----------------> remove this later
+  // prevent certain words from being used in a field and then we'll 
+	// apply that validator to this abstract field. 
+  // Validators are functions that returns null if the controll
 	
-	// this function returns an object. no matter what kind. the siplest way to implement restricted words
+
+	// this function returns an object. no matter what kind. 
+  // it is the simplest way to implement restricted words
 	private restrictedWords(control: FormControl): {[key: string]: any}
 		
 		{

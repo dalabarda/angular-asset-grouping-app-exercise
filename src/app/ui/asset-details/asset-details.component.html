@@ -29,26 +29,23 @@
 
       <hr>
       <div>
-      <a [routerLink]="['/assets', 7]">Rio de Janeiro (7)</a>
-    <div >
-    <div >
-      <h3 style="margin:10">Would you like to change this Asset?</h3>
-    </div>
-    
-    <div >
-      <a (click)="addGroup()" class="btn" >click here!</a>
-    </div>
-    
-    
-    <!-- only displaying it if we are in addMode--> 
-    <move-group *ngIf="addMode"
-      [asset]="onPassingAsset()" 
-      (assetChange)="onAssetChange($event)"
-      (movingToNewGroup)="onMovingAsset2NewGroup($event)" 
-      (cancelAddGroup)="cancelAddGroup()"
-    ></move-group>
+        <!-- <a [routerLink]="['/assets', 7]">Rio de Janeiro (7)</a> -->
 
-  </div>
+        <div >
+          <h3 style="margin:10">Would you like to change this Asset?</h3>
+        </div>
+        
+        <div >
+          <a (click)="addGroup()" class="btn" >click here!</a>
+        </div>
+        
+        <!-- only displaying it if we are in addMode--> 
+        <move-group *ngIf="addMode"
+          [asset]="onPassingAsset()" 
+          (assetChange)="onAssetChange($event)"
+          (movingToNewGroup)="onMovingAsset2NewGroup($event)" 
+          (cancelAddGroup)="cancelAddGroup()"
+        ></move-group>
 
       </div>
     </div>

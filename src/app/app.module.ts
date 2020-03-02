@@ -26,8 +26,8 @@ import { AppMenuItem }  from './nav/menu-item.component';
 import { Error404Component } from './errors/404.component';
 
 import { AuthService } from './user/auth.service';
-import { AuthService_2 } from './auth.service';
-import { AuthGuard_2 } from './auth-guard.service';
+import { AuthService_2 } from './auth.service'; // TOFIX: move the auth service into one file
+import { AuthGuard } from './auth-guard.service';
 
 
 import { DropdownDirective } from './shared/dropdown.directive';
@@ -62,7 +62,7 @@ import { CounterService } from './counter.service';
       GlobalService,
       AssetRouteActivator,
       EventListResolver,
-      AuthGuard_2,
+      AuthGuard,
       AuthService_2,
       AuthService ,
       {     // the mechanism to ask before an important action on the website.

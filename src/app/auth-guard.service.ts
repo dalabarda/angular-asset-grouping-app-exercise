@@ -13,7 +13,7 @@ import { AuthService_2 } from './auth.service';
 // CanActivateChild is needed in case there are children components
 // it can be used to prevent visualising assets id when not logged in
 @Injectable()
-export class AuthGuard_2 implements CanActivate {
+export class AuthGuard implements CanActivate {
   
   constructor(private authService: AuthService_2,
               private router: Router){}
