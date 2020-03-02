@@ -25,7 +25,7 @@ export class AssetService {
   // to update existing events
   updateAsset(asset: any) {
     let index = ASSETS.find(x => x.id = asset.group_id) // finding the existing event in the array and replace it for now
-    ASSETS[index] = asset
+    ASSETS[+index] = asset
       // so, now our create-session component emits a saveNewSession event, and we are binding to that in our event-details
       // when that event is emitted we call saveNewSession on our event-details component, which adds the session to the event and then updates it.
   }

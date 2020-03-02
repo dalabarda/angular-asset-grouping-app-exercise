@@ -42,23 +42,13 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
 
 	}
 
-
   ngOnDestroy() {
     this.paramsSubscription.unsubscribe();
-    // this.testObsSubscription.unsubscribe();
   }
-	
+
 
 	addGroup() {
 		this.addMode = !this.addMode // just going to toggle a flag on our component
-	}
-
-	closeGroup() {
-		this.addMode = false // just going to toggle a flag on our component
-	}
-
-	cancelAddSession() {
-		this.addMode = false
 	}
 
   //TODO revise this code. this should be refactored
@@ -77,9 +67,6 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
   	}
 
 	onMovingAsset2NewGroup(group:any) {
-		// this.asset.groups.map(s => s.id)); // assigning new ID
-		// group.id = nextId + 1
-		//this.asset.group.push(group)
 
 		this.asset.name = group.name;
 		this.asset.group_id = group.id;
@@ -90,9 +77,10 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
 		this.router.navigate(['/assets']);
 	}
 
+  onPassingAsset() {
+    // shallow copy is ok here because there is no nested object
+    // in case of deep copy, use JSON.stringify and JSON.parse
+    return {...this.assetService.getAsset(+this.route.snapshot.params['id'])};
+  }
 
 }
-
-
-
-// read more about Query Params and Fragments

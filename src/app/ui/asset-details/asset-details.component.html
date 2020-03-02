@@ -41,7 +41,8 @@
     
     
     <!-- only displaying it if we are in addMode--> 
-    <move-group *ngIf="addMode" 
+    <move-group *ngIf="addMode"
+      [asset]="onPassingAsset()" 
       (movingToNewGroup)="onMovingAsset2NewGroup($event)" 
       (cancelAddGroup)="cancelAddGroup()"
     ></move-group>

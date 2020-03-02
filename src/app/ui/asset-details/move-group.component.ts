@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core'
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms' // anular forms items we needed to create a reactive form.
 import { IGroups, IAsset, AssetService, restrictedWords3 } from '../shared/index'
 import { Router } from '@angular/router'
@@ -25,9 +25,9 @@ export class MoveGroupComponent implements OnInit {
 	@Output() cancelChangeGroup = new EventEmitter() 
 	
 
+
 	// we have to declare a form asset here
-	private asset:IAsset;
-  private asset_old: IAsset;
+	@Input() private asset:IAsset;
 
 	private description: FormControl;
 	private g_id: FormControl;
@@ -55,6 +55,7 @@ export class MoveGroupComponent implements OnInit {
 											restrictedWords3(['dismiss', 'fired', 'quit', 'abandon', 'abdicate']) // this is imported from another file in shared folder, therefore it doesn't need the 'this' keyword
 											])
 
+    // TODO: this should be dynamic and gathered from a service
     this.groupArr = [1, 2, 3]; 
 		
 		// now we have to build a form out of these fields...
@@ -65,9 +66,7 @@ export class MoveGroupComponent implements OnInit {
 			description: this.description
 		})
 	 	
-	 	this.asset = this.assetService.getAsset(+this.route.snapshot.params['id'])
-	 	
-	 	console.log("--> ", this.asset)
+	 	console.log("--->", this.asset)
 	}
 
 	// creating CUSTOM VALIDATORS: prevent certain words from being used in a field and then we'll 
