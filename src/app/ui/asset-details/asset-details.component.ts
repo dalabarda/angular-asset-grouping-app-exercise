@@ -3,7 +3,8 @@ import { AssetService } from './../shared/asset.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription, Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 import { IAsset, IGroups, ISession } from './../shared/index';
 
@@ -16,13 +17,11 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
  
 	private addMode:   boolean; // important to pass data from a child to parent component.
 	private asset:     IAsset;
-	private assetForm: FormGroup;
-	private group:     FormControl;
 	private selected:  IGroups;
-  paramsSubscription: Subscription; 
-// add here getters and setters
-
-  testId = 3;
+  private paramsSubscription: Subscription;
+  private testObsSubscription: Subscription;
+  
+  // add here getters and setters
 
 	constructor(
     private assetService: AssetService, 
@@ -32,14 +31,9 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.asset = this.assetService.getAsset(+this.route.snapshot.params['id'])
-		this.group = new FormControl('', Validators.required)
-
-		this.assetForm = new FormGroup({
-			group: this.group,
-		});
 
     //
-    this.paramsSubscription = this.route.params.subscribe(
+    this.paramsSubscription = this.route.params.subscribe( // params here is an Observable
       (params: IAsset) => {
         // gets the values from [routerLink]
         this.asset = this.assetService
@@ -48,15 +42,13 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
 
 	}
 
+
   ngOnDestroy() {
     this.paramsSubscription.unsubscribe();
+    // this.testObsSubscription.unsubscribe();
   }
-  /* this.route.params
-   *    -> params here is an Observable (in this case, Route Observables), 
-   *    which are features taht allows you to work with async tasks.
-  */
-
 	
+
 	addGroup() {
 		this.addMode = !this.addMode // just going to toggle a flag on our component
 	}
@@ -69,6 +61,7 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
 		this.addMode = false
 	}
 
+  //TODO revise this code. this should be refactored
 	@ViewChild('videoPlayer') videoplayer: any;
 	toggleVideo(event: any) {
     this.videoplayer.nativeElement.play();
@@ -83,10 +76,9 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
 	    return {}
   	}
 
-	saveNewGroup(group:any) {
+	onMovingAsset2NewGroup(group:any) {
 		// this.asset.groups.map(s => s.id)); // assigning new ID
 		// group.id = nextId + 1
-		console.log("Save new group: ", group, this)
 		//this.asset.group.push(group)
 
 		this.asset.name = group.name;
@@ -97,6 +89,8 @@ export class AssetDetailsComponent implements OnInit, OnDestroy {
 		this.assetService.updateAsset(this.asset);
 		this.router.navigate(['/assets']);
 	}
+
+
 }
 
 

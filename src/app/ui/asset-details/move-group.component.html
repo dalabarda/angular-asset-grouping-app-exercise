@@ -39,10 +39,10 @@
       <em *ngIf="description.invalid && description.dirty && description?.errors.maxLength">cannot exceed 400 characters</em> <!-- -->
       <em *ngIf="description.invalid && description.dirty && description?.errors.restrictedWords"> {{description.errors.restrictedWords}} is a forbiden word ;)</em>
       <!-- formControlName="description" -->
-      <textarea [(ngModel)]="asset.description"  formControlName="description" id="description" rows=3 class="form-control" placeholder="Do you have another description?..."></textarea>
+      <textarea [ngModel]="asset.description"  formControlName="description" id="description" rows=3 class="form-control" placeholder="Do you have another description?..."></textarea>
     </div><br>
-    <button type="submit" [disabled]="newGroupForm.invalid" class="btn btn-primary">Save</button>
-    <button type="reset" class="btn btn-primary">Reset</button>
-    <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+    <button type="submit" class="" [disabled]="newGroupForm.invalid" >Save</button>
+    <!-- <button type="reset"  class="" (click)="onResetlClick()" >Reset</button> -->
+    <button type="button" class="" (click)="onCancelClick()" >Cancel</button>
   </form>
 </div>

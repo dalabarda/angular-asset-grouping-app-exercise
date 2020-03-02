@@ -21,19 +21,21 @@ import { ActivatedRoute } from '@angular/router'
 export class MoveGroupComponent implements OnInit {
 	//we just need to create an output parameter for our parent component to bind to.
 	// emit a message back to our parent component when the user clicks save.
-	@Output() saveNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>()
+	@Output() movingToNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>()
 	@Output() cancelChangeGroup = new EventEmitter() 
 	
 
 	// we have to declare a form asset here
-	asset:IAsset
-	description: FormControl
-	g_id: FormControl
-  groupArr: number[];
-	newGroupForm: FormGroup
-	name: FormControl
-  today = Date.now();
-	updated: FormControl
+	private asset:IAsset;
+  private asset_old: IAsset;
+
+	private description: FormControl;
+	private g_id: FormControl;
+  private groupArr: number[];
+	private newGroupForm: FormGroup;
+	private name: FormControl;
+  private today = Date.now();
+	private updated: FormControl;
 
 
 	constructor( private assetService: AssetService, 
@@ -99,8 +101,6 @@ export class MoveGroupComponent implements OnInit {
 
 
 	saveSession(formValues: any) {
-		// console.log(formValues)
-		
 		//  
 		let group:IGroups = {
 			id: +formValues.g_id, // casting into a number 1, 2 ou 3
@@ -109,11 +109,15 @@ export class MoveGroupComponent implements OnInit {
 			description: formValues.description,
 		}
 
-		 this.saveNewGroup.emit(group) // now we have an output parameter to bind to, now we just have to bind it to our event details page.
+		 this.movingToNewGroup.emit(group) // now we have an output parameter to bind to, now we just have to bind it to our event details page.
 	}
 
-	cancel() {
-		this.cancelChangeGroup.emit() // 
+	onCancelClick() {
+		this.cancelChangeGroup.emit(console.log('thissssssss')) // 
+	}
+
+	onResetlClick() {
+		this.cancelChangeGroup.emit(console.log('thaaaaaaaaaaat')) // 
 	}
 
 } 

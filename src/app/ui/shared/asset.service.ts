@@ -6,6 +6,8 @@ import { IEvent, IAsset, IGroups } from './assets.model';
 @Injectable()
 export class AssetService {
 
+  oldAsset = new Subject<IAsset>();
+
   getAssets() {
     return ASSETS;
   }

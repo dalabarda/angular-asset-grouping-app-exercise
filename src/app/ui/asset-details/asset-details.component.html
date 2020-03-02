@@ -21,7 +21,7 @@
     <div class="col">
       <div><strong>Date:</strong> {{asset?.date | date }}</div>
       <div><strong>Last Modification Date:</strong> {{ asset.date | date }}</div>
-      <div><strong>Type:</strong> {{asset?.type}}</div>
+      <div><strong>Type:</strong> {{asset?.suffix}}</div>
       <div><strong>Size:</strong> {{asset?.size}}</div>
       <div><strong>Group:</strong> {{asset.group_id}}</div>
       <br>
@@ -41,7 +41,10 @@
     
     
     <!-- only displaying it if we are in addMode--> 
-    <move-group *ngIf="addMode" (saveNewGroup)="saveNewGroup($event)" (cancelAddGroup)="cancelAddGroup()"></move-group>
+    <move-group *ngIf="addMode" 
+      (movingToNewGroup)="onMovingAsset2NewGroup($event)" 
+      (cancelAddGroup)="cancelAddGroup()"
+    ></move-group>
 
   </div>
 
