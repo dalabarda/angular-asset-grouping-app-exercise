@@ -4,8 +4,6 @@ import { Router } from '@angular/router'
 import { AssetService, IAsset } from './../shared/index'
 
 
-// REVISE THIS CODE: IT HAS 4 YEARS OLD
-
 @Component({
 	templateUrl: './asset-detail-create.component.html',
 	styleUrls: ['./asset-detail-create.component.css'],
@@ -21,6 +19,7 @@ export class AssetDetailCreateComponent {
 
 	}
 	
+  // NOTE: OLD CODE - but I am going to keep it for a while...
   // // (ngSubmit)="saveAsset(newAssetForm.value)"
 	// saveAsset(formValues: IAsset) {
 	// 	console.log("-- Form Values: ", formValues)
@@ -49,7 +48,7 @@ export class AssetDetailCreateComponent {
   }
 
 
-  // TODO:
+  // TODO: this should move to '/assets'
   private fetchPosts() {
     this.http
       .get('')
