@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
-import { AssetService, IAsset } from './shared/index'
+import { AssetService, IAsset } from './../shared/index'
 
 
 // REVISE THIS CODE: IT HAS 4 YEARS OLD
@@ -164,7 +164,7 @@ import { AssetService, IAsset } from './shared/index'
   `]
 })
 
-export class CreateAssetComponent {
+export class AssetCreateComponent {
 	today: number = Date.now();
 	isDirty: boolean = true
 	constructor(private router: Router, private assetService:AssetService) { 

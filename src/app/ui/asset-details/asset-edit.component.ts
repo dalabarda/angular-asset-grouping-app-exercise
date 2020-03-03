@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router'
 
 @Component({
 	selector: 'move-group',
-	templateUrl: './move-group.component.html',
+	templateUrl: './asset-edit.component.html',
 	styles: [`
     em {float:right; color:#E05C65; padding-left:10px;}
     .error input, .error select, .error textarea {background-color:#E3C3C5;}

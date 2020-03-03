@@ -5,7 +5,7 @@ import { Error404Component } from './errors/404.component';
 import {
 	AssetsWrapperComponent,
 	AssetDetailsComponent,
-	CreateAssetComponent,
+	AssetCreateComponent,
 	AssetRouteActivator,
 	EventListResolver,
 	MoveGroupComponent
@@ -16,8 +16,8 @@ import { AuthGuard } from './auth-guard.service';
 export const appRoutes:Routes = [
   // routing assets
 	{path: 'assets', component: AssetsWrapperComponent, resolve: {events:EventListResolver} },
-	{path: 'assets/new', component: CreateAssetComponent, 
-    canActivate: [AuthGuard]
+	{path: 'assets/new', component: AssetCreateComponent, 
+    // canActivate: [AuthGuard]
     // canDeactivate: ['canDeactivateCreateAsset'] 
     },
 	{path: 'assets/:id', component: AssetDetailsComponent, 
