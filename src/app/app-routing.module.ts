@@ -4,7 +4,7 @@ import { Error404Component } from './errors/404.component';
 
 import {
 	AssetsWrapperComponent,
-	AssetDetailsComponent,
+	AssetDetailComponent,
 	AssetDetailCreateComponent,
 	AssetRouteActivator,
 	EventListResolver,
@@ -20,7 +20,7 @@ export const appRoutes:Routes = [
     // canActivate: [AuthGuard]
     // canDeactivate: ['canDeactivateCreateAsset'] 
     },
-	{path: 'assets/:id', component: AssetDetailsComponent, 
+	{path: 'assets/:id', component: AssetDetailComponent, 
     canActivate: [AssetRouteActivator] },
 	{path: '', redirectTo: '/assets', pathMatch: 'full' }, // defining a default route
 

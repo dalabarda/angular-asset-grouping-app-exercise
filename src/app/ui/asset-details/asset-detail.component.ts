@@ -9,11 +9,11 @@ import { map, filter } from 'rxjs/operators';
 import { IAsset, IGroups, ISession } from './../shared/index';
 
 @Component({
-	templateUrl: './asset-details.component.html',
-  styleUrls: ['./asset-details.component.css'],
+	templateUrl: './asset-detail.component.html',
+  styleUrls: ['./asset-detail.component.css'],
  })
 
-export class AssetDetailsComponent implements OnInit, OnDestroy {
+export class AssetDetailComponent implements OnInit, OnDestroy {
  
 	private addMode:   boolean; // important to pass data from a child to parent component.
 	private asset:     IAsset;
