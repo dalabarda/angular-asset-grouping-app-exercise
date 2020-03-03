@@ -69,7 +69,7 @@ export class MoveGroupComponent implements OnInit {
 			description: this.description
 		})
 	 	
-	 	// console.log("--->", this.asset)
+	 	console.log("--->", this.asset)
 	}
 
 	// regarding CUSTOM VALIDATORS: ----------------> remove this later

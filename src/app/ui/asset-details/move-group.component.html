@@ -2,23 +2,28 @@
   <h3>... Then add here some information!</h3><br>
 </div>
 <div class="">
-  <form [formGroup]="newGroupForm" (ngSubmit)="saveSession(newGroupForm.value)" autocomplete="off">
+  <form [formGroup]="newGroupForm" 
+        (ngSubmit)="saveSession(newGroupForm.value)" 
+        autocomplete="off">
     
     <!-- we need to wire up each of our form fields to their corresponding controls-->    
-    <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty }">
+    <div class="form-group" [ngClass]="{'error': name.invalid && name.touched }">
       <label for="sessionName">Asset's Name:</label><br>
-      <em *ngIf="name.invalid && name.dirty">Required</em>
+      <em *ngIf="(name.invalid && name.touched || name.invalid && name.dirty)">Required</em>
       <!-- formControlName="name" -->
       <input [(ngModel)]="asset.name" formControlName="name" id="sessionName" type="text" class="form-control" placeholder="New Asset name..." />
     </div>
 
-    <!--  -->
+    <!-- Group input -->
     <div class="form-group"><br>
       <label for="g_id">Assigned group:</label><br>
-      <em *ngIf="g_id.invalid && g_id.dirty">Required</em> <!-- -->
-      <!-- Taking the Name -->
-      <select formControlName="g_id" name="g_id" class="form-control" type="number">
-        <option value="">select the new group...</option>
+      <em *ngIf="g_id.invalid && g_id.dirty">Required</em>
+      <!--  -->
+      <select formControlName="g_id"
+              [ngModel]="asset.group_id"
+              name="g_id" 
+              class="form-control" 
+              type="number">
         <option 
           *ngFor= "let arr of groupArr" 
           [value]="arr"> {{ arr }}
@@ -26,14 +31,14 @@
       </select>
     </div>
 
-    <!-- Taking the date -->
+    <!-- Current date label -->
     <div class="form-group"><br>
       <label for="updated">Today is (Modification date): 
         <strong>{{ today | date }}</strong></label><br>
     </div><br>
     
 
-    <div class="form-group" [ngClass]="{'error': description.invalid && description.dirty }"> <!-- red background style-->
+    <div class="form-group" [ngClass]="{'error': description.invalid && description.touched }"> <!-- red background style-->
       <label for="description">Description:</label><br>
       <em *ngIf="description.invalid && description.dirty && description?.errors.required">Required</em> <!-- -->
       <em *ngIf="description.invalid && description.dirty && description?.errors.maxLength">cannot exceed 400 characters</em> <!-- -->
