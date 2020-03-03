@@ -35,8 +35,8 @@
           <h3 style="margin:10">Would you like to change this Asset?</h3>
         </div>
         
-        <div >
-          <a (click)="addGroup()" class="btn" >click here!</a>
+        <div *ngIf="!addMode">
+          <a (click)="onToggleEditComponent()" class="btn" >click here!</a>
         </div>
         
         <!-- only displaying it if we are in addMode--> 

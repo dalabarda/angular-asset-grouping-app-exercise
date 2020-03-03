@@ -71,10 +71,10 @@ export class AppMenuItem  {
           onClick: () => this.addNewAsset(),
         },
         {
-          getName: "Insert a Group_TODO",
+          getName: "All Groups",
           isEnabled: true, // this.menuToDo() == '1' ? false : false
           isVisible: true,
-          onClick: () => this.menuToDo(),
+          onClick: () => this.showAllGroups(),
           subList: 
           [
               {
@@ -143,6 +143,10 @@ export class AppMenuItem  {
 
   showAllAssets():string {
     return '/assets';
+  }
+
+  showAllGroups():string {
+    return '/gr'; // TODO: 
   }
 
   addNewAsset():string {

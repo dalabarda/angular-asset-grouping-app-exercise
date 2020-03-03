@@ -14,12 +14,11 @@ import { IAsset, IGroups } from './../shared/index';
 
 export class AssetDetailComponent implements OnInit, OnDestroy {
  
-	private addMode:   boolean; // important to pass data from a child to parent component.
-	private asset:     IAsset;
+	private editToggleComp:     boolean;
+	private asset:              IAsset;
   private paramsSubscription: Subscription;
-  private testObsSubscription: Subscription;
   private old_asset = {...this.assetService.getAsset(+this.route.snapshot.params['id'])};
-  // add here getters and setters
+  
 
 	constructor(
     private assetService: AssetService, 
@@ -46,8 +45,8 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
   }
 
 
-	addGroup() {
-		this.addMode = !this.addMode // just going to toggle a flag on our component
+	onToggleEditComponent() {
+		this.editToggleComp = !this.editToggleComp;
 	}
 
   //TODO revise this code. this should be refactored
