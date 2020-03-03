@@ -20,7 +20,7 @@
       <em *ngIf="g_id.invalid && g_id.dirty">Required</em>
       <!--  -->
       <select formControlName="g_id"
-              [ngModel]="asset.group_id"
+              [(ngModel)]="asset.group_id"
               name="g_id" 
               class="form-control" 
               type="number">

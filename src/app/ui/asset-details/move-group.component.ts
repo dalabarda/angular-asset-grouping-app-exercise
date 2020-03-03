@@ -24,7 +24,7 @@ export class MoveGroupComponent implements OnInit {
   private _arr: number;
 	private description: FormControl;
 	private g_id: FormControl;
-  private groupArr: number[];
+  private groupArr: number[]; // array of group ids data
 	private newGroupForm: FormGroup;
 	private name: FormControl;
   private today = Date.now();
@@ -58,8 +58,11 @@ export class MoveGroupComponent implements OnInit {
 											restrictedWords3(['dismiss', 'fired', 'quit', 'abandon', 'abdicate']) // this is imported from another file in shared folder, therefore it doesn't need the 'this' keyword
 											])
 
-    // TOFIX: TODO: this should be dynamic and gathered from a service
-    this.groupArr = [1, 2, 3]; 
+    // groups gathered from a service
+    this.groupArr = [];
+    this.assetService.getGroups().forEach((item: IGroups) => {
+      this.groupArr.push(item.id);
+    }) //[1, 2, 3]; 
 		
 		// now we have to build a form out of these fields...
 	 	this.newGroupForm = new FormGroup({
@@ -69,7 +72,7 @@ export class MoveGroupComponent implements OnInit {
 			description: this.description
 		})
 	 	
-	 	console.log("--->", this.asset)
+	 	// console.log("--->", this.groupArr)
 	}
 
 	// regarding CUSTOM VALIDATORS: ----------------> remove this later
