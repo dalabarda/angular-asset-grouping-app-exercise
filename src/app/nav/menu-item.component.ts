@@ -138,7 +138,7 @@ export class AppMenuItem  {
 
     // getItemText(item: MenuItem): string
     // {
-    //     return ;
+    //     return ; 
     // }
 
   showAllAssets():string {
@@ -146,7 +146,7 @@ export class AppMenuItem  {
   }
 
   showAllGroups():string {
-    return '/gr'; // TODO: 
+    return '/groups'; // TODO: 
   }
 
   addNewAsset():string {
