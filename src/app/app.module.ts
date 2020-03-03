@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // 
 import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import {
     AssetsWrapperComponent,
@@ -39,6 +40,7 @@ import { CounterService } from './counter.service';
       FormsModule,        // template-based forms (diving deeper)
       ReactiveFormsModule, // template-based forms (diving deeper)
       AppRoutingModule,
+      HttpClientModule,
     ],
   declarations: [ 
   		AppComponent,

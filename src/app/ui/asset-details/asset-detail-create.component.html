@@ -5,7 +5,10 @@
 <div class="col-md-62">
 <hr>
   <!-- we already created a template variable for this form and have wired up the ngSubmit asset to this save asset method -->
-  <form #newAssetForm="ngForm" (ngSubmit)="saveAsset(newAssetForm.value)" autocomplete="off" novalidate>
+  <form #newAssetForm="ngForm" 
+        (ngSubmit)="onCreatePost(newAssetForm.value)"
+        autocomplete="off" 
+        novalidate>
     
 
     <!--  [ngClass] for the error styling message -->
@@ -61,10 +64,21 @@
     
 
 
+    <br>
 
-
-    <button [disabled]="newAssetForm.invalid" type="submit" class="btn-primary2" >Save</button>
-    <button type="button" [disabled]="newAssetForm.controls.invalid" class="btn-default2" (click)="cancel()">Cancel</button>
+    <button
+      [disabled]="newAssetForm.invalid" 
+      type="submit" 
+      class="btn-primary2" 
+      > Save
+    </button>
+    <button 
+      type="button" 
+      [disabled]="newAssetForm.controls.invalid" 
+      class="btn-default2" 
+      (click)="cancel()"
+      > Cancel
+    </button>
   </form>
   <br>
   <hr>

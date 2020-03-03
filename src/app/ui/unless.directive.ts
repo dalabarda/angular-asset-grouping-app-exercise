@@ -1,4 +1,5 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+// TODO: this directive is not used. revise it later. could be useful though
 
 @Directive({
   selector: '[appUnless]'

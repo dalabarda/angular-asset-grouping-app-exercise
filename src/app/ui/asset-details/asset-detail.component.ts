@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { AssetService } from './../shared/asset.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
-import { IAsset, IGroups, ISession } from './../shared/index';
+import { IAsset, IGroups } from './../shared/index';
 
 @Component({
 	templateUrl: './asset-detail.component.html',
@@ -17,16 +16,16 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
  
 	private addMode:   boolean; // important to pass data from a child to parent component.
 	private asset:     IAsset;
-	private selected:  IGroups;
   private paramsSubscription: Subscription;
   private testObsSubscription: Subscription;
-  
+  private old_asset = {...this.assetService.getAsset(+this.route.snapshot.params['id'])};
   // add here getters and setters
 
 	constructor(
     private assetService: AssetService, 
     private route:        ActivatedRoute, 
-    private router:       Router){}
+    private router:       Router)
+  {}
 
 
 	ngOnInit() {
@@ -77,15 +76,10 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
 		this.router.navigate(['/assets']);
 	}
 
-  onAssetChange() {
-
-  }
-
   onPassingAsset() {
     // shallow copy is ok here because there is no nested object
     // in case of deep copy, use JSON.stringify and JSON.parse
     return this.old_asset;
   }
 
-  private old_asset = {...this.assetService.getAsset(+this.route.snapshot.params['id'])};
 }

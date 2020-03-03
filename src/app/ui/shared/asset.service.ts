@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-import { IEvent, IAsset, IGroups } from './assets.model';
+import { IAsset, IGroups } from './assets.model';
 
 
 @Injectable()
 export class AssetService {
 
-  oldAsset = new Subject<IAsset>();
+  // oldAsset = new Subject<IAsset>();
 
   getAssets() {
     return ASSETS;
@@ -24,10 +24,10 @@ export class AssetService {
 
   // to update existing events
   updateAsset(asset: any) {
-    let index = ASSETS.find(x => x.id = asset.group_id) // finding the existing event in the array and replace it for now
+    // finding the existing event in the array and replace it for now
+    let index = ASSETS.find(x => x.id = asset.group_id)
+    
     ASSETS[+index] = asset
-      // so, now our create-session component emits a saveNewSession event, and we are binding to that in our event-details
-      // when that event is emitted we call saveNewSession on our event-details component, which adds the session to the event and then updates it.
   }
 
 
