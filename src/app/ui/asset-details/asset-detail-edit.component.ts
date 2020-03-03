@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router'
 
 @Component({
 	selector: 'move-group',
-	templateUrl: './asset-edit.component.html',
+	templateUrl: './asset-detail-edit.component.html',
 	styles: [`
     em {float:right; color:#E05C65; padding-left:10px;}
     .error input, .error select, .error textarea {background-color:#E3C3C5;}
@@ -18,7 +18,7 @@ import { ActivatedRoute } from '@angular/router'
   `]
 })
 
-export class MoveGroupComponent implements OnInit {
+export class AssetDetailEditComponent implements OnInit {
   
   private _asset:IAsset;
   private _arr: number;

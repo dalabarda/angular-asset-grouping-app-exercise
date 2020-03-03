@@ -6,7 +6,7 @@ import { AssetService, IAsset } from './../shared/index'
 // REVISE THIS CODE: IT HAS 4 YEARS OLD
 
 @Component({
-	templateUrl: './create-asset.component.html',
+	templateUrl: './asset-detail-create.component.html',
 	styles: [`
     em {float:right; color:#E05C65; padding-left:10px;}
     .error input {background-color:#E3C3C5;}
@@ -164,7 +164,7 @@ import { AssetService, IAsset } from './../shared/index'
   `]
 })
 
-export class AssetCreateComponent {
+export class AssetDetailCreateComponent {
 	today: number = Date.now();
 	isDirty: boolean = true
 	constructor(private router: Router, private assetService:AssetService) { 

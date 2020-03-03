@@ -10,11 +10,11 @@ import {
     GlobalService,
     AssetItemComponent,
     AssetDetailsComponent,
-    AssetCreateComponent,
+    AssetDetailCreateComponent,
     AssetListsComponent,
     AssetRouteActivator,
     EventListResolver,
-    MoveGroupComponent,
+    AssetDetailEditComponent,
     DurationPipe,
     TruncatePipe
 } from './ui/index';
@@ -49,9 +49,9 @@ import { CounterService } from './counter.service';
       AssetDetailsComponent,
       NavBarComponent,
       AssetListsComponent,
-      AssetCreateComponent, 
+      AssetDetailCreateComponent, 
       Error404Component,
-      MoveGroupComponent,
+      AssetDetailEditComponent,
       DurationPipe,
       TruncatePipe,
       DropdownDirective
@@ -77,7 +77,7 @@ import { CounterService } from './counter.service';
 
 export class AppModule { }
 
-function checkDirtyState(component: CreateAssetComponent) {
+function checkDirtyState(component: AssetDetailCreateComponent) {
   if (component.isDirty)
       return window.confirm('You have not saved this file, do you really want to cancel?')
   return true
