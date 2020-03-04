@@ -7,7 +7,7 @@ import {
 
 import { Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
-import { AuthService } from './..user/auth.service';
+import { AuthService } from './user/auth.service';
 
 
 // CanActivateChild is needed in case there are children components
