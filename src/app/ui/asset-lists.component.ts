@@ -35,9 +35,11 @@ export class AssetListsComponent {
               ){  
     this.groupArr = [];
     this.assetsInGroups = [];
-    this.testTest = [];
 
-    this.fetchAssetPosts();
+
+    // this.fetchAssetPosts().forEach(item => { // ERROR -> FIX THIS
+    //   console.log(item);
+    // });
   }
 
   ngOnInit() {
@@ -46,8 +48,7 @@ export class AssetListsComponent {
     this.groups = this.assetService.getGroups();
     
 
-
-    console.log(this.testTest);
+  console.log(this.testTest)
 
 
     // array of arrays ordered by group.group_id
@@ -66,12 +67,13 @@ export class AssetListsComponent {
 
     this.groups.forEach(group => this.groupArr.push(group.id) )
      
-    this.globalService.currentMessage.subscribe(message => this.itemClass = message)
+    this.globalService.currentMessage.subscribe((message: any) => this.itemClass = message)
   
   }
 
   private fetchAssetPosts() {
-    this.assetService.fetchAssetsFromDb().subscribe();
+    this.assetService.fetchAssetsFromDb()
+      .subscribe();
   }
 
 }

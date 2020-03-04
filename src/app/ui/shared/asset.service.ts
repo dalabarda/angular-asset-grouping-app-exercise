@@ -73,8 +73,8 @@ export class AssetService {
     //
   }
 
-  deleteAsset() {
-    this.http.delete()
+  deleteAsset() { // TOFIX: now it delete all posts
+    return this.http.delete(this.url + 'Groups'+ ".json");
   }
 
   deleteGroup() {
@@ -114,17 +114,18 @@ export class AssetService {
 
     return assetsDataUrl
     .pipe(
-      map((responseData: IAsset) => {
+      map((res: IAsset) => {
         const assetsArr = [];
-        for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)){
-            assetsArr.push({...responseData[key], id: key});
+        for (const key in res) {
+          if (res.hasOwnProperty(key)){
+            assetsArr.push({...res[key], id: key});
           }
         }
-        return assetsArr // > [Object, Object, Object...]
-          .forEach(item =>{
-            console.log(item.group_id);
-        });
+        // assetsArr // > [Object, Object, Object...]
+        //   .forEach(item =>{
+        //     arr.push(item);
+        // });
+      return console.log(assetsArr);
     }))
     // .subscribe((assets: IAsset) => {
     //   // console.log(posts);
