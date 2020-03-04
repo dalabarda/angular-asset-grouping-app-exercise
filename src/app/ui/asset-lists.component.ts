@@ -17,6 +17,8 @@ export class AssetListsComponent {
   private groups : IGroups[]
   private assetsInGroups: Array<T>;
 
+  private testTest: any;
+
   groupArr: any[];
   
   // switsch the class based on grid or list
@@ -33,13 +35,20 @@ export class AssetListsComponent {
               ){  
     this.groupArr = [];
     this.assetsInGroups = [];
+    this.testTest = [];
+
+    this.fetchAssetPosts();
   }
 
   ngOnInit() {
     this.assets = this.assetService.getAssets();
     this.loadedAssets = []; // TODO:
     this.groups = this.assetService.getGroups();
-    this.fetchAssetPosts();
+    
+
+
+    console.log(this.testTest);
+
 
     // array of arrays ordered by group.group_id
     this.groups.forEach(group => 
@@ -62,6 +71,7 @@ export class AssetListsComponent {
   }
 
   private fetchAssetPosts() {
-    const assetList = this.assetService.fetchAssetsFromDb();
+    this.assetService.fetchAssetsFromDb().subscribe();
   }
+
 }
