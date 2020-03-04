@@ -7,7 +7,7 @@ import {
 
 import { Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
-import { AuthService_2 } from './auth.service';
+import { AuthService } from './..user/auth.service';
 
 
 // CanActivateChild is needed in case there are children components
@@ -15,7 +15,7 @@ import { AuthService_2 } from './auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
   
-  constructor(private authService: AuthService_2,
+  constructor(private authService: AuthService,
               private router: Router){}
 
 

@@ -1,6 +1,24 @@
 import { Injectable } from '@angular/core';
-import { CounterService } from './counter.service';
 
+
+// TODO: Unused service. 
+
+
+// TODO: remmove tis later, this service is not in use
+class CounterService {
+  activeToInactiveCounter = 0;
+  inactiveToActiveCounter = 0;
+
+  incrementActiveToInactive() {
+    this.activeToInactiveCounter++;
+    console.log('Active to Inactive: ' + this.activeToInactiveCounter);
+  }
+
+  incrementInActiveToActive() {
+    this.inactiveToActiveCounter++;
+    console.log('Inactive to Active: ' + this.inactiveToActiveCounter);
+  }
+}
 
 @Injectable()
 export class AssetService {
@@ -41,3 +59,6 @@ export class AssetService {
 export class Ingredient {
   constructor(public name: string, public amount: number) {}
 }
+
+
+

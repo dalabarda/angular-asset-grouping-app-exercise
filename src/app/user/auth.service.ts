@@ -23,4 +23,24 @@ export class AuthService {
     this.currentUser.firstName = firstName
     this.currentUser.lastName = lastName
   }
+
+    loggedIn = false; //TODO
+
+  // add delay: just to fake a couple of time to finish, like async connection
+  isAuthenticatedFake() {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.loggedIn);
+      }, 800);
+    });
+    return promise;
+  }
+
+  login() {
+    this.loggedIn = true;
+  }
+
+  logout() {
+    this.loggedIn = false;
+  }
 }
