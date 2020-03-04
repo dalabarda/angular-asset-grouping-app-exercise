@@ -35,25 +35,7 @@ export class AssetDetailCreateComponent {
 	}
 
   onCreatePost(postData: IAsset) {
-    // Send Http request 
-    this.http.post(
-      'https://asset-grouping-app-exercise.firebaseio.com/Assets'+ ".json", 
-      {...postData})
-      .subscribe(responseData => {
-        console.log(responseData);
-      });
-    
-    this.isDirty = false
-		this.router.navigate(['/assets'])
+    this.assetService.createAndStoreAsset(postData, '/assets');
   }
 
-
-  // TODO: this should move to '/assets'
-  private fetchPosts() {
-    this.http
-      .get('')
-      .subscribe(posts => {
-      console.log(posts);
-    });
-  }
 }

@@ -35,12 +35,13 @@
           <h3 style="margin:10">Would you like to change this Asset?</h3>
         </div>
         
-        <div *ngIf="!addMode">
+        <div *ngIf="!editToggleComp">
           <a (click)="onToggleEditComponent()" class="btn" >click here!</a>
         </div>
         
-        <!-- only displaying it if we are in addMode--> 
-        <move-group *ngIf="addMode"
+        <!-- only displaying if we click the button--> 
+        <move-group 
+          *ngIf="editToggleComp"
           [asset]="onPassingAsset()" 
           (assetChange)="onAssetChange($event)"
           (movingToNewGroup)="onMovingAsset2NewGroup($event)" 

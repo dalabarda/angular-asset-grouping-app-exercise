@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core'
 import { AssetService } from './shared/asset.service'
 import { GlobalService } from './shared/global.service'
 import { IAsset, IGroups } from './shared/index'
-
-
+import { HttpClient } from '@angular/common/http'
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'asset-list',
@@ -13,6 +13,7 @@ import { IAsset, IGroups } from './shared/index'
 
 export class AssetListsComponent {
   private assets : IAsset[]
+  private loadedAssets : IAsset[]
   private groups : IGroups[]
   private assetsInGroups: Array<T>;
 
@@ -27,7 +28,8 @@ export class AssetListsComponent {
 // (click)="handleThumbnailClick(asset.name)"
 
   constructor(private assetService: AssetService,
-              private globalService: GlobalService
+              private globalService: GlobalService,
+              private http: HttpClient,
               ){  
     this.groupArr = [];
     this.assetsInGroups = [];
@@ -35,8 +37,9 @@ export class AssetListsComponent {
 
   ngOnInit() {
     this.assets = this.assetService.getAssets();
+    this.loadedAssets = []; // TODO:
     this.groups = this.assetService.getGroups();
-    
+    this.fetchAssetPosts();
 
     // array of arrays ordered by group.group_id
     this.groups.forEach(group => 
@@ -53,33 +56,12 @@ export class AssetListsComponent {
     // this.events = this.route.snapshot.data['events'] // 
 
     this.groups.forEach(group => this.groupArr.push(group.id) )
-
-      
+     
     this.globalService.currentMessage.subscribe(message => this.itemClass = message)
   
   }
 
-
+  private fetchAssetPosts() {
+    const assetList = this.assetService.fetchAssetsFromDb();
+  }
 }
-
-
-// https://scotch.io/tutorials/responsive-equal-height-with-angular-directive
-        // <div *ngIf="itemClass == 'grid' 
-        //           && (index) % 3 == 0 
-        //           && (index) != 0"
-        //           >hjghghhj
-        //       </div>
-
-
-
-
-
-// <div-line type="" >
-//  
-// 
-// 
-// 
-// 
-// 
-// 
-// 

@@ -34,7 +34,7 @@ export class GroupDetailComponent implements OnInit {
       (params: IGroups) => {
         // gets the values from [routerLink]
         this.groups = this.assetService
-          .getAsset(+params['id']); // '+' sign is used to convert 'id' to a number
+          .getGroups(+params['id']); // '+' sign is used to convert 'id' to a number
       });
 
 	}

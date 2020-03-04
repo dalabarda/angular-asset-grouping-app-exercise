@@ -121,7 +121,7 @@ export class AssetDetailEditComponent implements OnInit {
 
   // TOFIX: on cancel button should collapse the component and reset the asset data
 	onCancelClick() {
-		this.cancelChangeGroup.emit(console.log('thissssssss')) // 
+		this.cancelChangeGroup.emit(console.log('TODO: emit back false to editToggleComp in parent component')) // 
 	}
 
   // TODO: nice to have but not important feature. reset to default values. 
