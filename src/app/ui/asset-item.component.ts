@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { IAsset, TruncatePipe } from './shared/index'
+import { IAsset } from './index'
 import { GlobalService } from './../shared/global.service'
 
 

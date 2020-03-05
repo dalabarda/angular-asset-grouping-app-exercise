@@ -5,7 +5,7 @@ import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router'
 
 import { AssetService } from './../asset.service';
-import { IAsset, IGroups } from './../shared/assets.model';
+import { IAsset, IGroups } from './../index';
 
 @Component({
 	selector: 'move-group',

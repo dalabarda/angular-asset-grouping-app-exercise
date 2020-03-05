@@ -11,3 +11,4 @@ export * from './asset-details/index';
 
 
 export * from './asset.service';
+export * from './assets.model';
