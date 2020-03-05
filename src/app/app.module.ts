@@ -17,10 +17,9 @@ import {
     EventListResolver,
     AssetDetailEditComponent,
     DurationPipe,
-    TruncatePipe
 } from './ui/index';
 
-import { GlobalService } from './shared/index';
+import { GlobalService, TruncatePipe } from './shared/index';
 
 import { NavBarComponent }  from './nav/navbar.component';
 import { AppMenuDropdown }  from './nav/dropdown.component';
