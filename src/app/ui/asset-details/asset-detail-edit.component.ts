@@ -116,10 +116,13 @@ export class AssetDetailEditComponent implements OnInit {
 			description: formValues.description,
 		}
 
-		 this.movingToNewGroup.emit(group) // now we have an output parameter to bind to, now we just have to bind it to our event details page.
+     // now we have an output parameter to bind to, 
+     // now we just have to bind it to our event details page.
+		 this.movingToNewGroup.emit(group) 
 	}
-  
-  // on cancel button collapses the edit component. NO reset of form values are applied
+
+  // On cancel button collapses the edit component. 
+  // NO reset of form values are applied.
 	onCancelClick() {
 		this.cancelChangeGroup.emit();
 	}

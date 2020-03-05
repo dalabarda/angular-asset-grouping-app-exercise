@@ -53,7 +53,7 @@ export class AssetService {
 //////////////////////////////////////////////////////////////////////////////
 // BELOW IS THE NEW WAY OF ONLY USING HTTP REQUEST - UNDER CONSTRUCTION
 //////////////////////////////////////////////////////////////////////////////
-  const url = 'https://asset-grouping-app-exercise.firebaseio.com/'
+  url = 'https://asset-grouping-app-exercise.firebaseio.com/'
 
 
   createAsset(postData: IAsset, routeUrl: string) {
@@ -70,7 +70,7 @@ export class AssetService {
   }
 
   createGroup() {
-    //
+    // TODO:
   }
 
   deleteAsset() { // TOFIX: now it delete all posts
@@ -78,7 +78,7 @@ export class AssetService {
   }
 
   deleteGroup() {
-    //
+    // TODO:
   }
 
 
@@ -97,9 +97,9 @@ export class AssetService {
           }
         }
         return groupsArr // > [Object, Object, Object...]
-          .forEach(item =>{
-            console.log(item);
-        });
+        //   .forEach(item =>{
+        //     console.log(item);
+        // });
     }));
     // .subscribe((posts: IAsset) => {
     //   // console.log(posts);
@@ -125,7 +125,7 @@ export class AssetService {
         //   .forEach(item =>{
         //     arr.push(item);
         // });
-      return console.log(assetsArr);
+      // return console.log(assetsArr);
     }))
     // .subscribe((assets: IAsset) => {
     //   // console.log(posts);

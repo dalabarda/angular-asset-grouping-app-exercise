@@ -8,8 +8,7 @@ export class EventListResolver implements Resolve<any> {
   constructor( private assetService:AssetService) {  }
 
   resolve() {
-    return this.assetService.getAssets().map(assets => assets) 
-    // this.assetService.getAssets().map(assets => assets)
+    return this.assetService.getAssets().map(assets => assets)
   }
 
 

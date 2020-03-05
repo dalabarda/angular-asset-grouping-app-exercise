@@ -1,5 +1,4 @@
 export * from './asset.service'
-export * from './global.service'
 export * from './assets.model'
 export * from './restricted-words.validator'
 export * from './duration.pipe'

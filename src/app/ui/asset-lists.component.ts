@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { AssetService } from './shared/asset.service'
-import { GlobalService } from './shared/global.service'
+import { GlobalService } from './../shared/global.service'
 import { IAsset, IGroups } from './shared/index'
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators';

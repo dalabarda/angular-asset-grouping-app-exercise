@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {
     AssetsWrapperComponent,
     AssetService,
-    GlobalService,
+    // GlobalService,
     AssetItemComponent,
     AssetDetailComponent,
     AssetDetailCreateComponent,
@@ -19,6 +19,8 @@ import {
     DurationPipe,
     TruncatePipe
 } from './ui/index';
+
+import { GlobalService } from './shared/index';
 
 import { NavBarComponent }  from './nav/navbar.component';
 import { AppMenuDropdown }  from './nav/dropdown.component';

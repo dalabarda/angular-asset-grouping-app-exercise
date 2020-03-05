@@ -81,7 +81,4 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
     return this.old_asset;
   }
 
-  onToggleCancelButtom(test) {
-    console.log(test);
-  }
 }
