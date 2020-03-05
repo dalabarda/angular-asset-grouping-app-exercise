@@ -1,7 +1,8 @@
 import { Component } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
-import { Router } from '@angular/router'
-import { AssetService, IAsset } from './../shared/index'
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AssetService } from './../asset.service';
+import { IAsset } from './../shared/assets.model';
 
 
 @Component({

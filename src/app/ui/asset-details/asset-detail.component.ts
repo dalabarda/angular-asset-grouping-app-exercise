@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
-import { AssetService } from './../shared/asset.service';
+import { AssetService } from './../asset.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';

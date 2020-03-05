@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Resolve } from '@angular/router'
-import { AssetService } from './shared/asset.service'
+import { AssetService } from './asset.service'
 
 
 @Injectable()

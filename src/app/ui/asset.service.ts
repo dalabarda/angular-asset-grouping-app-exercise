@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-import { IAsset, IGroups } from './assets.model';
+import { IAsset, IGroups } from './shared/assets.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'
 import { map } from 'rxjs/operators';

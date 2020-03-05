@@ -1,6 +1,6 @@
 import { Router, ActivatedRouteSnapshot, CanActivate } from "@angular/router";
 import { Injectable } from "@angular/core";
-import { AssetService } from "../shared/asset.service";
+import { AssetService } from "../asset.service";
 
 @Injectable()
 export class AssetRouteActivator implements CanActivate {

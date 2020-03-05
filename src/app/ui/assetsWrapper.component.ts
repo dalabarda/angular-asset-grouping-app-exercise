@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { AssetService } from './shared/asset.service';
+import { AssetService } from './asset.service';
 import { GlobalService } from './../shared/global.service';
 import { ActivatedRoute } from '@angular/router';
 import { IAsset } from './shared/assets.model';

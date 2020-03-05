@@ -10,3 +10,4 @@ export * from './shared/index';
 export * from './asset-details/index';
 
 
+export * from './asset.service';
