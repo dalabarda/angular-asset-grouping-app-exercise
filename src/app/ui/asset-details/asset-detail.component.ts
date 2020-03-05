@@ -7,6 +7,8 @@ import { map, filter } from 'rxjs/operators';
 
 import { IAsset, IGroups } from './../shared/index';
 
+import { DataStorageService } from './../../shared/data-storage.service';
+
 @Component({
 	templateUrl: './asset-detail.component.html',
   styleUrls: ['./asset-detail.component.css'],
@@ -18,9 +20,10 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
 	private asset:              IAsset;
   private paramsSubscription: Subscription;
   private old_asset = {...this.assetService.getAsset(+this.route.snapshot.params['id'])};
-  
+
 
 	constructor(
+    private dataStorage: DataStorageService,
     private assetService: AssetService, 
     private route:        ActivatedRoute, 
     private router:       Router)
@@ -35,9 +38,13 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
       (params: IAsset) => {
         // gets the values from [routerLink]
         this.asset = this.assetService
-          .getAsset(+params['id']); // '+' sign is used to convert 'id' to a number
+          .getAsset(+params['id']); // '+' sign is used to convert params to a number
       });
 
+
+
+    // testing the observable stream
+    this.assetService.fetchAssetsFromDb().subscribe((res: IAsset[]) => console.log(res));
 	}
 
   ngOnDestroy() {
@@ -56,13 +63,13 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
 	}
 
 
-	 getDisplayedAsset():any { // TODO
-	    if (this.asset && this.asset.type === 'jpg')
-	      return { }
-	    if (this.asset && this.asset.group_id === 2)
-	      return {color: '#770000', 'font-weight': 'bold'};
-	    return {}
-  	}
+	//  getDisplayedAsset():any { // TODO
+	//     if (this.asset && this.asset.type === 'jpg')
+	//       return { }
+	//     if (this.asset && this.asset.group_id === 2)
+	//       return {color: '#770000', 'font-weight': 'bold'};
+	//     return {}
+  // 	}
 
 	onMovingAsset2NewGroup(group:any) {
 

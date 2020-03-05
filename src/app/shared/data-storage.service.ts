@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AssetService } from './../ui/shared/asset.service';
+import { AssetService } from './../ui/asset.service';
+import { map, tap, filter } from 'rxjs/operators';
+
+import { IAsset } from './../ui/assets.model';
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
@@ -20,13 +23,16 @@ export class DataStorageService {
   }
   
   fetchAssets() {
-    this.http.get('https://asset-grouping-app-exercise.firebaseio.com/testingPut.json')
-    .subscribe(res => {
-      c
-    });
+    return this.http.get<IAsset>('https://asset-grouping-app-exercise.firebaseio.com/Assets.json')
+      // .pipe(
+      //   filter(asset => asset.group_id == "2"),
+      //   tap(asset => {return console.log(asset)})
+        // map(asset => asset.)
+      .subscribe(res => console.log(res))
   }
 }
 
+// TODO: deleting a group, delete also all assets linked to it. 
 
 
 /*
