@@ -6,7 +6,7 @@ export * from './events-list-resolver.service';
 export * from './unless.directive';
 
 
-export * from './shared/index';
+// export * from './shared/index';
 export * from './asset-details/index';
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms' // anular forms items we needed to create a reactive form.
-import { restrictedWords3 } from '../shared/index'
+import { restrictedWords3 } from '../../shared/index';
 import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router'
 
