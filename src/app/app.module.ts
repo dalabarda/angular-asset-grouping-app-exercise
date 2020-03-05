@@ -6,20 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import {
-    AssetsWrapperComponent,
-    AssetService,
-    // GlobalService,
-    AssetItemComponent,
-    AssetDetailComponent,
-    AssetDetailCreateComponent,
-    AssetListsComponent,
-    AssetRouteActivator,
+    AssetsWrapperComponent, AssetService, AssetItemComponent, 
+    AssetDetailComponent, AssetDetailCreateComponent, AssetListsComponent, 
+    AssetRouteActivator, AssetDetailEditComponent,
     EventListResolver,
-    AssetDetailEditComponent,
-    DurationPipe,
 } from './ui/index';
 
-import { GlobalService, TruncatePipe } from './shared/index';
+import { GlobalService, TruncatePipe, DurationPipe } from './shared/index';
 
 import { NavBarComponent }  from './nav/navbar.component';
 import { AppMenuDropdown }  from './nav/dropdown.component';

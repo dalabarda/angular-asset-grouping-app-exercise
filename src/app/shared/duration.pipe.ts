@@ -15,6 +15,4 @@ export class DurationPipe implements PipeTransform {
 
 /*
 This is just an example of a Custom pipe =)
-
-
 */
