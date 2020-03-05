@@ -31,8 +31,8 @@ export class AssetDetailEditComponent implements OnInit {
 	
 
   // emit a message back to our parent component when the user clicks save.
-	@Output() movingToNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>()
-	@Output() cancelChangeGroup = new EventEmitter() 
+	@Output() movingToNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>();
+	@Output() cancelChangeGroup: EventEmitter<boolean> = new EventEmitter<boolean>();
 	
   
   @Input()
@@ -118,15 +118,15 @@ export class AssetDetailEditComponent implements OnInit {
 
 		 this.movingToNewGroup.emit(group) // now we have an output parameter to bind to, now we just have to bind it to our event details page.
 	}
-
-  // TOFIX: on cancel button should collapse the component and reset the asset data
+  
+  // on cancel button collapses the edit component. NO reset of form values are applied
 	onCancelClick() {
-		this.cancelChangeGroup.emit(console.log('TODO: emit back false to editToggleComp in parent component')) // 
+		this.cancelChangeGroup.emit();
 	}
 
   // TODO: nice to have but not important feature. reset to default values. 
-	onResetlClick() {
-		this.cancelChangeGroup.emit(console.log('thaaaaaaaaaaat')) // 
-	}
+	// onResetlClick() {
+	// 	this.cancelChangeGroup.emit(console.log('thaaaaaaaaaaat')) // 
+	// }
 
 } 

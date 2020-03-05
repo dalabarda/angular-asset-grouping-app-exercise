@@ -43,9 +43,8 @@
         <move-group 
           *ngIf="editToggleComp"
           [asset]="onPassingAsset()" 
-          (assetChange)="onAssetChange($event)"
           (movingToNewGroup)="onMovingAsset2NewGroup($event)" 
-          (cancelAddGroup)="cancelAddGroup()"
+          (cancelChangeGroup)="onToggleEditComponent()"
         ></move-group>
 
       </div>
