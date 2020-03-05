@@ -22,6 +22,8 @@ export class Asset {
   public modified: string;
   public group_id: number;
   public description: string;
+
+  constructor(){} //TODO:
 }
 
 
@@ -38,6 +40,8 @@ export class Group {
   public name: string;
   public date: Date;
   public description: string;
+
+  constructor(){} //TODO:
 }
 
 // TOFIX: it might not be necessary having all variables as public. 

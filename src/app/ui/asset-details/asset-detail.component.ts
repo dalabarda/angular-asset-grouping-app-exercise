@@ -42,9 +42,8 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
       });
 
 
+  console.log(this.assetService.getAssetsObs());
 
-    // testing the observable stream
-    this.assetService.fetchAssetsFromDb().subscribe((res: IAsset[]) => console.log(res));
 	}
 
   ngOnDestroy() {

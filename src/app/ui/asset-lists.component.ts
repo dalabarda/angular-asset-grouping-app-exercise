@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { AssetService } from './asset.service'
 import { GlobalService } from './../shared/global.service'
+import { DataStorageService } from './../shared/data-storage.service'
 import { IAsset, IGroups } from './shared/index'
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators';
@@ -17,8 +18,6 @@ export class AssetListsComponent {
   private groups : IGroups[]
   private assetsInGroups: Array<T>;
 
-  private testTest: any;
-
   groupArr: any[];
   
   // switsch the class based on grid or list
@@ -30,6 +29,7 @@ export class AssetListsComponent {
 // (click)="handleThumbnailClick(asset.name)"
 
   constructor(private assetService: AssetService,
+              private dataStorageService: DataStorageService,
               private globalService: GlobalService,
               private http: HttpClient,
               ){  
@@ -46,9 +46,6 @@ export class AssetListsComponent {
     this.assets = this.assetService.getAssets();
     this.loadedAssets = []; // TODO:
     this.groups = this.assetService.getGroups();
-    
-
-  console.log(this.testTest)
 
 
     // array of arrays ordered by group.group_id
@@ -61,7 +58,10 @@ export class AssetListsComponent {
         })))
 
     console.log(this.assetsInGroups)
-
+    
+    // testing the observable stream
+    this.dataStorageService.fetchAssetsFromDb().subscribe((res: IAsset[]) => console.log(res));
+    
     // TODO: read more about route snapshot
     // this.events = this.route.snapshot.data['events'] // 
 
