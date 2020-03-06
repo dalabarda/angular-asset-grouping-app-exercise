@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { AssetService } from './../asset.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
 import { IAsset, IGroups } from './../shared/index';
@@ -20,7 +20,7 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
 	private asset:              IAsset;
   private assetObs:           IAsset;
   private paramsSubscription: Subscription;
-  private old_asset = {...this.assetService.getAsset(+this.route.snapshot.params['id'])};
+  private old_asset = {...this.assetService.getAssetObs(this.route.snapshot.params['id'])};
 
 
 	constructor(
@@ -32,22 +32,19 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
 
 
 	ngOnInit() {
-		// this.asset = this.assetService.getAsset(+this.route.snapshot.params['id'])
-
     //
     this.paramsSubscription = this.route.params.subscribe( // params here is an Observable
       (params: IAsset) => {
         // gets the values from [routerLink]
         this.asset = this.assetService
-          .getAsset(+params['id']); // '+' sign is used to convert params to a number
-        // this.assetObs = this.assetService
-        //   .getAssetObs('-M1_BYcl-77UCrWZQRy6'); // '+' sign is used to convert params to a number
+          .getAssetObs(params['id']); // '+' sign is used to convert params to a number
       });
 
 
-  console.log(this.asset);
-  console.log(this.assetObs);
-
+  // TEST:
+  // console.log(this.asset);
+  // console.log(this.assetObs);
+  // console.log(+this.route.snapshot.params['id']);
 	}
 
   ngOnDestroy() {
@@ -66,7 +63,8 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
 	}
 
 
-	//  getDisplayedAsset():any { // TODO
+  // TODO:
+	//  getDisplayedAsset():any {
 	//     if (this.asset && this.asset.type === 'jpg')
 	//       return { }
 	//     if (this.asset && this.asset.group_id === 2)

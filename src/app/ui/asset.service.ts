@@ -123,6 +123,10 @@ export class AssetService {
       return this.assets.find(asset => asset.id === id);
   }
 
+  // updateAssetsObs(id:any):IAsset {
+  //     return this.assets.find(asset => asset.id === id);
+  // }
+
   constructor(private http:    HttpClient,
               private router:  Router,){}
 
