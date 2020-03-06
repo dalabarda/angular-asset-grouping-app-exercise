@@ -14,7 +14,7 @@ export class NavBarComponent {
 	constructor(
     private auth: AuthService,
     private dataStorageService: DataStorageService,) {
-    this.dataStorageService.fetchAssetsFromDb().subscribe();
+    // this.dataStorageService.fetchAssetsFromDb().subscribe();
   }
 
 

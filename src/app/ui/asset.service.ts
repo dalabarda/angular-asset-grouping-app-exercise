@@ -119,8 +119,12 @@ export class AssetService {
     return this.assets.slice();
   }
 
- constructor(private http:    HttpClient,
-             private router:  Router,){}
+  getAssetObs(id:any):IAsset {
+      return this.assets.find(asset => asset.id === id);
+  }
+
+  constructor(private http:    HttpClient,
+              private router:  Router,){}
 
 }
 

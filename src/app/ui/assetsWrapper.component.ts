@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { AssetService } from './asset.service';
 import { GlobalService } from './../shared/global.service';
 import { ActivatedRoute } from '@angular/router';
@@ -75,7 +75,7 @@ import { Subscription } from 'rxjs';
   `]
  }) // 
 
-export class AssetsWrapperComponent implements OnInit {
+export class AssetsWrapperComponent {
   assets:IAsset[]
 
   toggle:string;
@@ -84,15 +84,8 @@ export class AssetsWrapperComponent implements OnInit {
   constructor(private assetService: AssetService,
               private globalService: GlobalService, 
               private route:ActivatedRoute
-              ){  }
+              ){}
 
-
-  ngOnInit(): void {
-    // TODO:
-    // this.events = this.route.snapshot.data['events'] // 
-    this.assets = this.assetService.getAssets()
-    this.globalService.currentMessage.subscribe(message => this.toggle = message)
-  }
 
   // TODO: implement once again TOASTR
   // handleThumbnailClick(assetName) {

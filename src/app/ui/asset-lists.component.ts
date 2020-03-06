@@ -36,16 +36,12 @@ export class AssetListsComponent {
     this.groupArr = [];
     this.assetsInGroups = [];
 
-    // this.dataStorageService.fetchAssetsFromDb().subscribe((res: IAsset[]) => console.log(res));
-    // this.fetchAssetPosts().forEach(item => { // ERROR -> FIX THIS
-    //   console.log(item);
-    // });
   }
 
   ngOnInit() {
-    this.assets = this.assetService.getAssets();
-    this.loadedAssets = []; // TODO:
+    this.assets = this.assetService.getAssets(); // get from Db
     this.groups = this.assetService.getGroups();
+    this.loadedAssets = []; // TODO:
 
 
     // array of arrays ordered by group.group_id
@@ -66,11 +62,6 @@ export class AssetListsComponent {
     
     // testing the observable stream
     console.log(this.assetService.getAssetsObs());
-  }
-
-  private fetchAssetPosts() {
-    this.assetService.fetchAssetsFromDb()
-      .subscribe();
   }
 
 }

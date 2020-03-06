@@ -42,7 +42,7 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
       });
 
 
-  console.log(this.assetService.getAssetsObs());
+  console.log(this.assetService.getAsset());
 
 	}
 
