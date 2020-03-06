@@ -1,7 +1,7 @@
 export * from './asset-item.component';
 export * from './asset-lists.component';
 export * from './assetsWrapper.component';
-export * from './events-list-resolver.service';
+export * from './assets-lists-resolver.service';
 export * from './unless.directive';
 
 
