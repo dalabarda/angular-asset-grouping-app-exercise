@@ -31,7 +31,7 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
 
 
 	ngOnInit() {
-		this.asset = this.assetService.getAsset(+this.route.snapshot.params['id'])
+		// this.asset = this.assetService.getAsset(+this.route.snapshot.params['id'])
 
     //
     this.paramsSubscription = this.route.params.subscribe( // params here is an Observable

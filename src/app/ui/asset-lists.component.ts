@@ -36,7 +36,7 @@ export class AssetListsComponent {
     this.groupArr = [];
     this.assetsInGroups = [];
 
-
+    // this.dataStorageService.fetchAssetsFromDb().subscribe((res: IAsset[]) => console.log(res));
     // this.fetchAssetPosts().forEach(item => { // ERROR -> FIX THIS
     //   console.log(item);
     // });
@@ -57,18 +57,15 @@ export class AssetListsComponent {
             return local.push(asset);
         })))
 
+    this.groups.forEach(group => this.groupArr.push(group.id) )     
+    this.globalService.currentMessage.subscribe((message: any) => this.itemClass = message)
+  
+    // TESTING
+    // getting DUMMY data
     console.log(this.assetsInGroups)
     
     // testing the observable stream
-    this.dataStorageService.fetchAssetsFromDb().subscribe((res: IAsset[]) => console.log(res));
-    
-    // TODO: read more about route snapshot
-    // this.events = this.route.snapshot.data['events'] // 
-
-    this.groups.forEach(group => this.groupArr.push(group.id) )
-     
-    this.globalService.currentMessage.subscribe((message: any) => this.itemClass = message)
-  
+    console.log(this.assetService.getAssetsObs());
   }
 
   private fetchAssetPosts() {

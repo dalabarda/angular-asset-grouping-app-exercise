@@ -3,6 +3,7 @@ import { AuthService } from './../user/auth.service' // this component is to sho
 
 import { AppMenuDropdown }  from './nav/dropdown.component';
 import { AppMenuItem }  from './nav/menu-item.component';
+import { DataStorageService } from './../shared/data-storage.service';
 
 @Component({
   selector: 'nav-bar',
@@ -10,7 +11,11 @@ import { AppMenuItem }  from './nav/menu-item.component';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavBarComponent {
-	constructor(private auth: AuthService) {}
+	constructor(
+    private auth: AuthService,
+    private dataStorageService: DataStorageService,) {
+    this.dataStorageService.fetchAssetsFromDb().subscribe();
+  }
 
 
   testingAContidion(item: any ):string { // MenuItem -> type
