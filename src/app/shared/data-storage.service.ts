@@ -29,7 +29,7 @@ export class DataStorageService {
       // .pipe(
       //   filter(asset => asset.group_id == "2"),
       //   tap(asset => {return console.log(asset)})
-        // map(asset => asset.)
+      // map(asset => asset.)
       .subscribe(res => console.log(res))
   }
 
@@ -42,7 +42,7 @@ export class DataStorageService {
 
     return assetsDataUrl
     .pipe(
-      map((res: IAsset) => {
+      map((res: {id: string; IAsset}) => {
         const assetsArr: IAsset = [];
         for (const key in res) {
           if (res.hasOwnProperty(key)){
@@ -53,26 +53,14 @@ export class DataStorageService {
       }),
       tap(assets => {
         this.assetService.setAssets(assets);
+      }),
+      catchError(errorRes => {
+        // Send to analytics server
+        return throwError(errorRes);
       })
-      // catchError(errorRes => {
-      //   // Send to analytics server
-      //   return throwError(errorRes);
-      // })
     )
   }
 
 }
 
 // TODO: deleting a group, delete also all assets linked to it. 
-
-
-/*
-in asset-lists.component
-
-  setAssets(assets: IAsset[]) {
-    this.assets = assets;
-    this.assetsChanged.next(this.assets.slice());
-  }
-
-
-*/

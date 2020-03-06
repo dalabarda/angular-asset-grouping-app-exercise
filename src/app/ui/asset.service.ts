@@ -6,6 +6,7 @@ import { Router } from '@angular/router'
 import { map, filter, tap, catchError } from 'rxjs/operators';
 
 
+
 @Injectable()
 export class AssetService {
 
@@ -57,7 +58,7 @@ export class AssetService {
   url = 'https://asset-grouping-app-exercise.firebaseio.com/'
 
 
-  createAsset(postData: IAsset, routeUrl: string) {
+  createAndStoreAsset(postData: IAsset) {
     // Send Http request 
     this.http.post(
       this.url + 'Assets'+ ".json", 
@@ -66,8 +67,7 @@ export class AssetService {
         console.log(responseData);
       });
     
-    if(routeUrl.length > 0)
-		  this.router.navigate([routeUrl])
+    // this.dataStorageService.fetchAssetsFromDb()
   }
 
   createGroup() {
@@ -128,7 +128,7 @@ export class AssetService {
   // }
 
   constructor(private http:    HttpClient,
-              private router:  Router,){}
+              private router:  Router){}
 
 }
 

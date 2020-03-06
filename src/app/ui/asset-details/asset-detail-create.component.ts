@@ -1,9 +1,10 @@
 import { Component } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AssetService } from './../asset.service';
 import { IAsset } from './../shared/assets.model';
 
+import { AssetService } from './../asset.service';
+import { DataStorageService } from './../../shared/data-storage.service'; 
 
 @Component({
 	templateUrl: './asset-detail-create.component.html',
@@ -16,7 +17,8 @@ export class AssetDetailCreateComponent {
 	constructor(
     private router: Router,
     private http: HttpClient,
-    private assetService:AssetService) { 
+    private assetService:AssetService,
+    private dataStorageService: DataStorageService) { 
 
 	}
 	
@@ -36,7 +38,9 @@ export class AssetDetailCreateComponent {
 	}
 
   onCreatePost(postData: IAsset) {
-    this.assetService.createAndStoreAsset(postData, '/assets');
+    this.assetService.createAndStoreAsset(postData);
+    this.dataStorageService.fetchAssetsFromDb();
+    this.router.navigate(['/assets']);
   }
 
 }

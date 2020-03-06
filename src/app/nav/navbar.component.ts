@@ -3,7 +3,7 @@ import { AuthService } from './../user/auth.service' // this component is to sho
 
 import { AppMenuDropdown }  from './nav/dropdown.component';
 import { AppMenuItem }  from './nav/menu-item.component';
-import { DataStorageService } from './../shared/data-storage.service';
+// import { DataStorageService } from './../shared/data-storage.service';
 
 @Component({
   selector: 'nav-bar',
@@ -11,20 +11,14 @@ import { DataStorageService } from './../shared/data-storage.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavBarComponent {
-	constructor(
-    private auth: AuthService,
-    private dataStorageService: DataStorageService,) {
-    // this.dataStorageService.fetchAssetsFromDb().subscribe();
+	
+  get items(): any[] {
+    return this.menu;
   }
 
-
-  testingAContidion(item: any ):string { // MenuItem -> type
-    if (item.getName == 'All Assets')
-      return '{exact:true}';
-    else
-      return '{exact:false}';
-  }
-
+  constructor(
+    private auth: AuthService) 
+    {}
 
   onDropdownClass(item: any):string { // MenuItem -> type
     if (!item.isEnabled || item.onClick().length == 0)
@@ -61,9 +55,6 @@ export class NavBarComponent {
         ];
 
 
-  get items(): any[]
-  {
-    return this.menu;
-  }
+
 
 }
