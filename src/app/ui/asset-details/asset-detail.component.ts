@@ -18,6 +18,7 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
  
 	private editToggleComp:     boolean;
 	private asset:              IAsset;
+  private assetObs:           IAsset;
   private paramsSubscription: Subscription;
   private old_asset = {...this.assetService.getAsset(+this.route.snapshot.params['id'])};
 
@@ -39,10 +40,13 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
         // gets the values from [routerLink]
         this.asset = this.assetService
           .getAsset(+params['id']); // '+' sign is used to convert params to a number
+        // this.assetObs = this.assetService
+        //   .getAssetObs('-M1_BYcl-77UCrWZQRy6'); // '+' sign is used to convert params to a number
       });
 
 
-  console.log(this.assetService.getAsset());
+  console.log(this.asset);
+  console.log(this.assetObs);
 
 	}
 
