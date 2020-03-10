@@ -1,3 +1,16 @@
+:host {
+  display: block;
+}
+
+/* change the box model so that elements behave the same way */
+/* https://stackoverflow.com/questions/4073768/how-to-get-equal-width-of-input-and-select-fields */
+input, select, textarea {
+  -ms-box-sizing:content-box;
+  -moz-box-sizing:content-box;
+  -webkit-box-sizing:content-box; 
+  box-sizing:content-box;
+}
+
 em {float:right; color:#E05C65; padding-left:10px;}
 .error input {background-color:#E3C3C5;}
 .error ::-webkit-input-placeholder { color: #999; }
@@ -14,55 +27,27 @@ em {float:right; color:#E05C65; padding-left:10px;}
     width: 50%;
 }
 
-@media (min-width: 992px) { 
-  :col-md-62 {
-    float: left;
-  }
-  }
-
-  .form-group2 {
-    margin-bottom: 15px;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-
-@media (min-width: 768px) { 
-  .form-group2 {
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
-}
-
-@media (max-width: 767px) { 
-  .form-group2 {
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
-
-  .form-group2:last-child {
-    margin-bottom: 0;
-  }
-}
-
-
 .form-control2 {
-  display: block;
+  /* display: block; */
+  padding: 0px;
   width: 100%;
   height: 34px;
-  padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
-  border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+
+
+/* check the following style later... */
 .form-control2:focus {
   border-color: #66afe9;
   outline: 0;
@@ -79,11 +64,6 @@ em {float:right; color:#E05C65; padding-left:10px;}
 .form-control2::-webkit-input-placeholder {
   color: #999;
 }
-.form-control2::-ms-expand {
-  background-color: transparent;
-  border: 0;
-}
-
 
 
 
@@ -98,8 +78,6 @@ fieldset[disabled] .form-control2 {
 textarea.form-control2 {
   height: auto;
 }
-
-
 
 
 
@@ -126,8 +104,6 @@ textarea.form-control2 {
   background-color: #286090;
   border-color: #204d74;
 }
-
-
 
 
 

@@ -20,39 +20,7 @@ export interface MenuItem
 
 @Component({
   selector: 'my-menu-item',
-  template: `
-    <ul>
-        <li *ngFor="let item of items">
-            <a
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact: true}" 
-              [routerLink]="item.onClick()">
-                {{ item.getName }}
-            </a>
-        </li>
-        <!-- <div *ngSwitchCase="type.separator" class="separator"></div> -->
-
-        <ng-container *ngFor="let item of items">
-          <div *ngIf="onDropdownList(item)" 
-                class="dropdown-menu" >
-            <li 
-              *ngFor="let item of items"
-              [ngClass]="onDropdownClass(item)">
-              <a
-                [href]="ite.onClick()" 
-                    > {{ item.getName }} 
-              </a>
-            </li>
-            <hr/>
-            <li class="enabled">
-              <a >Last Item </a>
-            </li>
-          </div>
-        </ng-container>
-
-      <!--  -->
-    </ul>
-  	`,
+  templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.css']
 })
 export class AppMenuItem  { 

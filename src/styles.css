@@ -37,27 +37,15 @@ h3 {
   text-shadow: 1px 1px red;
 }
 
+/* Some tweener fallback that doesn't look awful */ 
 span {
-  font-size: 12px; /* Some tweener fallback that doesn't look awful */ 
+  /* font-size: 12px;  */
   font-size: 1.45vw;  
-}
-@media screen and (min-width: 1000px) {
-  span {
-    font-size: 14px;
-  }
 }
 
 a {
   font-size: 1.5vw;
 }
-@media screen and (min-width: 1000px) {
-  a {
-    font-size: 14px;
-  }
-}
-
-
-
 
 button {
   color: #555;

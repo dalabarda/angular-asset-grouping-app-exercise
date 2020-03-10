@@ -12,7 +12,7 @@
     
 
     <!--  [ngClass] for the error styling message -->
-    <div class="form-group2" [ngClass]="{'error': newAssetForm.controls.name?.invalid && newAssetForm.controls.name?.touched}">
+    <div class="" [ngClass]="{'error': newAssetForm.controls.name?.invalid && newAssetForm.controls.name?.touched}">
       <label for="assetName">Asset Name:</label>
       <!-- corresponding validation message -->
       <em *ngIf="newAssetForm.controls.name?.invalid && (newAssetForm.controls.name?.touched)">Required</em>
@@ -22,17 +22,17 @@
     </div>
     
     <!-- Assigning to a group -->
-    <div class="form-group2">
-        <label for="group_id">Group you would like to assign:</label>
-        <select (ngModel)="group_id" name="group_id" required id="group_id" type="number" class="form-control2">
-          <option value="">select group...</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-      </div>
+    <div class="">
+      <label for="group_id">Group you would like to assign:</label>
+      <select (ngModel)="group_id" name="group_id" required id="group_id" type="number" class="form-control2">
+        <option value="">select group...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </div>
     
-    <div class="form-group2" [ngClass]="{'error': newAssetForm.controls.destination_url?.invalid && newAssetForm.controls.destination_url?.touched}">
+    <div class="" [ngClass]="{'error': newAssetForm.controls.destination_url?.invalid && newAssetForm.controls.destination_url?.touched}">
     <!-- here is the place to upload the file -->
 	  <!-- we have here two validators: required and pattern validators. -->
       <label for="destination_url">Image:</label>
@@ -44,7 +44,7 @@
     </div>
     
     <!-- DATE -->
-    <div class="form-group2">
+    <div class="">
       <label for="date">Select the present day</label>
       <!-- picking the day -->
       <select  (ngModel)="date" name="date" required id="date" type="text" class="form-control2" >
@@ -55,7 +55,7 @@
 
     <!-- Matching the data model by wrapping the next div into the group object from our data model -->
     
-      <div class="form-group2" > 
+      <div class="" > 
         <label for="description">Description:</label>
 
         <!-- formControlName="description" -->
@@ -84,7 +84,7 @@
   <hr>
 </div>
 
-<div class="col-md-62">
+<div class="">
   <img  class="asset-image" [src]="newAssetForm.controls.destination_url.value" *ngIf="newAssetForm.controls.destination_url?.valid"
   />
 </div>
