@@ -2,7 +2,7 @@
   display: block;
 }
 
-/* change the box model so that elements behave the same way */
+/* need to change the box model so that elements behave the same way */
 /* https://stackoverflow.com/questions/4073768/how-to-get-equal-width-of-input-and-select-fields */
 input, select, textarea {
   -ms-box-sizing:content-box;
