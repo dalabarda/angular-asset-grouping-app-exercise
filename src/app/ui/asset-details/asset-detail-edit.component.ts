@@ -17,6 +17,17 @@ import { IAsset, IGroups } from './../index';
     .error :-moz-placeholder { color: #999; }
     .error ::-moz-placeholder {color: #999; }
     .error :ms-input-placeholder { color: #999; }
+
+
+    input, select, textarea {
+      -ms-box-sizing:content-box;
+      -moz-box-sizing:content-box;
+      -webkit-box-sizing:content-box; 
+      box-sizing:content-box;
+      width: 80%;
+      padding: 0px;
+      border-width: 1px;
+    }
   `]
 })
 
