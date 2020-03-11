@@ -51,7 +51,7 @@ export class AssetDetailEditComponent implements OnInit {
 	private name: FormControl;
   private today = Date.now();
 	private updated: FormControl;
-	
+	private forbiddenUserNames = ['jhon', 'max', 'dan', 'theo', 'mary']
 
   // emit a message back to our parent component when the user clicks save.
 	@Output() movingToNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>();
@@ -59,8 +59,8 @@ export class AssetDetailEditComponent implements OnInit {
 	
   
   @Input()
-  set asset(value: IAsset) { this._asset = value || {};}
   get asset(): IAsset { return this._asset; }
+  set asset(value: IAsset) { this._asset = value || {};}
 
   get assetDescription() {
      return this.editAssetForm.get('description');
@@ -79,9 +79,10 @@ export class AssetDetailEditComponent implements OnInit {
 		this.updated = new FormControl(this.today)
 		this.description = new FormControl('', [Validators.required,
 											Validators.maxLength(400), // TOFIX: maxLength breaks the validator
-											this.restrictedWords, // custom validator applyed to the abstract field
-											this.restrictedWords2(['foo', 'bar']), // more complex functionning custom validators. 
-											restrictedWords3(['dismiss', 'fired', 'quit', 'abandon', 'abdicate']) // this is imported from another file in shared folder, therefore it doesn't need the 'this' keyword
+											 // imported from shared folder, thus it doesn't need the 'this' keyword
+											restrictedWords3(['dismiss', 'fired', 'quit', 'abandon', 'abdicate']),
+                      // TODO: read more why bind() is necessary
+                      // this.forbiddenNames.bind(this)
 											])
 
     // groups gathered from a service
@@ -90,7 +91,7 @@ export class AssetDetailEditComponent implements OnInit {
       this.groupArr.push(item.id);
     }) //[1, 2, 3]; 
 		
-		// now we have to build a form out of these fields...
+		// now we have to build a form out of previous fields.
 	 	this.editAssetForm = new FormGroup({
 			name: this.name,
 			g_id: this.g_id,
@@ -100,38 +101,6 @@ export class AssetDetailEditComponent implements OnInit {
 	 	
 	 	// console.log("--->", this.groupArr)
 	}
-
-	// regarding CUSTOM VALIDATORS: ----------------> remove this later
-  // prevent certain words from being used in a field and then we'll 
-	// apply that validator to this abstract field. 
-  // Validators are functions that returns null if the controll
-	
-
-	// this function returns an object. no matter what kind. 
-  // it is the simplest way to implement restricted words
-	private restrictedWords(control: FormControl): {[key: string]: any}
-		
-		{
-			return control.value.includes('foo')
-			? {'restrictedWords': 'foo'} // if it is invalid: return this
-			: null // if it is VALID: return null
-		}
-
-	// now another example but more complex of custom validator as a function:
-	private restrictedWords2(words: any){
-		return (control: FormControl): {[key: string]: any} => { // this is a fat error function from ES6 with some TS typing info.
-			if (!words) return null 
-
-			// finding any restrictedWords2 that exist in our control value.
-			var invalidWords = words
-				.map((w: any) => control.value.includes(w) ? w : null)
-				.filter((w:any) => w != null)
-
-			return invalidWords && invalidWords.length > 0
-				? {'restrictedWords': invalidWords.join(', ')}
-				: null
-			}
-		}
 
 
 	saveSession(formValues: any) {
@@ -149,7 +118,7 @@ export class AssetDetailEditComponent implements OnInit {
 	}
 
   // On cancel button collapses the edit component. 
-  // NO reset of form values are applied.
+  // No reset of form values are applied.
 	onCancelClick() {
 		this.cancelChangeGroup.emit();
 	}
@@ -169,6 +138,18 @@ export class AssetDetailEditComponent implements OnInit {
         return this.description.errors.restrictedWords + ' is a forbiden word ;)'
       if(this.description.errors.restrictedWords.split(', ').length > 1)
         return this.description.errors.restrictedWords + ' are forbiden words ;)'
+      else
+        return null
     }
+    // else
+      return null;
   }
+
+  // TOFIX: alternatively
+  // forbiddenNames(control: FormControl): {[s: string]: boolean} {
+  //   if (this.forbiddenUserNames.indexOf(control.value) !== -1) {
+  //     return {'nameIsForbidden': true};
+  //   }
+  //   return null;
+  // }
 } 
