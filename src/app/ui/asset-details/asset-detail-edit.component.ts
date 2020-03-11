@@ -28,6 +28,11 @@ import { IAsset, IGroups } from './../index';
       padding: 0px;
       border-width: 1px;
     }
+
+    textarea {
+      height: 150px;
+    }
+    
   `]
 })
 
