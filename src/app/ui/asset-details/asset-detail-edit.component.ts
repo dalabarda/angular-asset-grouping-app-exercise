@@ -11,13 +11,13 @@ import { IAsset, IGroups } from './../index';
 	selector: 'move-group',
 	templateUrl: './asset-detail-edit.component.html',
 	styles: [`
-    em {float:right; color:#E05C65; padding-left:10px;}
-    .error input, .error select, .error textarea {background-color:#E3C3C5;}
     .error ::-webkit-input-placeholder { color: #999; }
     .error :-moz-placeholder { color: #999; }
     .error ::-moz-placeholder {color: #999; }
     .error :ms-input-placeholder { color: #999; }
 
+    em {float:right; color:#E05C65; padding-left:10px;}
+    .error input, .error select, .error textarea {background-color:#E3C3C5;}
 
     input, select, textarea {
       -ms-box-sizing:content-box;
@@ -32,7 +32,11 @@ import { IAsset, IGroups } from './../index';
     textarea {
       height: 150px;
     }
-    
+
+  input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+
   `]
 })
 
@@ -43,7 +47,7 @@ export class AssetDetailEditComponent implements OnInit {
 	private description: FormControl;
 	private g_id: FormControl;
   private groupArr: number[]; // array of group ids data
-	private newGroupForm: FormGroup;
+	private editAssetForm: FormGroup;
 	private name: FormControl;
   private today = Date.now();
 	private updated: FormControl;
@@ -59,7 +63,7 @@ export class AssetDetailEditComponent implements OnInit {
   get asset(): IAsset { return this._asset; }
 
   get assetDescription() {
-     return this.newGroupForm.get('description');
+     return this.editAssetForm.get('description');
   }
 
 
@@ -87,7 +91,7 @@ export class AssetDetailEditComponent implements OnInit {
     }) //[1, 2, 3]; 
 		
 		// now we have to build a form out of these fields...
-	 	this.newGroupForm = new FormGroup({
+	 	this.editAssetForm = new FormGroup({
 			name: this.name,
 			g_id: this.g_id,
 			updated: this.updated,
