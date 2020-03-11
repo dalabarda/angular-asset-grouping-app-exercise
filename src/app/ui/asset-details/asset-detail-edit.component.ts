@@ -58,6 +58,10 @@ export class AssetDetailEditComponent implements OnInit {
   set asset(value: IAsset) { this._asset = value || {};}
   get asset(): IAsset { return this._asset; }
 
+  get assetDescription() {
+     return this.newGroupForm.get('description');
+  }
+
 
 	constructor( private assetService: AssetService, 
                private route:ActivatedRoute, 
@@ -70,7 +74,6 @@ export class AssetDetailEditComponent implements OnInit {
 		this.g_id = new FormControl('', Validators.required)
 		this.updated = new FormControl(this.today)
 		this.description = new FormControl('', [Validators.required,
-              
 											Validators.maxLength(400), // TOFIX: maxLength breaks the validator
 											this.restrictedWords, // custom validator applyed to the abstract field
 											this.restrictedWords2(['foo', 'bar']), // more complex functionning custom validators. 

@@ -44,15 +44,15 @@
       <!-- red background style-->
       <label for="description">Description:</label><br>
       <em *ngIf="onInvalidDescription()">{{ onInvalidDescription() }}</em>
-      <!-- formControlName="description" -->
       <textarea 
         [(ngModel)]="asset.description"  
-        formControlName="description" 
+        formControlName="description"
         id="description" rows=3 
         class="form-control" 
         placeholder="Please, add a description..."
       ></textarea>
     </div>
+    
     <br>
     <button type="submit" class="" [disabled]="newGroupForm.invalid" >Save</button>
     <!-- <button type="reset"  class="" (click)="onResetlClick()" >Reset</button> -->
