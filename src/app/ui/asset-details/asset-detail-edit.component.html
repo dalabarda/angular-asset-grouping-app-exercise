@@ -38,14 +38,22 @@
     </div><br>
     
 
-    <div class="form-group" [ngClass]="{'error': description.invalid && description.touched }"> <!-- red background style-->
+    <div 
+      class="form-group" 
+      [ngClass]="{'error': description.invalid && description.touched }"> 
+      <!-- red background style-->
       <label for="description">Description:</label><br>
-      <em *ngIf="description.invalid && description.dirty && description?.errors.required">Required</em> <!-- -->
-      <em *ngIf="description.invalid && description.dirty && description?.errors.maxLength">cannot exceed 400 characters</em> <!-- -->
-      <em *ngIf="description.invalid && description.dirty && description?.errors.restrictedWords"> {{description.errors.restrictedWords}} is a forbiden word ;)</em>
+      <em *ngIf="onInvalidDescription()">{{ onInvalidDescription() }}</em>
       <!-- formControlName="description" -->
-      <textarea [(ngModel)]="asset.description"  formControlName="description" id="description" rows=3 class="form-control" placeholder="Do you have another description?..."></textarea>
-    </div><br>
+      <textarea 
+        [(ngModel)]="asset.description"  
+        formControlName="description" 
+        id="description" rows=3 
+        class="form-control" 
+        placeholder="Please, add a description..."
+      ></textarea>
+    </div>
+    <br>
     <button type="submit" class="" [disabled]="newGroupForm.invalid" >Save</button>
     <!-- <button type="reset"  class="" (click)="onResetlClick()" >Reset</button> -->
     <button type="button" class="" (click)="onCancelClick()" >Cancel</button>

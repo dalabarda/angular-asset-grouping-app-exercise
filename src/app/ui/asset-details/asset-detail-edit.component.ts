@@ -53,8 +53,9 @@ export class AssetDetailEditComponent implements OnInit {
 		this.name = new FormControl('', Validators.required)
 		this.g_id = new FormControl('', Validators.required)
 		this.updated = new FormControl(this.today)
-		this.description = new FormControl('', [Validators.required, 
-											Validators.maxLength(400),
+		this.description = new FormControl('', [Validators.required,
+              
+											Validators.maxLength(400), // TOFIX: maxLength breaks the validator
 											this.restrictedWords, // custom validator applyed to the abstract field
 											this.restrictedWords2(['foo', 'bar']), // more complex functionning custom validators. 
 											restrictedWords3(['dismiss', 'fired', 'quit', 'abandon', 'abdicate']) // this is imported from another file in shared folder, therefore it doesn't need the 'this' keyword
@@ -135,4 +136,16 @@ export class AssetDetailEditComponent implements OnInit {
 	// 	this.cancelChangeGroup.emit(console.log('thaaaaaaaaaaat')) // 
 	// }
 
+  onInvalidDescription():string {
+    if(this.description.invalid && this.description.dirty) {
+      if(this.description.errors.required)
+        return 'required'
+      // if(this.description.errors.maxLength) // TOFIX: maxLength is broken
+      //   return 'required'
+      if(this.description.errors.restrictedWords.split(', ').length == 1)
+        return this.description.errors.restrictedWords + ' is a forbiden word ;)'
+      if(this.description.errors.restrictedWords.split(', ').length > 1)
+        return this.description.errors.restrictedWords + ' are forbiden words ;)'
+    }
+  }
 } 
