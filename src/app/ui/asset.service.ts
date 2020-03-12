@@ -10,14 +10,6 @@ import { map, filter, tap, catchError } from 'rxjs/operators';
 @Injectable()
 export class AssetService {
 
-  getAssets() {
-    return ASSETS;
-  }
-
-  getAsset(id:number):IAsset {
-      return ASSETS.find(asset => asset.id === id);
-  }
-
   // to save new events
   saveAsset(asset: IAsset) {
     asset.id = ASSETS.length + 1;
@@ -27,7 +19,7 @@ export class AssetService {
   // to update existing events
   updateAsset(asset: any) {
     // finding the existing event in the array and replace it for now
-    let index = ASSETS.find(x => x.id = asset.group_id)
+    let index = ASSETS.find(group => group.id = asset.group_id)
     
     ASSETS[+index] = asset
   }

@@ -14,7 +14,7 @@ export class DataStorageService {
               private assetService: AssetService){}
 
   storeAssets() {
-    const assets = this.assetService.getAssets();
+    const assets = this.assetService.getAssetsObs();
 
     // put overwride all data that are in a node
     this.http.put('https://asset-grouping-app-exercise.firebaseio.com/testingPut.json', 

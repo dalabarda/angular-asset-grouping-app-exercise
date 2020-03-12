@@ -13,21 +13,19 @@ import { map } from 'rxjs/operators';
 })
 
 export class AssetListsComponent {
-  private assets : IAsset[]
-  private assetsObs:           IAsset;
-  private loadedAssets : IAsset[]
-  private groups : IGroups[]
+  private assetsObs:      IAsset;
   private assetsInGroups: Array<T>;
+  private groupArr:       any[];
+  private groups:         IGroups[];
+  private loadedAssets:   IAsset[];
 
-  groupArr: any[];
   
   // switsch the class based on grid or list
-  private itemClass:string;
+  private itemClass: string;
 
   @Input('view') 
   viewClass: boolean;
 
-// (click)="handleThumbnailClick(asset.name)"
 
   constructor(private assetService: AssetService,
               private dataStorageService: DataStorageService,
@@ -41,18 +39,17 @@ export class AssetListsComponent {
   }
 
   ngOnInit() {
-    this.assets = this.assetService.getAssets(); // get from Db
-    this.groups = this.assetService.getGroups();
+    this.groups = this.assetService.getGroups(); //
     this.loadedAssets = []; // TODO:
-    this.assetsObs = this.assetService.getAssetsObs(); // '+' sign is used to convert params to a number
+    this.assetsObs = this.assetService.getAssetsObs(); // from dB -> firebase
 
     // array of arrays ordered by group.group_id
     this.groups.forEach(group => 
       this.assetsInGroups.push(
-        this.assetsObs.filter( asset => {
+        this.assetsObs.filter( (assetObs:IAsset) => {
           var local = [];
-          if(asset.group_id == group.id)
-            return local.push(asset);
+          if(assetObs.group_id == group.id)
+            return local.push(assetObs);
         })))
 
     this.groups.forEach(group => this.groupArr.push(group.id))     
