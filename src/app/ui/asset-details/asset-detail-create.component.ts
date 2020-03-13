@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { IAsset } from './../shared/assets.model';
+import { Subscription, Observable } from 'rxjs';
 
 import { AssetService } from './../asset.service';
 import { DataStorageService } from './../../shared/data-storage.service'; 
@@ -19,6 +20,8 @@ export class AssetDetailCreateComponent {
     private http: HttpClient,
     private assetService:AssetService,
     private dataStorageService: DataStorageService) { 
+    
+    this.subscriptions = new Subscription();
 
 	}
 	
@@ -36,14 +39,42 @@ export class AssetDetailCreateComponent {
 		this.router.navigate(['/assets'])
 	}
 
+  // onCreatePost(postData: IAsset) {
+  //   const promises: Promise<any> = new Promise(this.assetService.createAndStoreAsset(postData))
+  //   return Promise.all([promises])
+  //       .then(() => {
+  //         this.router.navigate(['/assets']);
+          
+  //       })
+  // }
+
   onCreatePost(postData: IAsset) {
-    this.assetService.createAndStoreAsset(postData);
-    setTimeout( () => {
-      this.dataStorageService.fetchAssetsFromDb();
-      this.assetService.getAssetsObs();
-      this.router.navigate(['/assets']);
-      },2000)
-    // this.router.navigate(['/assets']);
+    this.assetService.createAndStoreAsset(postData)
+      // .then(() => 
+      this.router.navigate(['/assets'])
+      // )
+
   }
 
+  private subscriptions:          Subscription;
+
+  ngOnDestroy(): void{
+      // super.ngOnDestroy();
+      this.subscriptions.unsubscribe();
+  }
 }
+
+
+
+
+  // onCreatePost(postData: IAsset) {
+  //   this.assetService.createAndStoreAsset(postData);
+  //   // updating the fetch data
+  //   setTimeout( () => {
+  //     this.subscriptions.add(this.dataStorageService.fetchAssetsFromDb().subscribe())
+  //     },2400)
+  //   // route back to main window 
+  //   setTimeout( () => {
+  //     this.router.navigate(['/assets']);
+  //     },4000)
+  // }

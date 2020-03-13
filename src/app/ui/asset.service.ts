@@ -55,10 +55,10 @@ export class AssetService {
     this.http.post(
       this.url + 'Assets'+ ".json", 
       {...postData})
-      .subscribe(responseData => {
-        this.getAssetsObs();
-        console.log(responseData);
-      });
+      .subscribe(
+        (responseData) => { console.log(responseData) }
+      //  (finally) => { console.log('finally') }
+      );
     
     // this.dataStorageService.fetchAssetsFromDb()
   }

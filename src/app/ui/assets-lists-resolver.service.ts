@@ -10,17 +10,21 @@ export class EventListResolver implements Resolve<any> {
     private dataStorageService: DataStorageService,
     private assetService:AssetService) {  }
 
-  resolve() {
-    // Load the data from the API here.
-    const assets = this.assetService.getAssetsObs();
-      if (assets.length === 0) {
-        return this.dataStorageService.fetchAssetsFromDb();
-      } 
-      else {
-      return assets;
-    }
+  // resolve() {
+  //   // Load the data from the API here.
+  //   const assets = this.assetService.getAssetsObs();
+  //     if (assets.length === 0) {
+  //       return this.dataStorageService.fetchAssetsFromDb();
+  //     } 
+  //     else {
+  //     return assets;
+  //   }
+  // }
+
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    // Load the data from the API here. 
+    return this.dataStorageService.fetchAssetsFromDb();
   }
-
-
 
 }
