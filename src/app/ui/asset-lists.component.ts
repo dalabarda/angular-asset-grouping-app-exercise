@@ -33,8 +33,8 @@ export class AssetListsComponent {
               private http: HttpClient,
               ){  
     this.groupArr = [];
-    this.assetsInGroups = [];
     this.assetsObs = [];
+    this.assetsInGroups = [];
 
   }
 
@@ -52,7 +52,9 @@ export class AssetListsComponent {
             return local.push(assetObs);
         })))
 
-    this.groups.forEach(group => this.groupArr.push(group.id))     
+    this.groups.forEach(group => this.groupArr.push(group.id))
+
+    //TODO: check what does it do and write a comment
     this.globalService.currentMessage.subscribe((message: any) => this.itemClass = message)
   
     // TESTING
@@ -60,8 +62,6 @@ export class AssetListsComponent {
     console.log(this.assetsInGroups)
     
     // testing the observable stream
-    console.log(this.assetService.getAssetsObs());
-
     console.log(this.assetsObs);
   }
 

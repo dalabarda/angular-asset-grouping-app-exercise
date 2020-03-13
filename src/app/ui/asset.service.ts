@@ -56,6 +56,7 @@ export class AssetService {
       this.url + 'Assets'+ ".json", 
       {...postData})
       .subscribe(responseData => {
+        this.getAssetsObs();
         console.log(responseData);
       });
     
@@ -90,13 +91,7 @@ export class AssetService {
           }
         }
         return groupsArr // > [Object, Object, Object...]
-        //   .forEach(item =>{
-        //     console.log(item);
-        // });
     }));
-    // .subscribe((posts: IAsset) => {
-    //   // console.log(posts);
-    // });
   }
 
   private assets: IAsset[] = [];

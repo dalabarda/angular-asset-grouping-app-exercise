@@ -13,9 +13,10 @@ export class EventListResolver implements Resolve<any> {
   resolve() {
     // Load the data from the API here.
     const assets = this.assetService.getAssetsObs();
-        if (assets.length === 0) {
-      return this.dataStorageService.fetchAssetsFromDb();
-    } else {
+      if (assets.length === 0) {
+        return this.dataStorageService.fetchAssetsFromDb();
+      } 
+      else {
       return assets;
     }
   }

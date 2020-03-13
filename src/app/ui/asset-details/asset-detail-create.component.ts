@@ -29,7 +29,6 @@ export class AssetDetailCreateComponent {
   //   // here we can pass the formValues straight through 
   //   // since the shape of it exactly matches our event.model
 	// 	this.assetService.saveAsset(formValues) 
-	// 	this.isDirty = false
 	// 	this.router.navigate(['/assets'])
 	// }
 
@@ -39,8 +38,12 @@ export class AssetDetailCreateComponent {
 
   onCreatePost(postData: IAsset) {
     this.assetService.createAndStoreAsset(postData);
-    this.dataStorageService.fetchAssetsFromDb();
-    this.router.navigate(['/assets']);
+    setTimeout( () => {
+      this.dataStorageService.fetchAssetsFromDb();
+      this.assetService.getAssetsObs();
+      this.router.navigate(['/assets']);
+      },2000)
+    // this.router.navigate(['/assets']);
   }
 
 }

@@ -42,11 +42,11 @@ export class DataStorageService {
 
     return assetsDataUrl
     .pipe(
-      map((res: {id: string; IAsset}) => {
+      map((res: {id: string, IAsset}) => {
         const assetsArr: IAsset = [];
         for (const key in res) {
           if (res.hasOwnProperty(key)){
-            assetsArr.push({...res[key], id: key});
+            assetsArr.push({id: key, ...res[key]});
           }
         }
         return assetsArr // .filter(item => item.group_id === '2')
