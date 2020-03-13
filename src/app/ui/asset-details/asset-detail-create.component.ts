@@ -2,10 +2,12 @@ import { Component } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { IAsset } from './../shared/assets.model';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription, Observable, concat, from } from 'rxjs';
 
 import { AssetService } from './../asset.service';
 import { DataStorageService } from './../../shared/data-storage.service'; 
+
+import { take, publish } from 'rxjs/operators';
 
 @Component({
 	templateUrl: './asset-detail-create.component.html',
@@ -24,36 +26,21 @@ export class AssetDetailCreateComponent {
     this.subscriptions = new Subscription();
 
 	}
-	
-  // NOTE: OLD CODE - but I am going to keep it for a while...
-  // // (ngSubmit)="saveAsset(newAssetForm.value)"
-	// saveAsset(formValues: IAsset) {
-	// 	console.log("-- Form Values: ", formValues)
-  //   // here we can pass the formValues straight through 
-  //   // since the shape of it exactly matches our event.model
-	// 	this.assetService.saveAsset(formValues) 
-	// 	this.router.navigate(['/assets'])
-	// }
 
 	cancel() {	// method from cancel
 		this.router.navigate(['/assets'])
 	}
 
-  // onCreatePost(postData: IAsset) {
-  //   const promises: Promise<any> = new Promise(this.assetService.createAndStoreAsset(postData))
-  //   return Promise.all([promises])
-  //       .then(() => {
-  //         this.router.navigate(['/assets']);
-          
-  //       })
-  // }
+  // TOFIX: improve this post method
+  async onCreatePost(postData: IAsset) {
+    const one = await this.assetService.createAndStoreAsset(postData).toPromise();
+    const two = from(this.router.navigate(['/assets'])).toPromise();
 
-  onCreatePost(postData: IAsset) {
-    this.assetService.createAndStoreAsset(postData)
-      // .then(() => 
-      this.router.navigate(['/assets'])
-      // )
-
+    Promise.all([one]).then(() => {
+      this.dataStorageService.fetchAssetsFromDb().subscribe()
+    }).then( () =>
+      two
+    )
   }
 
   private subscriptions:          Subscription;
@@ -63,18 +50,3 @@ export class AssetDetailCreateComponent {
       this.subscriptions.unsubscribe();
   }
 }
-
-
-
-
-  // onCreatePost(postData: IAsset) {
-  //   this.assetService.createAndStoreAsset(postData);
-  //   // updating the fetch data
-  //   setTimeout( () => {
-  //     this.subscriptions.add(this.dataStorageService.fetchAssetsFromDb().subscribe())
-  //     },2400)
-  //   // route back to main window 
-  //   setTimeout( () => {
-  //     this.router.navigate(['/assets']);
-  //     },4000)
-  // }

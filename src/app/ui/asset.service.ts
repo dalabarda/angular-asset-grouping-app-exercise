@@ -3,7 +3,7 @@ import { Subject, Observable, throwError } from 'rxjs';
 import { IAsset, IGroups } from './shared/assets.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'
-import { map, filter, tap, catchError } from 'rxjs/operators';
+import { map, filter, tap, catchError, switchMap } from 'rxjs/operators';
 
 
 
@@ -52,15 +52,12 @@ export class AssetService {
 
   createAndStoreAsset(postData: IAsset) {
     // Send Http request 
-    this.http.post(
+    return this.http.post(
       this.url + 'Assets'+ ".json", 
       {...postData})
-      .subscribe(
-        (responseData) => { console.log(responseData) }
-      //  (finally) => { console.log('finally') }
-      );
-    
-    // this.dataStorageService.fetchAssetsFromDb()
+      // .subscribe(
+      //   (responseData) => { console.log(responseData) }
+      // );
   }
 
   createGroup() {

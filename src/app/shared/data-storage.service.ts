@@ -49,7 +49,7 @@ export class DataStorageService {
             assetsArr.push({id: key, ...res[key]});
           }
         }
-        return assetsArr // .filter(item => item.group_id === '2')
+        return assetsArr
       }),
       tap(assets => {
         this.assetService.setAssets(assets);
