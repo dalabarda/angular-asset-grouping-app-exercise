@@ -31,7 +31,7 @@ export class AssetDetailCreateComponent {
 		this.router.navigate(['/assets'])
 	}
 
-  // TOFIX: improve this post method
+  // TOFIX: improve this post method read more about setTimeout() with promises and async methods
   async onCreatePost(postData: IAsset) {
     const one = await this.assetService.createAndStoreAsset(postData).toPromise();
     const two = from(this.router.navigate(['/assets'])).toPromise();
