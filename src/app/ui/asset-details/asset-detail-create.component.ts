@@ -15,8 +15,10 @@ import { take, publish } from 'rxjs/operators';
 })
 
 export class AssetDetailCreateComponent {
+  private subscriptions:          Subscription;
 	today: number = Date.now();
 	isDirty: boolean = true
+
 	constructor(
     private router: Router,
     private http: HttpClient,
@@ -33,20 +35,38 @@ export class AssetDetailCreateComponent {
 
   // TOFIX: improve this post method read more about setTimeout() with promises and async methods
   async onCreatePost(postData: IAsset) {
-    const one = await this.assetService.createAndStoreAsset(postData).toPromise();
-    const two = from(this.router.navigate(['/assets'])).toPromise();
+    await this.assetService.createAndStoreAsset(postData).toPromise();
+    this.router.navigate(['/assets']);
 
-    Promise.all([one]).then(() => {
-      this.dataStorageService.fetchAssetsFromDb().subscribe()
-    }).then( () =>
-      two
-    )
+    // TODO: check the usage of setTimeout() in async functions
+    // setTimeout(() => this.filterData());
   }
 
-  private subscriptions:          Subscription;
+  // REMOVE: just another alternative to post data. check wheather it is better.
+  // onCreatePost(postData: IAsset) {
+  // this.assetService.createAndStoreAsset(postData).subscribe()
+  //   .then((response:any) => {response.json()})
+  //   .then(() => {
+  //     this.router.navigate(['/assets']);
+  //   });
+
 
   ngOnDestroy(): void{
       // super.ngOnDestroy();
       this.subscriptions.unsubscribe();
   }
 }
+
+
+// // shallow copy of arrays and objs
+// var obj = Object.assign({}, OrgObj);
+// var arr = OrgArr.slice();
+// var arr = Array.from(OrgArr);
+
+
+// // deep copy, but only for valid JSON values. 
+// // no copy of functions
+// var cloneObj = JSON.parse(JSON.stringify(origObj)) 
+
+// // add an item to the new obj
+// cloneObj.cookie = 'chocolate chip';
