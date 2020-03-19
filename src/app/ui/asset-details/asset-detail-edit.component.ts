@@ -152,4 +152,8 @@ export class AssetDetailEditComponent implements OnInit {
   //   }
   //   return null;
   // }
+
+  onDeleteBtnClick() {
+    
+  }
 } 
