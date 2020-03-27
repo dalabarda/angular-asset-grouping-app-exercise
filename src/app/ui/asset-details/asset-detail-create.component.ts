@@ -15,7 +15,6 @@ import { take, publish } from 'rxjs/operators';
 })
 
 export class AssetDetailCreateComponent {
-  private subscriptions:          Subscription;
 	today: number = Date.now();
 	isDirty: boolean = true
 
@@ -24,8 +23,6 @@ export class AssetDetailCreateComponent {
     private http: HttpClient,
     private assetService:AssetService,
     private dataStorageService: DataStorageService) { 
-    
-    this.subscriptions = new Subscription();
 
 	}
 
@@ -33,31 +30,24 @@ export class AssetDetailCreateComponent {
 		this.router.navigate(['/assets'])
 	}
 
-  // TOFIX: improve this post method read more about setTimeout() with promises and async methods
-  async onCreatePost(postData: IAsset) {
-    await this.assetService.createAndStoreAsset(postData).toPromise();
-    this.router.navigate(['/assets']);
+  // // ALTERNATIVE 1: async / await
+  // async onCreatePost(postData: IAsset) {
+  //   await this.assetService.createAndStoreAsset(postData).toPromise();
+  //   this.router.navigate(['/assets']);
+  // }
 
-    // TODO: check the usage of setTimeout() in async functions
-    // setTimeout(() => this.filterData());
+  // ALTERNATIVE 2: Using then()
+  onCreatePost(postData: IAsset) {
+    this.assetService.createAndStoreAsset(postData).toPromise()
+      .then(() => {
+        this.router.navigate(['/assets']);
+      })
+      .catch(err => console.log(err));
   }
 
-  // REMOVE: just another alternative to post data. check wheather it is better.
-  // onCreatePost(postData: IAsset) {
-  // this.assetService.createAndStoreAsset(postData).subscribe()
-  //   .then((response:any) => {response.json()})
-  //   .then(() => {
-  //     this.router.navigate(['/assets']);
-  //   });
-
-
-  ngOnDestroy(): void{
-      // super.ngOnDestroy();
-      this.subscriptions.unsubscribe();
-  }
 }
 
-
+// IDEAS ///////////
 // // shallow copy of arrays and objs
 // var obj = Object.assign({}, OrgObj);
 // var arr = OrgArr.slice();
