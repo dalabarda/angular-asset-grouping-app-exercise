@@ -18,3 +18,8 @@ import { AssetService } from './asset.service';
   providers: [AssetService]
 })
 export class AppComponent  { name = 'Developers!'; }
+
+
+
+// TODO: add toaster to the project:
+// https://stackblitz.com/edit/angular-toaster?file=src%2Fapp%2Ftoaster.component.ts
