@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { AssetService } from './../ui/asset.service';
 import { map, tap, filter, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
@@ -25,7 +25,13 @@ export class DataStorageService {
   }
   
   fetchAssets() {
-    return this.http.get<IAsset>('https://asset-grouping-app-exercise.firebaseio.com/Assets.json')
+    return this.http.get<IAsset>(
+      'https://asset-grouping-app-exercise.firebaseio.com/Assets.json', 
+      {
+       headers: new HttpHeaders({ 'Custom-Header': 'Hello' }),
+       params: new HttpParams,
+       responseType: 'json' 
+      })
       // .pipe(
       //   filter(asset => asset.group_id == "2"),
       //   tap(asset => {return console.log(asset)})

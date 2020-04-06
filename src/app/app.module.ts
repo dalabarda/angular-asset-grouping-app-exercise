@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // 
 import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {
     AssetsWrapperComponent, AssetService, AssetItemComponent, 
@@ -23,7 +23,7 @@ import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { AuthGuard } from './auth-guard.service';
 
-
+import { AuthInterceptorService } from './auth-interceptor.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 
 
@@ -59,8 +59,15 @@ import { DropdownDirective } from './shared/dropdown.directive';
       EventListResolver,
       AuthGuard,
       {     // the mechanism to ask before an important action on the website.
+            // this is a dependency injection syntax supported by Angular that
+            // allow us to register a service under a different identifier
         provide: 'canDeactivateCreateAsset', // this is requested...
         useValue: checkDirtyState // ... use this 'useValue' to fulfil 
+      },
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptorService,
+        multi: true // this is because we already have another interceptor
       }
     ],
   bootstrap:[ 
