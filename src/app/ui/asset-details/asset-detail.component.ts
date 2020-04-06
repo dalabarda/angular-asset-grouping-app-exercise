@@ -83,6 +83,16 @@ export class AssetDetailComponent implements OnInit, OnDestroy {
 		this.router.navigate(['/assets']);
 	}
 
+  // TODO:
+  onUpdateExistingAsset() {
+    // update asset data
+      // move group
+      // edit data
+
+    // delete data
+    return;
+  }
+
   onPassingAsset() {
     // shallow copy is ok here because there is no nested object
     // in case of deep copy, use JSON.stringify and JSON.parse
