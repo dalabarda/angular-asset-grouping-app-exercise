@@ -43,15 +43,16 @@ import { IAsset, IGroups } from './../index';
 export class AssetDetailEditComponent implements OnInit {
   
   private _asset:IAsset;
-  private _arr: number;
-	private description: FormControl;
-	private g_id: FormControl;
   private groupArr: number[]; // array of group ids data
-	private editAssetForm: FormGroup;
-	private name: FormControl;
-  private today = Date.now();
-	private updated: FormControl;
-	private forbiddenUserNames = ['jhon', 'max', 'dan', 'theo', 'mary']
+	
+  // Fom data
+  private description:    FormControl;
+	private g_id:           FormControl;
+	private editAssetForm:  FormGroup;
+	private name:           FormControl;
+	private updated:        FormControl;
+  private today =         Date.now();
+
   changedSaved = false;
 
   // emit a message back to our parent component when the user clicks save.
@@ -61,7 +62,8 @@ export class AssetDetailEditComponent implements OnInit {
   
   @Input()
   get asset(): IAsset { return this._asset; }
-  set asset(value: IAsset) { this._asset = value || {};}
+  set asset(value: IAsset) { this._asset = value;}
+  // set asset(value: IAsset ) { !this._asset ? this._asset = value : {};}
 
   get assetDescription() {
      return this.editAssetForm.get('description');
@@ -147,6 +149,7 @@ export class AssetDetailEditComponent implements OnInit {
   }
 
   // TOFIX: alternatively
+  // private forbiddenUserNames = ['jhon', 'max', 'dan', 'theo', 'mary']
   // forbiddenNames(control: FormControl): {[s: string]: boolean} {
   //   if (this.forbiddenUserNames.indexOf(control.value) !== -1) {
   //     return {'nameIsForbidden': true};
