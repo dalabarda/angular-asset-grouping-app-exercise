@@ -52,6 +52,7 @@ export class AssetDetailEditComponent implements OnInit {
   private today = Date.now();
 	private updated: FormControl;
 	private forbiddenUserNames = ['jhon', 'max', 'dan', 'theo', 'mary']
+  changedSaved = false;
 
   // emit a message back to our parent component when the user clicks save.
 	@Output() movingToNewGroup: EventEmitter<IGroups> = new EventEmitter<IGroups>();
@@ -155,5 +156,10 @@ export class AssetDetailEditComponent implements OnInit {
 
   onDeleteBtnClick() {
     
+  }
+
+  onUpdateSaved() {
+    this.changedSaved = true;
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 } 

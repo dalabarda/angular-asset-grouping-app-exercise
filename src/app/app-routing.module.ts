@@ -16,9 +16,9 @@ import { AuthGuard } from './auth-guard.service';
 export const appRoutes:Routes = [
   // routing assets
 	{path: 'assets', component: AssetsWrapperComponent, resolve: [EventListResolver] },
-	{path: 'assets/new', component: AssetDetailCreateComponent, resolve: [EventListResolver]
+	{path: 'assets/new', component: AssetDetailCreateComponent, resolve: [EventListResolver],
     // canActivate: [AuthGuard] // TOFIX: allow asset creation only when user is logged in
-    // canDeactivate: ['canDeactivateCreateAsset'] 
+    // canDeactivate: ['canDeactivateCreateAsset'] // TODO: read more about it
     },
 	{path: 'assets/:id', component: AssetDetailComponent, resolve: [EventListResolver],
     canActivate: [AssetRouteActivator] },
